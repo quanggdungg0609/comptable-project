@@ -62,3 +62,30 @@ A: Hệ thống dựa trên **Số hóa đơn** và **Mã số thuế người b
 A: Có. Hệ thống luôn duy trì bản Excel cập nhật nhất trong tháng. Bạn chỉ cần vào mục "Xuất file" để tải về bản mới nhất.
 
 ---
+
+## 🧪 6. Mẫu dữ liệu cho phát triển (Development Sample)
+
+Hệ thống bao gồm các tệp hóa đơn điện tử mẫu trong thư mục `tests/samples/` để sử dụng cho kiểm thử:
+
+**PDF Sample:**
+- **File:** `tests/samples/invoice_test.pdf`
+- **Nhà cung cấp:** CÔNG TY TNHH ĐẦU TƯ VÀ VẬN TẢI AN PHÚ
+- **Ký hiệu hóa đơn:** C26TAA
+- **Số hóa đơn:** 00000064
+- **Mã số thuế (Người bán):** 0201582012
+- **Mã số thuế (Người mua):** 0201712790
+
+**XML Sample:**
+- **File:** `tests/samples/invoice_test.xml`
+- **Dữ liệu:** XML hóa đơn với cấu trúc đầy đủ (metadata, items, totals, signatures)
+- **Mục đích:** Kiểm thử XML parser
+
+**Sử dụng trong tests:**
+```python
+from pathlib import Path
+
+SAMPLE_XML_PATH = Path(__file__).parent.parent / "samples" / "invoice_test.xml"
+SAMPLE_PDF_PATH = Path(__file__).parent.parent / "samples" / "invoice_test.pdf"
+```
+
+---

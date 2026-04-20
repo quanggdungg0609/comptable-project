@@ -71,7 +71,7 @@ IMAP Listener (background task, poll mỗi N phút)
       ▼ Tải attachment PDF/XML
       │
       ├── Có cả XML + PDF cùng hóa đơn? → ghép cặp theo base filename
-      │       (HD0049.xml + HD0049.pdf) → dùng XML, lưu PDF vào RustFS
+      │       (invoice_test.xml + invoice_test.pdf) → dùng XML, lưu PDF vào RustFS
       │
       ├── XML branch: lxml parse → raw text → LLM → InvoiceItem
       └── PDF branch: markitdown → markdown text → LLM → InvoiceItem
@@ -79,7 +79,7 @@ IMAP Listener (background task, poll mỗi N phút)
                                           Status: AWAITING_REVIEW
                                                     │
                                   Thông báo nhân viên (Telegram/Slack/Console)
-                                    "Hóa đơn mới cần phê duyệt: HD0049.xml"
+                                    "Hóa đơn mới cần phê duyệt: invoice_test.xml"
                                                     │
                                               Review UI (web)
                                     (nhân viên xem, sửa từng field)
@@ -88,6 +88,10 @@ IMAP Listener (background task, poll mỗi N phút)
                           Confirm → ghi XLS + lưu RustFS + đánh dấu CONFIRMED trong DB
                           Reject  → status "rejected", không ghi XLS
 ```
+
+**Note:** Sample files available for testing in `tests/samples/`:
+- `invoice_test.pdf` - Vietnamese e-invoice PDF (supplier: "CÔNG TY TNHH ĐẦU TƯ VÀ VẬN TẢI AN PHÚ")
+- `invoice_test.xml` - Corresponding XML file with structured invoice data
 
 ### Upload thủ công (fallback)
 
