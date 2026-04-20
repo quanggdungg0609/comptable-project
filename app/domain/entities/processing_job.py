@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 import uuid
 from app.domain.entities.invoice_item import InvoiceItem
@@ -26,5 +26,5 @@ class ProcessingJob:
             filename=filename,
             file_type=file_type,
             status=InvoiceStatus.PENDING,
-            created_at=datetime.utcnow(),
+            created_at=datetime.now(timezone.utc),
         )

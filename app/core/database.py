@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS invoice_items (
     seller_tax_code TEXT DEFAULT '',
     description TEXT DEFAULT '',
     price_before_tax TEXT DEFAULT '0',
-    tax_amount TEXT DEFAULT '0',
+    tax_rate TEXT DEFAULT '0',
     price_after_tax TEXT DEFAULT '0'
 )
 """
