@@ -1,6 +1,6 @@
 # Invoice Collector — Design Spec
 **Date:** 2026-04-20  
-**Stack:** Python 3.11+, FastAPI, Ollama/gemma, RustFS, Docker Compose  
+**Stack:** Python 3.11+, FastAPI, Ollama/gemma4:e2b, RustFS, Docker Compose  
 **Target:** Raspberry Pi 4B 8GB RAM hoặc Pi 5
 
 ---
@@ -24,7 +24,7 @@ app (FastAPI :8000) ──▶ ollama (:11434)
 ```
 
 - **`app`**: FastAPI — chứa email listener (background task), xử lý upload, processing pipeline, UI (Jinja2 + HTMX), REST API `/api/v1/...`
-- **`ollama`**: Chạy gemma local, expose OpenAI-compatible API
+- **`ollama`**: Chạy gemma4:e2b local, expose OpenAI-compatible API
 - **`rustfs`**: Local S3-compatible object storage
 
 ### Clean Architecture Layers
@@ -279,7 +279,7 @@ Pending files lưu local tại `data/pending/{job_id}.{ext}` cho đến khi CONF
 | Web framework | FastAPI |
 | UI | Jinja2 + HTMX + Bootstrap 5 |
 | Future UI | REST API sẵn sàng cho React / mobile |
-| LLM | Ollama + gemma (local) |
+| LLM | Ollama + gemma4:e2b (local) |
 | PDF parse | markitdown |
 | XML parse | lxml |
 | Object storage | RustFS (boto3, S3-compatible) |
