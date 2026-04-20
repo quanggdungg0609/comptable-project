@@ -1,0 +1,27 @@
+[project]
+name = "collect-invoice"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Quang dung Truong",email = "truongquangdung0609@gmail.com"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "boto3 (>=1.42.91,<2.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pydantic (>=2.13.3,<3.0.0)",
+    "pydantic-settings (>=2.14.0,<3.0.0)",
+    "aiosqlite (>=0.22.1,<0.23.0)",
+    "jinja2 (>=3.1.6,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.3,<10.0.0)",
+    "pytest-asyncio (>=1.3.0,<2.0.0)"
+]
