@@ -98,6 +98,75 @@
     align-items: center;
     gap: 4px;
   }
+  .line-items-section {
+    margin-top: 20px;
+    padding: 0 0 24px;
+  }
+  .line-items-header {
+    font-size: 12px;
+    font-weight: 700;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 10px 14px;
+    background: #e9ecef;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .line-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+  .line-items-table th {
+    background: #f8f9fa;
+    padding: 6px 8px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    border-bottom: 1px solid #dee2e6;
+    white-space: nowrap;
+  }
+  .line-items-table td {
+    padding: 4px 5px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+  }
+  .line-items-table tr:last-child td { border-bottom: none; }
+  .li-input {
+    width: 100%;
+    font-size: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 3px 6px;
+    background: #fff;
+    min-width: 60px;
+  }
+  .li-input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px rgba(13,110,253,.1);
+  }
+  .li-input.num { font-family: monospace; text-align: right; }
+  .li-name { min-width: 140px; }
+  .badge-count {
+    font-size: 10px;
+    background: #0d6efd;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
 </style>
 
 <div class="row g-0" style="min-height: 100vh;">
@@ -408,6 +477,72 @@
         {% endfor %}
       </div>
 
+      {% if job.extracted_line_items %}
+      <div class="p-3">
+        <div class="line-items-section">
+          <div class="line-items-header">
+            Chi tiết hàng hóa / Dịch vụ
+            <span class="badge-count">{{ job.extracted_line_items | length }} dòng</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="line-items-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Tên hàng hóa / Dịch vụ</th>
+                  <th>ĐVT</th>
+                  <th>SL</th>
+                  <th>Đơn giá</th>
+                  <th>Thành tiền</th>
+                  <th>TS%</th>
+                  <th>Thuế GTGT</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for li in job.extracted_line_items %}
+                <tr>
+                  <td style="color:#aaa; font-size:11px;">{{ loop.index }}</td>
+                  <td>
+                    <input class="li-input li-name" type="text"
+                           name="li_ten_hang_hoa_{{ li.id }}" value="{{ li.ten_hang_hoa }}">
+                  </td>
+                  <td>
+                    <input class="li-input" type="text" style="min-width:50px;"
+                           name="li_don_vi_tinh_{{ li.id }}" value="{{ li.don_vi_tinh }}">
+                  </td>
+                  <td>
+                    <input class="li-input num" type="text" style="min-width:55px;"
+                           name="li_so_luong_{{ li.id }}" value="{{ li.so_luong }}"
+                           data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
+                  </td>
+                  <td>
+                    <input class="li-input num" type="text" style="min-width:80px;"
+                           name="li_don_gia_{{ li.id }}" value="{{ li.don_gia }}"
+                           data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
+                  </td>
+                  <td>
+                    <input class="li-input num" type="text" style="min-width:90px;"
+                           name="li_thanh_tien_{{ li.id }}" id="li_thanh_tien_{{ li.id }}"
+                           value="{{ li.thanh_tien }}" readonly style="background:#f8f9fa;">
+                  </td>
+                  <td>
+                    <input class="li-input num" type="text" style="min-width:45px;"
+                           name="li_tax_rate_{{ li.id }}" value="{{ li.tax_rate }}">
+                  </td>
+                  <td>
+                    <input class="li-input num" type="text" style="min-width:85px;"
+                           name="li_tax_amount_{{ li.id }}" id="li_tax_amount_{{ li.id }}"
+                           value="{{ li.tax_amount }}">
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
       <div class="action-bar">
         <button type="submit" class="btn btn-success btn-sm px-4">✓ Xác nhận & Lưu XLS</button>
         <a href="/jobs/{{ job.id }}/reject" class="btn btn-outline-danger btn-sm"
@@ -418,4 +553,13 @@
   </div>
 
 </div>
+<script>
+function recalc(rowId) {
+  var sl = parseFloat(document.querySelector('[name="li_so_luong_' + rowId + '"]').value) || 0;
+  var dg = parseFloat(document.querySelector('[name="li_don_gia_' + rowId + '"]').value) || 0;
+  var tt = sl * dg;
+  var ttEl = document.getElementById('li_thanh_tien_' + rowId);
+  if (ttEl) ttEl.value = tt.toFixed(0);
+}
+</script>
 {% endblock %}
