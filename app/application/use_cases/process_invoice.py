@@ -7,7 +7,7 @@ from app.domain.ports.llm_port import ILLMPort
 from app.domain.ports.notification_port import INotificationPort
 from app.domain.value_objects.file_type import FileType
 from app.domain.value_objects.invoice_status import InvoiceStatus
-from app.infrastructure.parsers.xml_parser import extract_text_from_xml
+from app.infrastructure.parsers.xml_parser import extract_text_from_xml, extract_line_items_from_xml
 from app.infrastructure.parsers.pdf_parser import extract_text_from_pdf
 
 logger = logging.getLogger(__name__)
@@ -48,12 +48,20 @@ class ProcessInvoiceUseCase:
 
             if file_type == FileType.XML:
                 content = extract_text_from_xml(file_data)
+                line_items = extract_line_items_from_xml(file_data)
             else:
                 content = await asyncio.to_thread(extract_text_from_pdf, file_data)
+                line_items = []
 
-            items = await self._llm.extract_invoice(content)
+            items, llm_line_items = await self._llm.extract_invoice(content)
+
+            if file_type != FileType.XML:
+                line_items = llm_line_items
+
             job.extracted_items = items
+            job.extracted_line_items = line_items
             await self._repo.save_items(job.id, items)
+            await self._repo.save_line_items(job.id, line_items)
             await self._repo.update_status(job.id, InvoiceStatus.AWAITING_REVIEW)
             job.status = InvoiceStatus.AWAITING_REVIEW
 

@@ -21,7 +21,7 @@ def use_case():
     repo = AsyncMock()
     llm = AsyncMock()
     notification = AsyncMock()
-    llm.extract_invoice.return_value = [make_item()]
+    llm.extract_invoice.return_value = ([make_item()], [])
     return ProcessInvoiceUseCase(repo=repo, llm=llm, notification=notification), repo, llm, notification
 
 async def test_xml_file_creates_job_awaiting_review(use_case):
