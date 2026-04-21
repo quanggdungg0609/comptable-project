@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Review Hóa Đơn — {{ job.filename }}{% endblock %}
+{% block content %}
+<h2 class="mb-4">Review: {{ job.filename }}</h2>
+<form action="/jobs/{{ job.id }}/confirm" method="post">
+    {% for item in job.extracted_items %}
+    <div class="card mb-3">
+        <div class="card-header">Dòng {{ loop.index }}</div>
+        <div class="card-body">
+            <div class="row g-3">
+                {% set fields = [
+                ("invoice_symbol", "Ký hiệu HĐ"), ("invoice_number", "Số HĐ"),
+                ("invoice_date", "Ngày phát hành"), ("seller_name", "Tên người bán"),
+                ("seller_tax_code", "Mã số thuế"), ("description", "Mặt hàng"),
+                ("price_before_tax", "Doanh số chưa thuế"), ("tax_rate", "Thuế suất"),
+                ("price_after_tax", "Thuế GTGT")
+                ] %}
+                {% for fname, label in fields %}
+                <div class="col-md-4">
+                    <label class="form-label">{{ label }}</label>
+                    <input class="form-control" type="text" name="{{ fname }}_{{ item.id }}"
+                        value="{{ item[fname] if fname != 'invoice_date' else item.invoice_date.isoformat() }}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="d-flex gap-2 mt-3">
+        <button type="submit" class="btn btn-success">Xác nhận & Lưu vào XLS</button>
+        <a href="/jobs/{{ job.id }}/reject" class="btn btn-danger" onclick="return confirm('Từ chối hóa đơn này?')">Từ
+            chối</a>
+        <a href="/jobs" class="btn btn-secondary">Quay lại</a>
+    </div>
+</form>
+{% endblock %}

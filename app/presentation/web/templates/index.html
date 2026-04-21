@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Upload Hóa Đơn{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Upload Hóa Đơn</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Chọn file hóa đơn (PDF và/hoặc XML)</label>
+                <input class="form-control" type="file" name="files" multiple accept=".pdf,.xml">
+                <div class="form-text">Có thể chọn nhiều file. Nếu có cả XML và PDF cùng tên, hệ thống sẽ dùng XML.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Xử lý</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
