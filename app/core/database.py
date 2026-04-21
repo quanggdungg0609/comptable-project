@@ -31,6 +31,25 @@ CREATE TABLE IF NOT EXISTS invoice_items (
 )
 """
 
+CREATE_INVOICE_LINE_ITEMS_TABLE = """
+CREATE TABLE IF NOT EXISTS invoice_line_items (
+    id TEXT PRIMARY KEY,
+    job_id TEXT NOT NULL REFERENCES jobs(id),
+    invoice_symbol TEXT DEFAULT '',
+    invoice_number TEXT DEFAULT '',
+    invoice_date TEXT DEFAULT '',
+    seller_name TEXT DEFAULT '',
+    seller_tax_code TEXT DEFAULT '',
+    ten_hang_hoa TEXT DEFAULT '',
+    don_vi_tinh TEXT DEFAULT '',
+    so_luong TEXT DEFAULT '0',
+    don_gia TEXT DEFAULT '0',
+    thanh_tien TEXT DEFAULT '0',
+    tax_rate TEXT DEFAULT '0',
+    tax_amount TEXT DEFAULT '0'
+)
+"""
+
 # Global singleton database connection
 _db_connection: aiosqlite.Connection | None = None
 
@@ -54,6 +73,7 @@ async def init_db() -> None:
     try:
         await db.execute(CREATE_JOBS_TABLE)
         await db.execute(CREATE_INVOICE_ITEMS_TABLE)
+        await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
         await db.commit()
     finally:
         pass
