@@ -7,7 +7,7 @@ from app.domain.entities.invoice_item import InvoiceItem
 from app.domain.value_objects.file_type import FileType
 from app.domain.value_objects.invoice_status import InvoiceStatus
 from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
-from app.core.database import CREATE_JOBS_TABLE, CREATE_INVOICE_ITEMS_TABLE
+from app.core.database import CREATE_JOBS_TABLE, CREATE_INVOICE_ITEMS_TABLE, CREATE_INVOICE_LINE_ITEMS_TABLE
 
 @pytest.fixture
 async def repo():
@@ -15,6 +15,7 @@ async def repo():
     db.row_factory = aiosqlite.Row
     await db.execute(CREATE_JOBS_TABLE)
     await db.execute(CREATE_INVOICE_ITEMS_TABLE)
+    await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
     await db.commit()
     yield SQLiteJobRepository(db)
     await db.close()

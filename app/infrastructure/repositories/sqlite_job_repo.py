@@ -4,6 +4,7 @@ from decimal import Decimal
 from typing import Optional
 import aiosqlite
 from app.domain.entities.invoice_item import InvoiceItem
+from app.domain.entities.invoice_line_item import InvoiceLineItem
 from app.domain.entities.processing_job import ProcessingJob
 from app.domain.ports.job_repository import IJobRepository
 from app.domain.value_objects.file_type import FileType
@@ -39,6 +40,10 @@ class SQLiteJobRepository(IJobRepository):
             "SELECT * FROM invoice_items WHERE job_id = ?", (job_id,)
         ) as cur:
             job.extracted_items = [_row_to_item(r) for r in await cur.fetchall()]
+        async with self._db.execute(
+            "SELECT * FROM invoice_line_items WHERE job_id = ?", (job_id,)
+        ) as cur:
+            job.extracted_line_items = [_row_to_line_item(r) for r in await cur.fetchall()]
         return job
 
     async def list_all(self, status: Optional[InvoiceStatus] = None) -> list[ProcessingJob]:
@@ -85,6 +90,22 @@ class SQLiteJobRepository(IJobRepository):
         await self._db.execute("UPDATE jobs SET pending_file_path = ? WHERE id = ?", (path, job_id))
         await self._db.commit()
 
+    async def save_line_items(self, job_id: str, items: list[InvoiceLineItem]) -> None:
+        await self._db.executemany(
+            """INSERT INTO invoice_line_items
+               (id, job_id, invoice_symbol, invoice_number, invoice_date,
+                seller_name, seller_tax_code, ten_hang_hoa, don_vi_tinh,
+                so_luong, don_gia, thanh_tien, tax_rate, tax_amount)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            [_line_item_to_row(job_id, li) for li in items],
+        )
+        await self._db.commit()
+
+    async def update_line_items(self, job_id: str, items: list[InvoiceLineItem]) -> None:
+        await self._db.execute("DELETE FROM invoice_line_items WHERE job_id = ?", (job_id,))
+        await self._db.commit()
+        await self.save_line_items(job_id, items)
+
 
 def _item_to_row(job_id: str, item: InvoiceItem) -> tuple:
     return (
@@ -99,4 +120,30 @@ def _row_to_item(row) -> InvoiceItem:
         invoice_date=date.fromisoformat(row["invoice_date"]),
         seller_name=row["seller_name"], seller_tax_code=row["seller_tax_code"], description=row["description"],
         price_before_tax=Decimal(row["price_before_tax"]), tax_rate=Decimal(row["tax_rate"]), price_after_tax=Decimal(row["price_after_tax"]),
+    )
+
+def _line_item_to_row(job_id: str, li: InvoiceLineItem) -> tuple:
+    return (
+        li.id, job_id, li.invoice_symbol, li.invoice_number,
+        li.invoice_date.isoformat(), li.seller_name, li.seller_tax_code,
+        li.ten_hang_hoa, li.don_vi_tinh,
+        str(li.so_luong), str(li.don_gia), str(li.thanh_tien),
+        str(li.tax_rate), str(li.tax_amount),
+    )
+
+def _row_to_line_item(row) -> InvoiceLineItem:
+    return InvoiceLineItem(
+        id=row["id"],
+        invoice_symbol=row["invoice_symbol"],
+        invoice_number=row["invoice_number"],
+        invoice_date=date.fromisoformat(row["invoice_date"]),
+        seller_name=row["seller_name"],
+        seller_tax_code=row["seller_tax_code"],
+        ten_hang_hoa=row["ten_hang_hoa"],
+        don_vi_tinh=row["don_vi_tinh"],
+        so_luong=Decimal(row["so_luong"]),
+        don_gia=Decimal(row["don_gia"]),
+        thanh_tien=Decimal(row["thanh_tien"]),
+        tax_rate=Decimal(row["tax_rate"]),
+        tax_amount=Decimal(row["tax_amount"]),
     )
