@@ -64,9 +64,11 @@ async def web_confirm(job_id: str, request: Request, repo=Depends(get_job_repo),
     form = await request.form()
     job = await repo.get(job_id)
     from app.domain.entities.invoice_item import InvoiceItem
+    from app.domain.entities.invoice_line_item import InvoiceLineItem
     from decimal import Decimal
     from datetime import date
 
+    # Parse invoice items
     items = []
     for item in job.extracted_items:
         items.append(InvoiceItem(
@@ -82,7 +84,26 @@ async def web_confirm(job_id: str, request: Request, repo=Depends(get_job_repo),
             price_after_tax=Decimal(form.get(f"price_after_tax_{item.id}", str(item.price_after_tax))),
         ))
 
-    await confirm_uc.confirm(job_id=job_id, updated_items=items)
+    # Parse line items từ form
+    line_items = []
+    for li in job.extracted_line_items:
+        line_items.append(InvoiceLineItem(
+            id=li.id,
+            invoice_symbol=li.invoice_symbol,
+            invoice_number=li.invoice_number,
+            invoice_date=li.invoice_date,
+            seller_name=li.seller_name,
+            seller_tax_code=li.seller_tax_code,
+            ten_hang_hoa=form.get(f"li_ten_hang_hoa_{li.id}", li.ten_hang_hoa),
+            don_vi_tinh=form.get(f"li_don_vi_tinh_{li.id}", li.don_vi_tinh),
+            so_luong=Decimal(form.get(f"li_so_luong_{li.id}", str(li.so_luong))),
+            don_gia=Decimal(form.get(f"li_don_gia_{li.id}", str(li.don_gia))),
+            thanh_tien=Decimal(form.get(f"li_thanh_tien_{li.id}", str(li.thanh_tien))),
+            tax_rate=Decimal(form.get(f"li_tax_rate_{li.id}", str(li.tax_rate))),
+            tax_amount=Decimal(form.get(f"li_tax_amount_{li.id}", str(li.tax_amount))),
+        ))
+
+    await confirm_uc.confirm(job_id=job_id, updated_items=items, updated_line_items=line_items)
     return RedirectResponse("/jobs", status_code=303)
 
 @router.post("/jobs/{job_id}/reject")
