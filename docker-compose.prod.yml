@@ -1,0 +1,81 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: collect-invoice-app-prod
+    ports:
+      - "8000:8000"
+    volumes:
+      # Only mount data and template directories, not entire app
+      - ./data:/app/data
+      - ./Mau_xuat_du_lieu.xlsx:/app/Mau_xuat_du_lieu.xlsx:ro
+    env_file: .env
+    environment:
+      DATABASE_PATH: ./data/invoices.db
+      OLLAMA_BASE_URL: http://ollama:11434
+      RUSTFS_ENDPOINT: http://rustfs:9000
+    depends_on:
+      - ollama
+      - rustfs
+    restart: unless-stopped
+    networks:
+      - invoice-network
+    # Optional: add health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: collect-invoice-ollama-prod
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama-entrypoint.sh:/ollama-entrypoint.sh:ro
+    ports:
+      - "11434:11434"
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+    entrypoint: /bin/bash /ollama-entrypoint.sh
+    restart: unless-stopped
+    networks:
+      - invoice-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: collect-invoice-rustfs-prod
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - rustfs_data:/data
+    environment:
+      RUSTFS_VOLUMES: /data
+      RUSTFS_ROOT_USER: rustfsadmin
+      RUSTFS_ROOT_PASSWORD: rustfsadmin
+    restart: unless-stopped
+    networks:
+      - invoice-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  ollama_data:
+  rustfs_data:
+
+networks:
+  invoice-network:
+    driver: bridge

@@ -1,0 +1,62 @@
+services:
+  app:
+    build: .
+    container_name: collect-invoice-app
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount entire app directory for development
+      - .:/app
+      - ./data:/app/data
+      - ./Mau_xuat_du_lieu.xlsx:/app/Mau_xuat_du_lieu.xlsx:ro
+      # Exclude .venv and .git to avoid syncing
+      - /app/.venv
+      - /app/.git
+    env_file: .env
+    environment:
+      DATABASE_PATH: ./data/invoices.db
+      LLM_BASE_URL: http://ollama:11434
+      RUSTFS_ENDPOINT: http://rustfs:9000
+    depends_on:
+      - ollama
+      - rustfs
+    restart: unless-stopped
+    networks:
+      - invoice-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: collect-invoice-ollama
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama-entrypoint.sh:/ollama-entrypoint.sh:ro
+    ports:
+      - "11434:11434"
+    entrypoint: ["/bin/bash", "/ollama-entrypoint.sh"]
+    restart: unless-stopped
+    networks:
+      - invoice-network
+
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: collect-invoice-rustfs
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - rustfs_data:/data
+    environment:
+      RUSTFS_VOLUMES: /data
+      RUSTFS_ROOT_USER: rustfsadmin
+      RUSTFS_ROOT_PASSWORD: rustfsadmin
+    restart: unless-stopped
+    networks:
+      - invoice-network
+
+volumes:
+  ollama_data:
+  rustfs_data:
+
+networks:
+  invoice-network:
+    driver: bridge

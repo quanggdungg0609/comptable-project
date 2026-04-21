@@ -6,8 +6,11 @@ class Settings(BaseSettings):
     app_port: int = 8000
     database_path: str = "./data/invoices.db"
 
-    ollama_base_url: str = "http://ollama:11434"
-    ollama_model: str = "gemma3:4b"
+    llm_provider: str = "ollama"  # "ollama" | "gemini"
+    llm_base_url: str = "http://ollama:11434"
+    llm_model: str = "qwen3:1.7b"
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-2.0-flash"
 
     rustfs_endpoint: str = "http://rustfs:9000"
     rustfs_access_key: str = "rustfsadmin"

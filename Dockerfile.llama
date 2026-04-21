@@ -1,0 +1,15 @@
+FROM ubuntu:24.04 AS builder
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential cmake git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+RUN git clone --depth 1 https://github.com/ggerganov/llama.cpp /llama.cpp
+WORKDIR /llama.cpp
+RUN cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF \
+    && cmake --build build --target llama-server -j$(nproc)
+
+FROM ubuntu:24.04
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=builder /llama.cpp/build/bin/llama-server /llama-server
+ENTRYPOINT ["/bin/bash"]

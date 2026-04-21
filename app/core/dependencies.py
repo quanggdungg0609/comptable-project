@@ -5,6 +5,8 @@ from app.core.config import get_settings, Settings
 from app.core.database import get_db
 from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
 from app.infrastructure.llm.ollama_client import OllamaLLMClient
+from app.infrastructure.llm.gemini_client import GeminiLLMClient
+from app.infrastructure.llm.fallback_client import FallbackLLMClient
 from app.infrastructure.storage.rustfs_storage import RustFSStorage
 from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
 from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
@@ -12,14 +14,22 @@ from app.application.use_cases.review_and_confirm import ReviewAndConfirmUseCase
 from app.application.use_cases.export_excel import ExportExcelUseCase
 
 async def get_db_conn() -> aiosqlite.Connection:
-    async with await get_db() as db:
-        yield db
+    db = await get_db()
+    yield db
 
 def get_job_repo(db: aiosqlite.Connection = Depends(get_db_conn)) -> SQLiteJobRepository:
     return SQLiteJobRepository(db)
 
-def get_llm(settings: Settings = Depends(get_settings)) -> OllamaLLMClient:
-    return OllamaLLMClient(base_url=settings.ollama_base_url, model=settings.ollama_model)
+def get_llm(settings: Settings = Depends(get_settings)):
+    ollama = OllamaLLMClient(base_url=settings.llm_base_url, model=settings.llm_model)
+    gemini = GeminiLLMClient(api_key=settings.gemini_api_key, model=settings.gemini_model)
+    if settings.llm_provider == "gemini":
+        return gemini
+    if settings.llm_provider == "gemini+ollama":
+        return FallbackLLMClient(primary=gemini, secondary=ollama)
+    if settings.llm_provider == "ollama+gemini":
+        return FallbackLLMClient(primary=ollama, secondary=gemini)
+    return ollama  # default
 
 def get_storage(settings: Settings = Depends(get_settings)) -> RustFSStorage:
     return RustFSStorage(

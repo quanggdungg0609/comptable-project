@@ -65,7 +65,9 @@ class ProcessInvoiceUseCase:
                     logger.warning("Notification failed for job %s: %s", job.id, notify_exc)
 
         except Exception as exc:
-            error_msg = str(exc)
+            import traceback
+            error_msg = str(exc) or repr(exc)
+            logger.error("Job %s failed: %s\n%s", job.id, error_msg, traceback.format_exc())
             await self._repo.update_status(job.id, InvoiceStatus.FAILED, error=error_msg)
             job.status = InvoiceStatus.FAILED
             job.error = error_msg

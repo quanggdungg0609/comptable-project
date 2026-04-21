@@ -6,44 +6,18 @@ import httpx
 from app.domain.entities.invoice_item import InvoiceItem
 from app.domain.ports.llm_port import ILLMPort
 
-EXTRACTION_PROMPT = """Phân tích hóa đơn điện tử Việt Nam sau đây và trích xuất thông tin chi tiết.
+EXTRACTION_PROMPT = """Trích xuất hóa đơn điện tử Việt Nam. Nhóm các dòng theo TSuat (thuế suất).
 
-Nội dung hóa đơn:
+Dữ liệu:
 {content}
 
-Hướng dẫn:
-- Hóa đơn có thể chứa NHIỀU dòng hàng hóa/dịch vụ (STT 1, 2, 3,...)
-- Nhóm các dòng cùng mức thuế suất (TSuat) vào một phần tử
-- Cộng dồn ThTien (cước suất/giá tiền) và VATAmount (thuế) theo từng mức thuế
-- Trích xuất từ TTChung: KHHDon (ký hiệu), SHDon (số hóa đơn), NLap (ngày)
-- Người bán từ NBan: Ten, MST
-- Mô tả từ THHDVu của từng dòng; tổng hợp lại xem các dòng đó thuộc loại hàng hóa gì trong các loại mặt hàng sau đây:
-    + vật tư
-    + nhiên liệu
-    + hàng hóa/dịch vụ
-    + điện nước
-    + Tiếp khách, ăn uống
-- Nếu một dòng có SLuong=0, bỏ qua nó (dòng chỉ mục)
+Phân loại mô tả thành một trong: vật tư | nhiên liệu | hàng hóa/dịch vụ | điện nước | tiếp khách ăn uống
 
-Trả về JSON với cấu trúc sau (một phần tử per mức thuế suất):
-{{
-  "items": [
-    {{
-      "invoice_symbol": "ký hiệu hóa đơn (vd: C26TAA)",
-      "invoice_number": "số hóa đơn",
-      "invoice_date": "DD/MM/YYYY",
-      "seller_name": "tên người bán",
-      "seller_tax_code": "mã số thuế người bán",
-      "description": "mô tả hàng hóa (loại mặt hàng)",
-      "price_before_tax": "giá trước thuế (vd: 445000000)",
-      "tax_rate": "thuế suất (vd: 0.08)",
-      "price_after_tax": "giá sau thuế (vd: 35600000)"
-    }}
-  ]
-}}
+Trả về JSON (một item per mức thuế suất, cộng dồn ThTien và TThue):
+{{"items":[{{"invoice_symbol":"KHHDon","invoice_number":"SHDon","invoice_date":"DD/MM/YYYY","seller_name":"NBan.Ten","seller_tax_code":"NBan.MST","description":"loại mặt hàng","price_before_tax":0,"tax_rate":0.08,"price_after_tax":0}}]}}"""
 
-Chỉ trả về JSON thuần túy, không có markdown hay giải thích. Giá trị số là số nguyên hoặc số thập phân."""
 
+LlamaCppClient = None  # kept for import compatibility
 
 class OllamaLLMClient(ILLMPort):
     def __init__(self, base_url: str, model: str):
@@ -52,7 +26,7 @@ class OllamaLLMClient(ILLMPort):
 
     async def extract_invoice(self, content: str) -> list[InvoiceItem]:
         prompt = EXTRACTION_PROMPT.format(content=content)
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        async with httpx.AsyncClient(timeout=600.0) as client:
             resp = await client.post(
                 f"{self._base_url}/api/chat",
                 json={
@@ -60,6 +34,8 @@ class OllamaLLMClient(ILLMPort):
                     "messages": [{"role": "user", "content": prompt}],
                     "stream": False,
                     "format": "json",
+                    "think": False,
+                    "options": {"num_ctx": 4096, "num_predict": 512},
                 },
             )
             resp.raise_for_status()

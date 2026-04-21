@@ -1,116 +1,420 @@
 {% extends "base.html" %}
 {% block title %}Review Hóa Đơn — {{ job.filename }}{% endblock %}
 {% block content %}
+<style>
+  .preview-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .item-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .item-card-header {
+    background: linear-gradient(90deg, #0d6efd 0%, #0b5ed7 100%);
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .item-card-header.zero-row {
+    background: linear-gradient(90deg, #6c757d 0%, #5a6268 100%);
+  }
+  .item-card-body { padding: 14px; }
+  .field-group { margin-bottom: 10px; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: 3px;
+  }
+  .field-input {
+    font-size: 13px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 5px 9px;
+    width: 100%;
+    background: #fff;
+    transition: border-color .15s;
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13,110,253,.12);
+  }
+  .field-input.amount { font-family: monospace; font-size: 13px; }
+  .section-divider {
+    font-size: 11px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin: 12px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .review-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #dee2e6;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .action-bar {
+    padding: 14px 16px 24px;
+    display: flex;
+    gap: 8px;
+  }
+  .badge-filetype {
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+    background: #198754;
+    color: #fff;
+  }
+  .zero-warning {
+    font-size: 11px;
+    color: #dc3545;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+</style>
+
 <div class="row g-0" style="min-height: 100vh;">
 
   {# ── Cột trái: preview file ── #}
   <div class="col-md-6 border-end" style="position: sticky; top: 0; height: 100vh; overflow: auto;">
-    <div class="p-2 bg-light border-bottom d-flex align-items-center gap-2">
-      <span class="fw-semibold small">{{ job.filename }}</span>
-      <span class="badge bg-secondary">{{ job.file_type }}</span>
+    <div class="preview-header">
+      <span class="fw-semibold">{{ job.filename }}</span>
+      <span class="badge-filetype">{{ job.file_type.value }}</span>
     </div>
 
     {% if job.file_type.value == "PDF" %}
       <iframe src="/jobs/{{ job.id }}/preview"
-              style="width:100%; height:calc(100vh - 44px); border:none;">
+              style="width:100%; height:calc(100vh - 45px); border:none;">
         <p class="p-3 text-muted">Trình duyệt không hỗ trợ xem PDF trực tiếp.</p>
       </iframe>
 
     {% else %}
-      {# XML: fetch + pretty-print + highlight #}
-      <link rel="stylesheet"
-            href="https://unpkg.com/highlight.js@11.9.0/styles/github.min.css">
-      <script src="https://unpkg.com/highlight.js@11.9.0/lib/core.min.js"></script>
-      <script src="https://unpkg.com/highlight.js@11.9.0/lib/languages/xml.min.js"></script>
+      <style>
+        #xml-viewer { height: calc(100vh - 45px); display: flex; flex-direction: column; background: #1e2127; }
+        #xml-toolbar {
+          display: flex; align-items: center; gap: 6px; padding: 6px 10px;
+          background: #21252b; border-bottom: 1px solid #3a3f4b; flex-shrink: 0;
+        }
+        #xml-search {
+          flex: 1; background: #2c313a; border: 1px solid #3a3f4b; border-radius: 4px;
+          color: #abb2bf; font-size: 12px; padding: 3px 8px; outline: none;
+        }
+        #xml-search:focus { border-color: #528bff; }
+        #xml-search::placeholder { color: #5c6370; }
+        .xml-btn {
+          background: #2c313a; border: 1px solid #3a3f4b; border-radius: 4px;
+          color: #9da5b4; font-size: 11px; padding: 3px 8px; cursor: pointer;
+          white-space: nowrap;
+        }
+        .xml-btn:hover { background: #3a3f4b; color: #abb2bf; }
+        #xml-tree-wrap { overflow: auto; flex: 1; padding: 10px 6px; }
+        .xml-node { position: relative; }
+        .xml-line {
+          display: flex; align-items: baseline; white-space: nowrap;
+          font-family: 'JetBrains Mono','Fira Code',Consolas,monospace;
+          font-size: 13px; line-height: 1.9; padding: 0 4px; border-radius: 3px;
+        }
+        .xml-line:hover { background: rgba(255,255,255,.04); }
+        .xml-toggle {
+          width: 16px; flex-shrink: 0; color: #5c6370; cursor: pointer;
+          font-size: 10px; user-select: none; text-align: center;
+        }
+        .xml-toggle:hover { color: #abb2bf; }
+        .xml-spacer { width: 16px; flex-shrink: 0; }
+        .xml-tag { color: #e06c75; }
+        .xml-key { color: #61afef; font-weight: 700; }
+        .xml-text { color: #98c379; margin: 0 1px; white-space: pre-wrap; word-break: break-all; }
+        .xml-hint { color: #5c6370; font-size: 11px; font-style: italic; margin-left: 4px; }
+        .xml-key-line { background: rgba(97,175,239,.06); border-left: 2px solid #61afef; }
+        .xml-match { background: rgba(229,192,123,.3); border-radius: 2px; }
+      </style>
 
-      <div id="xml-loading" class="p-4 text-muted small">Đang tải file...</div>
-      <pre id="xml-pre" style="display:none; height:calc(100vh - 44px); overflow:auto; margin:0; font-size:12px;"><code class="language-xml" id="xml-code"></code></pre>
-      <div id="xml-error" style="display:none;" class="p-4 text-danger small">Không thể tải file.</div>
+      <div id="xml-loading" class="p-4 text-muted small d-flex align-items-center gap-2"
+           style="background:#1e2127; color:#5c6370 !important;">
+        <div class="spinner-border spinner-border-sm" role="status" style="color:#5c6370;"></div>
+        Đang tải file...
+      </div>
+      <div id="xml-viewer" style="display:none;">
+        <div id="xml-toolbar">
+          <input id="xml-search" placeholder="🔍  Tìm tag hoặc giá trị...">
+          <button class="xml-btn" onclick="xmlExpandAll()">Mở rộng</button>
+          <button class="xml-btn" onclick="xmlCollapseAll()">Thu gọn</button>
+        </div>
+        <div id="xml-tree-wrap"><div id="xml-tree"></div></div>
+      </div>
+      <div id="xml-error" style="display:none;" class="p-4 small" style="color:#e06c75;">⚠ Không thể tải file.</div>
 
       <script>
-        (function () {
-          function indentXml(xml) {
-            var INDENT = '  ';
-            var result = '';
-            var depth = 0;
-            var tokens = xml.replace(/>\s*</g, '><').split(/(<[^>]+>)/);
-            for (var i = 0; i < tokens.length; i++) {
-              var token = tokens[i];
-              if (!token.trim()) continue;
-              if (/^<\//.test(token)) {
-                depth--;
-                result += INDENT.repeat(Math.max(depth, 0)) + token + '\n';
-              } else if (/\/>$/.test(token)) {
-                result += INDENT.repeat(depth) + token + '\n';
-              } else if (/^<[^?!]/.test(token)) {
-                result += INDENT.repeat(depth) + token + '\n';
-                depth++;
-              } else {
-                result += INDENT.repeat(depth) + token + '\n';
+      (function () {
+        var KEY_TAGS = {TTChung:1,NBan:1,NMua:1,DSHHDVu:1,HHDVu:1,
+          Ten:1,MST:1,KHHDon:1,KHMSo:1,SHDon:1,NLap:1,THHDVu:1,
+          TLCKhau:1,ThTien:1,TToan:1,DGia:1,SLuong:1,TGia:1};
+        var AUTO_COLLAPSE_DEPTH = 2;
+        var nodeCounter = 0;
+        var allToggles = [];
+
+        function makeEl(tag, cls) {
+          var el = document.createElement(tag);
+          if (cls) el.className = cls;
+          return el;
+        }
+
+        function buildNode(xmlNode, depth) {
+          if (xmlNode.nodeType === 3) {
+            var txt = xmlNode.textContent.trim();
+            if (!txt) return null;
+            var sp = makeEl('span', 'xml-text');
+            sp.textContent = txt;
+            return sp;
+          }
+          if (xmlNode.nodeType !== 1) return null;
+
+          var tag = xmlNode.tagName;
+          var isKey = !!KEY_TAGS[tag];
+          var elChildren = Array.from(xmlNode.childNodes).filter(function(n) {
+            return n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim());
+          });
+          var hasElChildren = elChildren.some(function(n) { return n.nodeType === 1; });
+
+          var wrapper = makeEl('div', 'xml-node');
+          var line = makeEl('div', 'xml-line' + (isKey ? ' xml-key-line' : ''));
+          line.style.paddingLeft = (depth * 18) + 'px';
+
+          if (!hasElChildren) {
+            var sp = makeEl('span', 'xml-spacer'); line.appendChild(sp);
+            var open = makeEl('span', isKey ? 'xml-key' : 'xml-tag');
+            open.textContent = '<' + tag + '>';
+            line.appendChild(open);
+            var textVal = xmlNode.textContent.trim();
+            if (textVal) {
+              var tv = makeEl('span', 'xml-text'); tv.textContent = textVal; line.appendChild(tv);
+            }
+            var close = makeEl('span', 'xml-tag'); close.textContent = '</' + tag + '>'; line.appendChild(close);
+            wrapper.appendChild(line);
+          } else {
+            var id = 'xn' + (nodeCounter++);
+            var shouldCollapse = depth >= AUTO_COLLAPSE_DEPTH && !isKey;
+
+            var toggle = makeEl('span', 'xml-toggle');
+            toggle.textContent = shouldCollapse ? '▸' : '▾';
+            toggle.dataset.id = id;
+            toggle.onclick = function() {
+              var ch = document.getElementById(this.dataset.id);
+              var hint = document.getElementById(this.dataset.id + 'h');
+              var isHidden = ch.style.display === 'none';
+              ch.style.display = isHidden ? '' : 'none';
+              hint.style.display = isHidden ? 'none' : '';
+              this.textContent = isHidden ? '▾' : '▸';
+            };
+            allToggles.push(toggle);
+
+            var open = makeEl('span', isKey ? 'xml-key' : 'xml-tag');
+            open.textContent = '<' + tag + '>';
+            var hint = makeEl('span', 'xml-hint');
+            hint.id = id + 'h';
+            hint.textContent = '… ' + elChildren.filter(function(n){return n.nodeType===1;}).length + ' mục …';
+            hint.style.display = shouldCollapse ? '' : 'none';
+
+            line.appendChild(toggle); line.appendChild(open); line.appendChild(hint);
+            wrapper.appendChild(line);
+
+            var childWrap = makeEl('div');
+            childWrap.id = id;
+            childWrap.style.display = shouldCollapse ? 'none' : '';
+
+            Array.from(xmlNode.childNodes).forEach(function(child) {
+              var el = buildNode(child, depth + 1);
+              if (el) childWrap.appendChild(el);
+            });
+
+            var closeLine = makeEl('div', 'xml-line');
+            closeLine.style.paddingLeft = (depth * 18) + 'px';
+            var csp = makeEl('span', 'xml-spacer'); closeLine.appendChild(csp);
+            var ct = makeEl('span', 'xml-tag'); ct.textContent = '</' + tag + '>'; closeLine.appendChild(ct);
+            childWrap.appendChild(closeLine);
+            wrapper.appendChild(childWrap);
+          }
+          return wrapper;
+        }
+
+        function xmlExpandAll() {
+          allToggles.forEach(function(t) {
+            var ch = document.getElementById(t.dataset.id);
+            var hint = document.getElementById(t.dataset.id + 'h');
+            if (ch) ch.style.display = '';
+            if (hint) hint.style.display = 'none';
+            t.textContent = '▾';
+          });
+        }
+        function xmlCollapseAll() {
+          allToggles.forEach(function(t) {
+            var ch = document.getElementById(t.dataset.id);
+            var hint = document.getElementById(t.dataset.id + 'h');
+            if (ch) ch.style.display = 'none';
+            if (hint) hint.style.display = '';
+            t.textContent = '▸';
+          });
+        }
+        window.xmlExpandAll = xmlExpandAll;
+        window.xmlCollapseAll = xmlCollapseAll;
+
+        document.getElementById('xml-search').addEventListener('input', function() {
+          var q = this.value.trim().toLowerCase();
+          document.querySelectorAll('#xml-tree .xml-line').forEach(function(line) {
+            line.style.display = '';
+          });
+          if (!q) {
+            document.querySelectorAll('#xml-tree .xml-match').forEach(function(el) {
+              el.classList.remove('xml-match');
+            });
+            return;
+          }
+          document.querySelectorAll('#xml-tree .xml-line').forEach(function(line) {
+            var txt = line.textContent.toLowerCase();
+            var matches = txt.includes(q);
+            line.classList.toggle('xml-match', matches);
+            if (matches) {
+              var p = line.parentElement;
+              while (p && p.id !== 'xml-tree') {
+                if (p.style && p.style.display === 'none') p.style.display = '';
+                p = p.parentElement;
               }
             }
-            return result;
-          }
+          });
+        });
 
-          fetch('/jobs/{{ job.id }}/preview')
-            .then(function (r) {
-              if (!r.ok) throw new Error('HTTP ' + r.status);
-              return r.text();
-            })
-            .then(function (text) {
-              var pretty = indentXml(text);
-              var codeEl = document.getElementById('xml-code');
-              codeEl.textContent = pretty;
-              hljs.highlightElement(codeEl);
-              document.getElementById('xml-loading').style.display = 'none';
-              document.getElementById('xml-pre').style.display = 'block';
-            })
-            .catch(function () {
-              document.getElementById('xml-loading').style.display = 'none';
-              document.getElementById('xml-error').style.display = 'block';
+        fetch('/jobs/{{ job.id }}/preview')
+          .then(function(r) { if (!r.ok) throw new Error(); return r.text(); })
+          .then(function(text) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(text, 'application/xml');
+            if (doc.querySelector('parsererror')) throw new Error();
+            var tree = document.getElementById('xml-tree');
+            Array.from(doc.childNodes).forEach(function(child) {
+              var el = buildNode(child, 0);
+              if (el) tree.appendChild(el);
             });
-        })();
+            document.getElementById('xml-loading').style.display = 'none';
+            document.getElementById('xml-viewer').style.display = 'flex';
+          })
+          .catch(function() {
+            document.getElementById('xml-loading').style.display = 'none';
+            document.getElementById('xml-error').style.display = 'block';
+          });
+      })();
       </script>
     {% endif %}
   </div>
 
   {# ── Cột phải: form review ── #}
-  <div class="col-md-6" style="height: 100vh; overflow: auto;">
-    <div class="p-3">
-      <h5 class="mb-3">Review: {{ job.filename }}</h5>
-      <form action="/jobs/{{ job.id }}/confirm" method="post">
+  <div class="col-md-6" style="height: 100vh; overflow: auto; background: #f9fafb;">
+    <div class="review-header">
+      <div>
+        <div class="fw-semibold" style="font-size:14px;">{{ job.filename }}</div>
+        <div class="text-muted" style="font-size:11px;">{{ job.extracted_items | length }} dòng trích xuất</div>
+      </div>
+    </div>
+
+    <form action="/jobs/{{ job.id }}/confirm" method="post">
+      <div class="p-3">
         {% for item in job.extracted_items %}
-        <div class="card mb-3">
-          <div class="card-header">Dòng {{ loop.index }}</div>
-          <div class="card-body">
+        {% set is_zero = item.price_before_tax == 0 and item.price_after_tax == 0 %}
+        <div class="item-card">
+          <div class="item-card-header {% if is_zero %}zero-row{% endif %}">
+            <span>Dòng {{ loop.index }}</span>
+            {% if is_zero %}
+            <span class="zero-warning">⚠ Dòng có giá trị 0 — kiểm tra lại</span>
+            {% endif %}
+          </div>
+          <div class="item-card-body">
+
+            <div class="section-divider">Thông tin hóa đơn</div>
             <div class="row g-2">
-              {% set fields = [
-              ("invoice_symbol", "Ký hiệu HĐ"), ("invoice_number", "Số HĐ"),
-              ("invoice_date", "Ngày phát hành"), ("seller_name", "Tên người bán"),
-              ("seller_tax_code", "Mã số thuế"), ("description", "Mặt hàng"),
-              ("price_before_tax", "Doanh số chưa thuế"), ("tax_rate", "Thuế suất"),
-              ("price_after_tax", "Thuế GTGT")
-              ] %}
-              {% for fname, label in fields %}
-              <div class="col-md-6">
-                <label class="form-label small mb-1">{{ label }}</label>
-                <input class="form-control form-control-sm" type="text"
-                       name="{{ fname }}_{{ item.id }}"
-                       value="{{ item[fname] if fname != 'invoice_date' else item.invoice_date.isoformat() }}">
+              <div class="col-5 field-group">
+                <div class="field-label">Ký hiệu HĐ</div>
+                <input class="field-input" type="text" name="invoice_symbol_{{ item.id }}" value="{{ item.invoice_symbol }}">
               </div>
-              {% endfor %}
+              <div class="col-4 field-group">
+                <div class="field-label">Số HĐ</div>
+                <input class="field-input" type="text" name="invoice_number_{{ item.id }}" value="{{ item.invoice_number }}">
+              </div>
+              <div class="col-3 field-group">
+                <div class="field-label">Ngày phát hành</div>
+                <input class="field-input" type="text" name="invoice_date_{{ item.id }}" value="{{ item.invoice_date.isoformat() }}">
+              </div>
             </div>
+
+            <div class="section-divider">Người bán</div>
+            <div class="row g-2">
+              <div class="col-8 field-group">
+                <div class="field-label">Tên người bán</div>
+                <input class="field-input" type="text" name="seller_name_{{ item.id }}" value="{{ item.seller_name }}">
+              </div>
+              <div class="col-4 field-group">
+                <div class="field-label">Mã số thuế</div>
+                <input class="field-input" type="text" name="seller_tax_code_{{ item.id }}" value="{{ item.seller_tax_code }}">
+              </div>
+            </div>
+
+            <div class="section-divider">Hàng hóa & Giá trị</div>
+            <div class="field-group">
+              <div class="field-label">Mặt hàng / Dịch vụ</div>
+              <input class="field-input" type="text" name="description_{{ item.id }}" value="{{ item.description }}">
+            </div>
+            <div class="row g-2">
+              <div class="col-5 field-group">
+                <div class="field-label">Doanh số chưa thuế (₫)</div>
+                <input class="field-input amount" type="text" name="price_before_tax_{{ item.id }}" value="{{ item.price_before_tax }}">
+              </div>
+              <div class="col-2 field-group">
+                <div class="field-label">Thuế suất</div>
+                <input class="field-input amount" type="text" name="tax_rate_{{ item.id }}" value="{{ item.tax_rate }}">
+              </div>
+              <div class="col-5 field-group">
+                <div class="field-label">Thuế GTGT (₫)</div>
+                <input class="field-input amount" type="text" name="price_after_tax_{{ item.id }}" value="{{ item.price_after_tax }}">
+              </div>
+            </div>
+
           </div>
         </div>
         {% endfor %}
-        <div class="d-flex gap-2 mt-3 pb-4">
-          <button type="submit" class="btn btn-success btn-sm">Xác nhận & Lưu vào XLS</button>
-          <a href="/jobs/{{ job.id }}/reject" class="btn btn-danger btn-sm"
-             onclick="return confirm('Từ chối hóa đơn này?')">Từ chối</a>
-          <a href="/jobs" class="btn btn-secondary btn-sm">Quay lại</a>
-        </div>
-      </form>
-    </div>
+      </div>
+
+      <div class="action-bar">
+        <button type="submit" class="btn btn-success btn-sm px-4">✓ Xác nhận & Lưu XLS</button>
+        <a href="/jobs/{{ job.id }}/reject" class="btn btn-outline-danger btn-sm"
+           onclick="return confirm('Từ chối hóa đơn này?')">✗ Từ chối</a>
+        <a href="/jobs" class="btn btn-outline-secondary btn-sm ms-auto">← Quay lại</a>
+      </div>
+    </form>
   </div>
 
 </div>

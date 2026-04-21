@@ -31,12 +31,23 @@ CREATE TABLE IF NOT EXISTS invoice_items (
 )
 """
 
+# Global singleton database connection
+_db_connection: aiosqlite.Connection | None = None
+
 async def get_db() -> aiosqlite.Connection:
-    settings = get_settings()
-    Path(settings.database_path).parent.mkdir(parents=True, exist_ok=True)
-    db = await aiosqlite.connect(settings.database_path)
-    db.row_factory = aiosqlite.Row
-    return db
+    global _db_connection
+    if _db_connection is None:
+        settings = get_settings()
+        Path(settings.database_path).parent.mkdir(parents=True, exist_ok=True)
+        _db_connection = await aiosqlite.connect(settings.database_path)
+        _db_connection.row_factory = aiosqlite.Row
+    return _db_connection
+
+async def close_db() -> None:
+    global _db_connection
+    if _db_connection is not None:
+        await _db_connection.close()
+        _db_connection = None
 
 async def init_db() -> None:
     db = await get_db()
@@ -45,4 +56,4 @@ async def init_db() -> None:
         await db.execute(CREATE_INVOICE_ITEMS_TABLE)
         await db.commit()
     finally:
-        await db.close()
+        pass

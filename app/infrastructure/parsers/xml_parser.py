@@ -1,33 +1,53 @@
 from lxml import etree
 
+
+def _local(elem) -> str:
+    tag = elem.tag
+    return tag.split("}")[-1] if "}" in tag else tag
+
+
+def _first_text(parent, tag: str) -> str:
+    for el in parent.iter():
+        if _local(el) == tag:
+            return (el.text or "").strip()
+    return ""
+
+
+def _find_elem(parent, tag: str):
+    for el in parent.iter():
+        if _local(el) == tag:
+            return el
+    return None
+
+
 def extract_text_from_xml(data: bytes) -> str:
-    """
-    Parse Vietnamese e-invoice XML and flatten to readable text for LLM.
-    
-    Preserves structure:
-    - Invoice metadata (TTChung)
-    - Seller/Buyer info (NBan, NMua)
-    - Line items (DSHHDVu/HHDVu) with qty, price, VAT, amounts
-    - Totals (TToan)
-    
-    Returns single string suitable for LLM extraction of invoice fields.
-    """
+    """Extract only the fields needed for LLM invoice parsing — keeps prompt small."""
     root = etree.fromstring(data)
-    parts = []
-    
-    for elem in root.iter():
-        tag = elem.tag.split("}")[-1] if "}" in elem.tag else elem.tag
-        text = (elem.text or "").strip()
-        
-        if text:
-            # Preserve key financial fields with labels
-            if tag in ("SHDon", "KHHDon", "NLap", "SLuong", "DGia", "ThTien", 
-                      "TSuat", "TThue", "TgTCThue", "TgTThue", "TgTTTBSo",
-                      "MST", "Ten", "STT", "THHDVu"):
-                parts.append(f"{tag}: {text}")
-            else:
-                # Include other content as-is
-                if len(text) > 2:  # Skip short junk
-                    parts.append(f"{tag}: {text}")
-    
-    return "\n".join(parts)
+    lines = []
+
+    # Header
+    lines.append(f"KHHDon: {_first_text(root, 'KHHDon')}")
+    lines.append(f"SHDon: {_first_text(root, 'SHDon')}")
+    lines.append(f"NLap: {_first_text(root, 'NLap')}")
+
+    # Seller
+    nban = _find_elem(root, "NBan")
+    if nban is not None:
+        lines.append(f"NBan.Ten: {_first_text(nban, 'Ten')}")
+        lines.append(f"NBan.MST: {_first_text(nban, 'MST')}")
+
+    # Line items — only fields the prompt uses
+    for el in root.iter():
+        if _local(el) != "HHDVu":
+            continue
+        sluong = _first_text(el, "SLuong")
+        if sluong == "0":
+            continue
+        stt = _first_text(el, "STT")
+        mota = _first_text(el, "THHDVu")
+        thtien = _first_text(el, "ThTien")
+        tsuat = _first_text(el, "TSuat")
+        tthue = _first_text(el, "TThue")
+        lines.append(f"HH{stt}: {mota} | SL={sluong} ThTien={thtien} TSuat={tsuat} TThue={tthue}")
+
+    return "\n".join(lines)

@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from typing import Optional
 from fastapi import FastAPI
 from app.core.config import get_settings
-from app.core.database import init_db, get_db
+from app.core.database import init_db, get_db, close_db
 from app.infrastructure.storage.rustfs_storage import RustFSStorage
 from app.presentation.api.router import router as api_router
 from app.presentation.web.router import router as web_router
@@ -70,6 +70,8 @@ async def lifespan(app: FastAPI):
         listener_obj.stop()
         listener_task.cancel()
         logger.info("Email listener stopped")
+
+    await close_db()
 
 
 app = FastAPI(title="Thu Hóa Đơn", lifespan=lifespan)
