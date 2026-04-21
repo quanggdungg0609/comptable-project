@@ -1,5 +1,6 @@
 import logging
 from app.domain.entities.invoice_item import InvoiceItem
+from app.domain.entities.invoice_line_item import InvoiceLineItem
 from app.domain.ports.llm_port import ILLMPort
 
 logger = logging.getLogger(__name__)
@@ -12,7 +13,7 @@ class FallbackLLMClient(ILLMPort):
         self._primary = primary
         self._secondary = secondary
 
-    async def extract_invoice(self, content: str) -> list[InvoiceItem]:
+    async def extract_invoice(self, content: str) -> tuple[list[InvoiceItem], list[InvoiceLineItem]]:
         try:
             return await self._primary.extract_invoice(content)
         except Exception as exc:
