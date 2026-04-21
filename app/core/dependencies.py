@@ -9,6 +9,12 @@ from app.infrastructure.llm.gemini_client import GeminiLLMClient
 from app.infrastructure.llm.fallback_client import FallbackLLMClient
 from app.infrastructure.storage.rustfs_storage import RustFSStorage
 from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
+from app.infrastructure.excel.openpyxl_detail_writer import OpenpyxlDetailWriter
+from app.domain.ports.job_repository import IJobRepository
+from app.domain.ports.storage_port import IStoragePort
+from app.domain.ports.llm_port import ILLMPort
+from app.domain.ports.excel_port import IExcelPort
+from app.domain.ports.excel_detail_port import IExcelDetailPort
 from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
 from app.application.use_cases.review_and_confirm import ReviewAndConfirmUseCase
 from app.application.use_cases.export_excel import ExportExcelUseCase
@@ -39,7 +45,11 @@ def get_storage(settings: Settings = Depends(get_settings)) -> RustFSStorage:
     )
 
 def get_excel() -> OpenpyxlWriter:
+    # Hardcode template path cho đơn giản, có thể đưa vào Settings nếu cần
     return OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
+
+def get_excel_detail() -> OpenpyxlDetailWriter:
+    return OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
 
 def get_notifier():
     from app.core.config import get_settings
@@ -62,10 +72,11 @@ def get_review_confirm_uc(
     repo=Depends(get_job_repo),
     storage=Depends(get_storage),
     excel=Depends(get_excel),
+    excel_detail=Depends(get_excel_detail),
     settings: Settings = Depends(get_settings),
 ) -> ReviewAndConfirmUseCase:
     return ReviewAndConfirmUseCase(
-        repo=repo, storage=storage, excel=excel,
+        repo=repo, storage=storage, excel=excel, excel_detail=excel_detail,
         bucket_invoices=settings.rustfs_bucket_invoices,
         bucket_exports=settings.rustfs_bucket_exports,
     )
