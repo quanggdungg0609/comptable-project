@@ -29,6 +29,7 @@ def make_line_item():
 @pytest.fixture
 def use_case():
     repo = AsyncMock()
+    repo.find_duplicate = AsyncMock(return_value=None)
     llm = AsyncMock()
     llm.extract_invoice.return_value = ([make_item()], [make_line_item()])
     return ProcessInvoiceUseCase(repo=repo, llm=llm), repo, llm

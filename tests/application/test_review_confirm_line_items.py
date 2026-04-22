@@ -31,6 +31,7 @@ def make_line_item():
 @pytest.fixture
 def use_case():
     repo = AsyncMock()
+    repo.find_duplicate = AsyncMock(return_value=None)
     storage = AsyncMock()
     excel = AsyncMock()
     excel_detail = AsyncMock()

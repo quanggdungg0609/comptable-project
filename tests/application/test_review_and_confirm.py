@@ -25,6 +25,7 @@ def make_job_with_items():
 @pytest.mark.asyncio
 async def test_confirm_job_sets_confirmed_status(tmp_path):
     repo = AsyncMock()
+    repo.find_duplicate = AsyncMock(return_value=None)
     storage = AsyncMock()
     excel = AsyncMock()
     excel_detail = AsyncMock()
@@ -54,6 +55,7 @@ async def test_confirm_job_sets_confirmed_status(tmp_path):
 @pytest.mark.asyncio
 async def test_reject_job_sets_rejected_status():
     repo = AsyncMock()
+    repo.find_duplicate = AsyncMock(return_value=None)
     job = make_job_with_items()
     repo.get.return_value = job
 
