@@ -41,3 +41,14 @@ class IJobRepository(ABC):
 
     @abstractmethod
     async def get_line_items_by_month(self, year: int, month: int) -> list[InvoiceLineItem]: ...
+
+    @abstractmethod
+    async def find_duplicate(
+        self,
+        invoice_symbol: str,
+        invoice_number: str,
+        seller_tax_code: str,
+    ) -> Optional[ProcessingJob]: ...
+
+    @abstractmethod
+    async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None: ...
