@@ -87,3 +87,25 @@ def test_preview_returns_404_when_file_missing():
         app.dependency_overrides.clear()
 
     assert resp.status_code == 404
+
+
+def test_confirm_duplicate_job_returns_400():
+    with tempfile.TemporaryDirectory() as tmp:
+        job = ProcessingJob.create("hd001.xml", FileType.XML)
+        job.status = InvoiceStatus.DUPLICATE
+        job.duplicate_of = "some-other-job-id"
+        xml_file = os.path.join(tmp, f"{job.id}.xml")
+        with open(xml_file, "wb") as f:
+            f.write(b"<HDon><TTChung>test</TTChung></HDon>")
+        job.pending_file_path = xml_file
+
+        mock_repo = AsyncMock()
+        mock_repo.get.return_value = job
+        app.dependency_overrides[get_job_repo] = lambda: mock_repo
+        try:
+            client = TestClient(app)
+            resp = client.post(f"/jobs/{job.id}/confirm")
+        finally:
+            app.dependency_overrides.clear()
+
+        assert resp.status_code == 400

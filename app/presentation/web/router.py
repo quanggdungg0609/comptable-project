@@ -69,6 +69,10 @@ async def web_confirm(job_id: str, request: Request, background_tasks: Backgroun
     except ClientDisconnect:
         return RedirectResponse("/jobs", status_code=303)
     job = await repo.get(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job không tồn tại")
+    if job.status.value == "DUPLICATE":
+        raise HTTPException(status_code=400, detail="Hóa đơn trùng lặp, không thể xác nhận")
     from app.domain.entities.invoice_item import InvoiceItem
     from app.domain.entities.invoice_line_item import InvoiceLineItem
     from app.domain.value_objects.invoice_status import InvoiceStatus
