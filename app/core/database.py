@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     created_at TEXT NOT NULL,
     error TEXT,
     source_paths TEXT DEFAULT '[]',
-    pending_file_path TEXT
+    pending_file_path TEXT,
+    duplicate_of TEXT
 )
 """
 
@@ -50,7 +51,6 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
 )
 """
 
-# Global singleton database connection
 _db_connection: aiosqlite.Connection | None = None
 
 async def get_db() -> aiosqlite.Connection:
@@ -75,4 +75,8 @@ async def init_db() -> None:
     await db.execute(CREATE_JOBS_TABLE)
     await db.execute(CREATE_INVOICE_ITEMS_TABLE)
     await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
+    try:
+        await db.execute("ALTER TABLE jobs ADD COLUMN duplicate_of TEXT")
+    except Exception:
+        pass  # column already exists
     await db.commit()
