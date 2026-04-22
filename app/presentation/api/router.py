@@ -65,15 +65,56 @@ async def confirm_job(
     job = await repo.get(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
-    # Retrieve raw file from storage for archiving
-    from app.core.dependencies import get_storage
-    # File data passed via the original upload — stored temporarily
-    # For simplicity: re-fetch from a temp store or pass from session
-    # In this implementation we pass empty bytes; storage key is set by use case
-    result = await confirm_uc.confirm(
+    # First, quickly prepare the confirmation (update status to CONFIRMING)
+    result = await confirm_uc.prepare_confirm(
         job_id=job_id,
         updated_items=job.extracted_items,
+        updated_line_items=job.extracted_line_items,
     )
+
+    # Then queue the heavy lifting in the background
+    import asyncio
+    async def run_finalize():
+        await asyncio.sleep(0.3)
+        db = None
+        try:
+            from app.core.database import get_db
+            from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
+            from app.infrastructure.storage.rustfs_storage import RustFSStorage
+            from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
+            from app.infrastructure.excel.openpyxl_detail_writer import OpenpyxlDetailWriter
+            from app.core.config import get_settings
+
+            settings = get_settings()
+            # USE NEW CONNECTION
+            db = await get_db(new_connection=True)
+            bg_repo = SQLiteJobRepository(db)
+            storage = RustFSStorage(
+                endpoint=settings.rustfs_endpoint,
+                access_key=settings.rustfs_access_key,
+                secret_key=settings.rustfs_secret_key,
+            )
+            excel = OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
+            excel_detail = OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
+            bg_confirm_uc = type(confirm_uc)(
+                repo=bg_repo, storage=storage, excel=excel, excel_detail=excel_detail,
+                bucket_invoices=settings.rustfs_bucket_invoices,
+                bucket_exports=settings.rustfs_bucket_exports,
+            )
+            await bg_confirm_uc.finalize_confirm(
+                job_id=job_id,
+                updated_items=job.extracted_items,
+                updated_line_items=job.extracted_line_items,
+            )
+        except Exception as e:
+            import logging, traceback
+            logging.error(f"Background API finalize failed: {e}\n{traceback.format_exc()}")
+        finally:
+            if db:
+                await db.close()
+            
+    asyncio.create_task(run_finalize())
+
     return _job_to_response(result)
 
 @router.post("/jobs/{job_id}/reject", response_model=JobResponse)

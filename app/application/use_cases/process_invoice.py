@@ -45,6 +45,13 @@ class ProcessInvoiceUseCase:
             await self._repo.update_pending_file_path(job.id, pending_path)
             job.pending_file_path = pending_path
 
+            if paired_pdf:
+                pending_pdf_path = f"{pending_dir}/{job.id}_paired.pdf"
+                with open(pending_pdf_path, "wb") as f:
+                    f.write(paired_pdf)
+                await self._repo.update_pending_pdf_path(job.id, pending_pdf_path)
+                job.pending_pdf_path = pending_pdf_path
+
             if file_type == FileType.XML:
                 content = extract_text_from_xml(file_data)
                 line_items = extract_line_items_from_xml(file_data)

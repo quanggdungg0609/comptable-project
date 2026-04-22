@@ -42,13 +42,13 @@ async def test_confirm_job_sets_confirmed_status(tmp_path):
         repo=repo, storage=storage, excel=excel, excel_detail=excel_detail,
         bucket_invoices="invoices", bucket_exports="exports",
     )
-    result = await uc.confirm(
+    await uc.finalize_confirm(
         job_id=job.id,
         updated_items=job.extracted_items,
         updated_line_items=[],
     )
 
-    assert result.status == InvoiceStatus.CONFIRMED
+    repo.update_status.assert_called_with(job.id, InvoiceStatus.CONFIRMED)
     storage.upload_file.assert_called()
     excel.append_rows.assert_called_once()
 

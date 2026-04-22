@@ -57,7 +57,7 @@ def use_case():
 async def test_confirm_calls_detail_writer(use_case):
     uc, repo, storage, excel, excel_detail = use_case
     line_items = [make_line_item()]
-    await uc.confirm(job_id="job-1", updated_items=[make_item()], updated_line_items=line_items)
+    await uc.finalize_confirm(job_id="job-1", updated_items=[make_item()], updated_line_items=line_items)
     excel_detail.append_rows.assert_called_once()
     call_args = excel_detail.append_rows.call_args[0]
     assert call_args[0] == line_items  # items passed correctly
@@ -65,7 +65,7 @@ async def test_confirm_calls_detail_writer(use_case):
 @pytest.mark.asyncio
 async def test_confirm_uploads_detail_excel(use_case):
     uc, repo, storage, excel, excel_detail = use_case
-    await uc.confirm(job_id="job-1", updated_items=[make_item()], updated_line_items=[make_line_item()])
+    await uc.finalize_confirm(job_id="job-1", updated_items=[make_item()], updated_line_items=[make_line_item()])
     upload_calls = storage.upload_file.call_args_list
     uploaded_keys = [c[0][1] for c in upload_calls]
     assert any("Chi_tiet" in k for k in uploaded_keys)

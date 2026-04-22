@@ -1,8 +1,10 @@
 .claude/
 .env
 .venv/
-plans/
-data/
+plans/*
+data/*
+output_test/*
+__pycache__/*
 
 # Python
 __pycache__/

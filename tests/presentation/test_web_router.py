@@ -101,10 +101,14 @@ def test_confirm_duplicate_job_returns_400():
 
         mock_repo = AsyncMock()
         mock_repo.get.return_value = job
+        mock_confirm_uc = AsyncMock()
+        
+        from app.core.dependencies import get_review_confirm_uc
         app.dependency_overrides[get_job_repo] = lambda: mock_repo
+        app.dependency_overrides[get_review_confirm_uc] = lambda: mock_confirm_uc
         try:
             client = TestClient(app)
-            resp = client.post(f"/jobs/{job.id}/confirm")
+            resp = client.post(f"/jobs/{job.id}/confirm", data={})
         finally:
             app.dependency_overrides.clear()
 

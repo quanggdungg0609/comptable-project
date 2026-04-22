@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS jobs (
     error TEXT,
     source_paths TEXT DEFAULT '[]',
     pending_file_path TEXT,
+    pending_pdf_path TEXT,
     duplicate_of TEXT
 )
 """
@@ -53,8 +54,15 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
 
 _db_connection: aiosqlite.Connection | None = None
 
-async def get_db() -> aiosqlite.Connection:
+async def get_db(new_connection: bool = False) -> aiosqlite.Connection:
     global _db_connection
+    if new_connection:
+        settings = get_settings()
+        Path(settings.database_path).parent.mkdir(parents=True, exist_ok=True)
+        conn = await aiosqlite.connect(settings.database_path)
+        conn.row_factory = aiosqlite.Row
+        return conn
+
     if _db_connection is None:
         settings = get_settings()
         Path(settings.database_path).parent.mkdir(parents=True, exist_ok=True)
@@ -75,6 +83,10 @@ async def init_db() -> None:
     await db.execute(CREATE_JOBS_TABLE)
     await db.execute(CREATE_INVOICE_ITEMS_TABLE)
     await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
+    try:
+        await db.execute("ALTER TABLE jobs ADD COLUMN pending_pdf_path TEXT")
+    except Exception:
+        pass
     try:
         await db.execute("ALTER TABLE jobs ADD COLUMN duplicate_of TEXT")
     except Exception:

@@ -31,6 +31,9 @@ class IJobRepository(ABC):
     async def update_pending_file_path(self, job_id: str, path: str) -> None: ...
 
     @abstractmethod
+    async def update_pending_pdf_path(self, job_id: str, path: str) -> None: ...
+
+    @abstractmethod
     async def save_line_items(self, job_id: str, items: list[InvoiceLineItem]) -> None: ...
 
     @abstractmethod

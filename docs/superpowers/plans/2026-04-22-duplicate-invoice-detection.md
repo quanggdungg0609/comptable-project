@@ -1,6 +1,6 @@
 # Duplicate Invoice Detection Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Tự động phát hiện và đánh dấu hóa đơn trùng lặp sau khi extract, ngăn chặn confirm trùng lặp vào dữ liệu export.
 
@@ -35,7 +35,7 @@
 - Modify: `app/domain/value_objects/invoice_status.py`
 - Modify: `app/domain/entities/processing_job.py`
 
-- [ ] **Step 1: Thêm DUPLICATE vào InvoiceStatus**
+- [x] **Step 1: Thêm DUPLICATE vào InvoiceStatus**
 
 Mở `app/domain/value_objects/invoice_status.py`, thêm dòng sau `FAILED`:
 
@@ -53,7 +53,7 @@ class InvoiceStatus(str, Enum):
     DUPLICATE = "DUPLICATE"
 ```
 
-- [ ] **Step 2: Thêm `duplicate_of` vào ProcessingJob**
+- [x] **Step 2: Thêm `duplicate_of` vào ProcessingJob**
 
 Mở `app/domain/entities/processing_job.py`, thêm field `duplicate_of`:
 
@@ -93,7 +93,7 @@ class ProcessingJob:
         )
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add app/domain/value_objects/invoice_status.py app/domain/entities/processing_job.py
@@ -107,7 +107,7 @@ git commit -m "feat: add DUPLICATE status and duplicate_of field to domain"
 **Files:**
 - Modify: `app/domain/ports/job_repository.py`
 
-- [ ] **Step 1: Thêm `find_duplicate` và `update_duplicate_of`**
+- [x] **Step 1: Thêm `find_duplicate` và `update_duplicate_of`**
 
 Mở `app/domain/ports/job_repository.py`, thêm 2 method ở cuối class:
 
@@ -168,7 +168,7 @@ class IJobRepository(ABC):
     async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None: ...
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add app/domain/ports/job_repository.py
@@ -182,7 +182,7 @@ git commit -m "feat: add find_duplicate and update_duplicate_of to IJobRepositor
 **Files:**
 - Modify: `app/core/database.py`
 
-- [ ] **Step 1: Thêm cột vào DDL và thêm migration**
+- [x] **Step 1: Thêm cột vào DDL và thêm migration**
 
 Mở `app/core/database.py`, cập nhật `CREATE_JOBS_TABLE` để thêm cột `duplicate_of`, và thêm migration statement trong `init_db`:
 
@@ -273,7 +273,7 @@ async def init_db() -> None:
 
 > **Lưu ý:** `ALTER TABLE ... ADD COLUMN` trên SQLite sẽ raise error nếu cột đã tồn tại. Bước tiếp theo sẽ bọc trong try/except để xử lý.
 
-- [ ] **Step 2: Bọc migration trong try/except**
+- [x] **Step 2: Bọc migration trong try/except**
 
 Sửa lại phần migration trong `init_db`:
 
@@ -292,7 +292,7 @@ async def init_db() -> None:
     await db.commit()
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add app/core/database.py
@@ -307,7 +307,7 @@ git commit -m "feat: add duplicate_of column to jobs table with migration"
 - Modify: `app/infrastructure/repositories/sqlite_job_repo.py`
 - Test: `tests/infrastructure/test_sqlite_repo.py`
 
-- [ ] **Step 1: Viết failing tests**
+- [x] **Step 1: Viết failing tests**
 
 Mở `tests/infrastructure/test_sqlite_repo.py`, thêm vào cuối file:
 
@@ -384,7 +384,7 @@ async def test_update_duplicate_of(repo):
     assert fetched.duplicate_of == job1.id
 ```
 
-- [ ] **Step 2: Chạy test để xác nhận FAIL**
+- [x] **Step 2: Chạy test để xác nhận FAIL**
 
 ```bash
 cd /Users/quangdung/Documents/collect_invoice
@@ -393,7 +393,7 @@ pytest tests/infrastructure/test_sqlite_repo.py::test_find_duplicate_returns_con
 
 Expected: `FAILED` với `AttributeError: 'SQLiteJobRepository' object has no attribute 'find_duplicate'`
 
-- [ ] **Step 3: Implement trong SQLiteJobRepository**
+- [x] **Step 3: Implement trong SQLiteJobRepository**
 
 Mở `app/infrastructure/repositories/sqlite_job_repo.py`.
 
@@ -470,7 +470,7 @@ async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None:
     await self._db.commit()
 ```
 
-- [ ] **Step 4: Chạy tất cả tests infrastructure**
+- [x] **Step 4: Chạy tất cả tests infrastructure**
 
 ```bash
 pytest tests/infrastructure/test_sqlite_repo.py -v
@@ -478,7 +478,7 @@ pytest tests/infrastructure/test_sqlite_repo.py -v
 
 Expected: tất cả PASS bao gồm 5 tests mới.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add app/infrastructure/repositories/sqlite_job_repo.py tests/infrastructure/test_sqlite_repo.py
@@ -493,7 +493,7 @@ git commit -m "feat: implement find_duplicate and update_duplicate_of in SQLiteJ
 - Modify: `app/application/use_cases/process_invoice.py`
 - Test: `tests/application/test_process_invoice.py`
 
-- [ ] **Step 1: Cập nhật fixture và viết failing tests**
+- [x] **Step 1: Cập nhật fixture và viết failing tests**
 
 Mở `tests/application/test_process_invoice.py`.
 
@@ -578,7 +578,7 @@ from app.domain.entities.processing_job import ProcessingJob
 from app.domain.value_objects.file_type import FileType
 ```
 
-- [ ] **Step 2: Chạy test để xác nhận FAIL**
+- [x] **Step 2: Chạy test để xác nhận FAIL**
 
 ```bash
 pytest tests/application/test_process_invoice.py::test_duplicate_job_sets_duplicate_status -v
@@ -586,7 +586,7 @@ pytest tests/application/test_process_invoice.py::test_duplicate_job_sets_duplic
 
 Expected: `FAILED` vì `find_duplicate` chưa được gọi.
 
-- [ ] **Step 3: Implement duplicate check trong ProcessInvoiceUseCase**
+- [x] **Step 3: Implement duplicate check trong ProcessInvoiceUseCase**
 
 Mở `app/application/use_cases/process_invoice.py`. Thêm logic duplicate check sau `await self._repo.save_items(job.id, items)` và trước `await self._repo.save_line_items(...)`:
 
@@ -691,7 +691,7 @@ class ProcessInvoiceUseCase:
         return job
 ```
 
-- [ ] **Step 4: Chạy tất cả tests application**
+- [x] **Step 4: Chạy tất cả tests application**
 
 ```bash
 pytest tests/application/test_process_invoice.py -v
@@ -699,7 +699,7 @@ pytest tests/application/test_process_invoice.py -v
 
 Expected: tất cả PASS bao gồm 4 tests mới.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add app/application/use_cases/process_invoice.py tests/application/test_process_invoice.py
@@ -714,7 +714,7 @@ git commit -m "feat: detect duplicate invoices in ProcessInvoiceUseCase"
 - Modify: `app/presentation/web/router.py`
 - Test: `tests/presentation/test_web_router.py`
 
-- [ ] **Step 1: Viết failing test**
+- [x] **Step 1: Viết failing test**
 
 Mở `tests/presentation/test_web_router.py`. Tìm phần test liên quan đến confirm và thêm:
 
@@ -734,7 +734,7 @@ async def test_confirm_duplicate_job_returns_400(client, repo):
     assert response.status_code == 400
 ```
 
-- [ ] **Step 2: Chạy test để xác nhận FAIL**
+- [x] **Step 2: Chạy test để xác nhận FAIL**
 
 ```bash
 pytest tests/presentation/test_web_router.py::test_confirm_duplicate_job_returns_400 -v
@@ -742,7 +742,7 @@ pytest tests/presentation/test_web_router.py::test_confirm_duplicate_job_returns
 
 Expected: `FAILED` — hiện tại confirm không check status DUPLICATE.
 
-- [ ] **Step 3: Thêm guard vào `/confirm` handler**
+- [x] **Step 3: Thêm guard vào `/confirm` handler**
 
 Mở `app/presentation/web/router.py`. Trong `web_confirm`, thêm guard ngay sau khi `job = await repo.get(job_id)`:
 
@@ -767,7 +767,7 @@ async def web_confirm(job_id: str, request: Request, background_tasks: Backgroun
     # ... phần còn lại của handler giữ nguyên
 ```
 
-- [ ] **Step 4: Chạy tất cả tests presentation**
+- [x] **Step 4: Chạy tất cả tests presentation**
 
 ```bash
 pytest tests/presentation/test_web_router.py -v
@@ -775,7 +775,7 @@ pytest tests/presentation/test_web_router.py -v
 
 Expected: tất cả PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add app/presentation/web/router.py tests/presentation/test_web_router.py
@@ -789,7 +789,7 @@ git commit -m "feat: block confirm for DUPLICATE jobs with 400 guard"
 **Files:**
 - Modify: `app/presentation/web/templates/jobs.html`
 
-- [ ] **Step 1: Thêm DUPLICATE vào badge map và thêm nút Review**
+- [x] **Step 1: Thêm DUPLICATE vào badge map và thêm nút Review**
 
 Mở `app/presentation/web/templates/jobs.html`. Tìm đoạn `{% set badge = {...} %}` và cập nhật:
 
@@ -822,7 +822,7 @@ Trong phần `<td>` hiển thị action buttons, thêm điều kiện cho DUPLIC
 {% endif %}
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add app/presentation/web/templates/jobs.html
@@ -836,7 +836,7 @@ git commit -m "feat: add Trung lap badge for DUPLICATE jobs in jobs list"
 **Files:**
 - Modify: `app/presentation/web/templates/review.html`
 
-- [ ] **Step 1: Thêm banner cảnh báo và điều chỉnh action buttons**
+- [x] **Step 1: Thêm banner cảnh báo và điều chỉnh action buttons**
 
 Mở `app/presentation/web/templates/review.html`.
 
@@ -878,7 +878,7 @@ Thay bằng:
 <a href="/jobs" class="btn btn-outline-secondary btn-sm ms-auto">← Quay lại</a>
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add app/presentation/web/templates/review.html
@@ -889,7 +889,7 @@ git commit -m "feat: show duplicate warning banner and hide Confirm button for D
 
 ## Task 9: Full test suite + smoke check
 
-- [ ] **Step 1: Chạy toàn bộ test suite**
+- [x] **Step 1: Chạy toàn bộ test suite**
 
 ```bash
 cd /Users/quangdung/Documents/collect_invoice
@@ -898,7 +898,7 @@ pytest -v
 
 Expected: tất cả tests PASS.
 
-- [ ] **Step 2: Kiểm tra DB migration trên file thực**
+- [x] **Step 2: Kiểm tra DB migration trên file thực**
 
 ```bash
 python -c "
@@ -918,7 +918,7 @@ asyncio.run(check())
 
 Expected: output chứa `'duplicate_of'` trong danh sách columns.
 
-- [ ] **Step 3: Commit cuối nếu có thay đổi còn sót**
+- [x] **Step 3: Commit cuối nếu có thay đổi còn sót**
 
 ```bash
 git status

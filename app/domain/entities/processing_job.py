@@ -20,6 +20,7 @@ class ProcessingJob:
     source_paths: list[str] = field(default_factory=list)
     error: Optional[str] = None
     pending_file_path: Optional[str] = None  # local temp path until confirmed
+    pending_pdf_path: Optional[str] = None
     duplicate_of: Optional[str] = None
 
     @classmethod

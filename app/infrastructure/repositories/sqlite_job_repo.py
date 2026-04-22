@@ -16,9 +16,9 @@ class SQLiteJobRepository(IJobRepository):
 
     async def save(self, job: ProcessingJob) -> None:
         await self._db.execute(
-            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths, duplicate_of) VALUES (?,?,?,?,?,?,?)",
+            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths, pending_pdf_path, duplicate_of) VALUES (?,?,?,?,?,?,?,?)",
             (job.id, job.filename, job.file_type.value, job.status.value,
-             job.created_at.isoformat(), json.dumps(job.source_paths), job.duplicate_of),
+             job.created_at.isoformat(), json.dumps(job.source_paths), job.pending_pdf_path, job.duplicate_of),
         )
         await self._db.commit()
 
@@ -35,6 +35,7 @@ class SQLiteJobRepository(IJobRepository):
             source_paths=json.loads(row["source_paths"] or "[]"),
             error=row["error"],
             pending_file_path=row["pending_file_path"],
+            pending_pdf_path=row["pending_pdf_path"],
             duplicate_of=row["duplicate_of"],
         )
         async with self._db.execute(
@@ -89,6 +90,10 @@ class SQLiteJobRepository(IJobRepository):
 
     async def update_pending_file_path(self, job_id: str, path: str) -> None:
         await self._db.execute("UPDATE jobs SET pending_file_path = ? WHERE id = ?", (path, job_id))
+        await self._db.commit()
+
+    async def update_pending_pdf_path(self, job_id: str, path: str) -> None:
+        await self._db.execute("UPDATE jobs SET pending_pdf_path = ? WHERE id = ?", (path, job_id))
         await self._db.commit()
 
     async def save_line_items(self, job_id: str, items: list[InvoiceLineItem]) -> None:

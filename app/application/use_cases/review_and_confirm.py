@@ -61,31 +61,48 @@ class ReviewAndConfirmUseCase:
             first = updated_items[0]
             year, month = first.invoice_date.year, first.invoice_date.month
             customer = first.seller_name.replace("/", "-").replace(" ", "_")[:50]
-            ext = job.filename.rsplit(".", 1)[-1]
-            storage_key = f"{year}/{month:02d}/{customer}/{first.invoice_number}.{ext}"
+            # Đọc dữ liệu các file tạm - Offload to thread to avoid blocking loop
+            files_to_upload = []
+            async def _prepare_upload(p_path, p_ext):
+                if not p_path: return None
+                def _read():
+                    if os.path.exists(p_path):
+                        with open(p_path, "rb") as f:
+                            return f.read()
+                    return None
+                p_data = await asyncio.to_thread(_read)
+                if not p_data: return None
+                
+                p_key = f"{year}/{month:02d}/{customer}/{first.invoice_number}.{p_ext}"
+                p_ctype = "application/pdf" if p_ext == "pdf" else "application/xml"
+                return {"key": p_key, "data": p_data, "ctype": p_ctype, "local_path": p_path}
 
-            # Đọc dữ liệu file tạm
-            pending_path = job.pending_file_path
-            file_data = b""
-            if pending_path and os.path.exists(pending_path):
-                with open(pending_path, "rb") as f:
-                    file_data = f.read()
+            # Primary file
+            primary_ext = job.filename.rsplit(".", 1)[-1].lower()
+            res = await _prepare_upload(job.pending_file_path, primary_ext)
+            if res: files_to_upload.append(res)
+            
+            # Paired PDF (only if primary is XML)
+            if job.pending_pdf_path:
+                res_pdf = await _prepare_upload(job.pending_pdf_path, "pdf")
+                if res_pdf: files_to_upload.append(res_pdf)
 
             # Thực thi song song các tác vụ nặng
-            await asyncio.gather(
-                self._storage.upload_file(
-                    self._bucket_invoices, storage_key, file_data,
-                    "application/pdf" if ext == "pdf" else "application/xml",
-                ),
-                self._process_aggregate_excel(year, month, updated_items),
-                self._process_detailed_excel(year, month, updated_line_items)
-            )
-
-            # Dọn dẹp
-            if pending_path and os.path.exists(pending_path):
-                os.unlink(pending_path)
+            tasks = []
+            for f in files_to_upload:
+                tasks.append(self._storage.upload_file(self._bucket_invoices, f["key"], f["data"], f["ctype"]))
             
-            await self._repo.add_source_path(job_id, storage_key)
+            tasks.append(self._process_aggregate_excel(year, month, updated_items))
+            tasks.append(self._process_detailed_excel(year, month, updated_line_items))
+            
+            await asyncio.gather(*tasks)
+
+            # Dọn dẹp & Cập nhật paths
+            for f in files_to_upload:
+                await self._repo.add_source_path(job_id, f["key"])
+                def _del(lp):
+                    if os.path.exists(lp): os.unlink(lp)
+                await asyncio.to_thread(_del, f["local_path"])
             await self._repo.update_status(job_id, InvoiceStatus.CONFIRMED)
             logger.info(f"Job {job_id} successfully confirmed in background.")
 

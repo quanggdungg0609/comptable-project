@@ -3,7 +3,9 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Stre
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from io import BytesIO
-from app.core.dependencies import get_process_invoice_uc, get_review_confirm_uc, get_job_repo, get_task_queue, get_exports_uc
+from app.core.dependencies import get_process_invoice_uc, get_review_confirm_uc, get_job_repo, get_task_queue, get_exports_uc, get_storage
+from app.core.config import get_settings
+from fastapi.responses import Response
 
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 router = APIRouter()
@@ -49,20 +51,30 @@ async def review_page(job_id: str, request: Request, repo=Depends(get_job_repo))
     return templates.TemplateResponse(request=request, name="review.html", context={"job": job})
 
 @router.get("/jobs/{job_id}/preview")
-async def preview_file(job_id: str, repo=Depends(get_job_repo)):
+async def preview_file(job_id: str, repo=Depends(get_job_repo), storage=Depends(get_storage), settings=Depends(get_settings)):
     job = await repo.get(job_id)
     if job is None:
         raise HTTPException(status_code=404, detail="Job không tồn tại")
+    content_type = "application/xml" if job.file_type.value == "XML" else "application/pdf"
+    
     path = job.pending_file_path
     if not path or not Path(path).is_file():
+        if job.source_paths:
+            try:
+                bucket = settings.rustfs_bucket_invoices
+                storage_key = job.source_paths[0]
+                file_bytes = await storage.download_file(bucket, storage_key)
+                return Response(content=file_bytes, media_type=content_type)
+            except Exception as e:
+                import logging
+                logging.error(f"Failed to download from storage: {e}")
         raise HTTPException(status_code=404, detail="File không còn khả dụng")
-    content_type = "application/xml" if job.file_type.value == "XML" else "application/pdf"
+        
     return FileResponse(path, media_type=content_type)
 
 @router.post("/jobs/{job_id}/confirm")
-async def web_confirm(job_id: str, request: Request, background_tasks: BackgroundTasks,
-                      repo=Depends(get_job_repo),
-                      confirm_uc=Depends(get_review_confirm_uc)):
+async def web_confirm(job_id: str, request: Request,
+                      repo=Depends(get_job_repo)):
     from starlette.requests import ClientDisconnect
     try:
         form = await request.form()
@@ -121,17 +133,44 @@ async def web_confirm(job_id: str, request: Request, background_tasks: Backgroun
     # Set status immediately so UI shows "Đang lưu Excel..." right away
     await repo.update_status(job_id, InvoiceStatus.CONFIRMING)
 
-    # All heavy work (save items, Excel, Storage) runs in background
+    # All heavy work runs in background — use case created lazily to avoid slow DI
     import asyncio
     async def run_finalize():
-        # Dừng 0.5s để server trả về phản hồi Redirect thành công
-        # và trình duyệt giải phóng connection trước khi GIL bị OpenPYXL block.
-        await asyncio.sleep(0.5)
+        # Delay slightly to ensure the redirect starts and doesn't conflict with main thread commit
+        await asyncio.sleep(0.3)
+        db = None
         try:
+            from app.core.database import get_db
+            from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
+            from app.infrastructure.storage.rustfs_storage import RustFSStorage
+            from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
+            from app.infrastructure.excel.openpyxl_detail_writer import OpenpyxlDetailWriter
+            from app.application.use_cases.review_and_confirm import ReviewAndConfirmUseCase
+            from app.core.config import get_settings
+
+            settings = get_settings()
+            # USE NEW CONNECTION to avoid blocking main thread
+            db = await get_db(new_connection=True)
+            bg_repo = SQLiteJobRepository(db)
+            storage = RustFSStorage(
+                endpoint=settings.rustfs_endpoint,
+                access_key=settings.rustfs_access_key,
+                secret_key=settings.rustfs_secret_key,
+            )
+            excel = OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
+            excel_detail = OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
+            confirm_uc = ReviewAndConfirmUseCase(
+                repo=bg_repo, storage=storage, excel=excel, excel_detail=excel_detail,
+                bucket_invoices=settings.rustfs_bucket_invoices,
+                bucket_exports=settings.rustfs_bucket_exports,
+            )
             await confirm_uc.finalize_confirm(job_id=job_id, updated_items=items, updated_line_items=line_items)
         except Exception as e:
-            import logging
-            logging.error(f"Background finalize failed: {e}")
+            import logging, traceback
+            logging.error(f"Background finalize failed: {e}\n{traceback.format_exc()}")
+        finally:
+            if db:
+                await db.close()
             
     asyncio.create_task(run_finalize())
     
@@ -172,7 +211,8 @@ async def exports_download(
         headers={"Content-Disposition": f'attachment; filename="{filename}"'},
     )
 
-@router.post("/jobs/{job_id}/reject")
-async def web_reject(job_id: str, confirm_uc=Depends(get_review_confirm_uc)):
-    await confirm_uc.reject(job_id=job_id)
+@router.get("/jobs/{job_id}/reject")
+async def web_reject(job_id: str, repo=Depends(get_job_repo)):
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    await repo.update_status(job_id, InvoiceStatus.REJECTED)
     return RedirectResponse("/jobs", status_code=303)
