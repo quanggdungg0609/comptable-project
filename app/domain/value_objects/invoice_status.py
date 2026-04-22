@@ -8,3 +8,4 @@ class InvoiceStatus(str, Enum):
     CONFIRMING = "CONFIRMING"
     REJECTED = "REJECTED"
     FAILED = "FAILED"
+    DUPLICATE = "DUPLICATE"
