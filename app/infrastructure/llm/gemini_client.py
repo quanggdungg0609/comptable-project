@@ -9,6 +9,16 @@ from app.infrastructure.llm.ollama_client import EXTRACTION_PROMPT, _parse_item,
 
 logger = logging.getLogger(__name__)
 
+
+def _clean_json(raw: str) -> str:
+    """Strip markdown code fences Gemini sometimes wraps around JSON."""
+    s = raw.strip()
+    if s.startswith("```"):
+        s = s.split("\n", 1)[-1]  # drop first line (```json or ```)
+        s = s.rsplit("```", 1)[0]  # drop closing ```
+    return s.strip()
+
+
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 _MAX_RETRIES = 3
 _DEFAULT_RETRY_DELAY = 60
@@ -27,37 +37,39 @@ class GeminiLLMClient(ILLMPort):
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
                 "responseMimeType": "application/json",
-                "maxOutputTokens": 2048,
+                "maxOutputTokens": 8192,
             },
         }
         async with httpx.AsyncClient(timeout=120.0) as client:
-            resp = None
+            data = None
             for attempt in range(_MAX_RETRIES + 1):
                 resp = await client.post(
                     url,
                     headers={"x-goog-api-key": self._api_key},
                     json=payload,
                 )
-                if resp.status_code not in _RETRYABLE_STATUS:
-                    break
-                if attempt == _MAX_RETRIES:
-                    break
-                retry_after = resp.headers.get("Retry-After") or resp.headers.get("retry-after")
-                if retry_after and retry_after.isdigit():
-                    wait = int(retry_after)
-                else:
-                    wait = min(30 * (2 ** attempt), 120)
-                logger.warning(
-                    "Gemini %d — attempt %d/%d, waiting %ds. Body: %s",
-                    resp.status_code, attempt + 1, _MAX_RETRIES, wait,
-                    resp.text[:200],
-                )
-                await asyncio.sleep(wait)
 
-            resp.raise_for_status()
+                # HTTP-level retry for transient server errors
+                if resp.status_code in _RETRYABLE_STATUS and attempt < _MAX_RETRIES:
+                    retry_after = resp.headers.get("Retry-After") or resp.headers.get("retry-after")
+                    wait = int(retry_after) if (retry_after and retry_after.isdigit()) else min(30 * (2 ** attempt), 120)
+                    logger.warning("Gemini %d — attempt %d/%d, waiting %ds.", resp.status_code, attempt + 1, _MAX_RETRIES, wait)
+                    await asyncio.sleep(wait)
+                    continue
 
-        raw = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
-        data = json.loads(raw)
+                resp.raise_for_status()
+                raw = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
+
+                # JSON parse retry — Gemini occasionally returns malformed JSON
+                try:
+                    data = json.loads(_clean_json(raw))
+                    break
+                except json.JSONDecodeError:
+                    if attempt == _MAX_RETRIES:
+                        raise
+                    logger.warning("Gemini returned invalid JSON on attempt %d, retrying...", attempt + 1)
+                    await asyncio.sleep(2)
+
         items = [_parse_item(i) for i in data.get("items", [])]
         line_items = [_parse_line_item(li, items) for li in data.get("line_items", [])]
         return items, line_items

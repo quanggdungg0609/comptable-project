@@ -43,18 +43,40 @@ async def lifespan(app: FastAPI):
     listener_task: Optional[asyncio.Task] = None
     listener_obj = None
 
+    # Common setup for Background Queue and Email Listener
+    from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
+    from app.infrastructure.llm.ollama_client import OllamaLLMClient
+    from app.infrastructure.llm.gemini_client import GeminiLLMClient
+    from app.infrastructure.llm.fallback_client import FallbackLLMClient
+    from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
+    from app.core.dependencies import get_task_queue
+
+    db = await get_db()
+    repo = SQLiteJobRepository(db)
+    
+    ollama = OllamaLLMClient(settings.llm_base_url, settings.llm_model)
+    gemini = GeminiLLMClient(settings.gemini_api_key, settings.gemini_model)
+    if settings.llm_provider == "gemini":
+        llm = gemini
+    elif settings.llm_provider == "gemini+ollama":
+        llm = FallbackLLMClient(primary=gemini, secondary=ollama)
+    elif settings.llm_provider == "ollama+gemini":
+        llm = FallbackLLMClient(primary=ollama, secondary=gemini)
+    else:
+        llm = ollama
+
+    notification = _build_notifier(settings)
+    process_uc = ProcessInvoiceUseCase(repo=repo, llm=llm, notification=notification)
+
+    # Start Task Queue Workers
+    task_queue = get_task_queue()
+    await task_queue.start_workers(process_use_case=process_uc, num_workers=2)
+    logger.info("Task queue workers started (concurrency: 2)")
+
     if settings.email_listener_enabled:
         from app.infrastructure.email.imap_client import IMAPClient
         from app.infrastructure.email.email_listener import EmailListener
-        from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
-        from app.infrastructure.llm.ollama_client import OllamaLLMClient
-        from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
 
-        db = await get_db()
-        repo = SQLiteJobRepository(db)
-        llm = OllamaLLMClient(settings.ollama_base_url, settings.ollama_model)
-        notification = _build_notifier(settings)
-        process_uc = ProcessInvoiceUseCase(repo=repo, llm=llm, notification=notification)
         imap_client = IMAPClient(
             host=settings.imap_host, port=settings.imap_port,
             username=settings.imap_username, password=settings.imap_password,
@@ -71,6 +93,7 @@ async def lifespan(app: FastAPI):
         listener_task.cancel()
         logger.info("Email listener stopped")
 
+    await task_queue.stop_workers()
     await close_db()
 
 

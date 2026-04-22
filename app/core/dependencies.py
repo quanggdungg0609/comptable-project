@@ -18,6 +18,8 @@ from app.domain.ports.excel_detail_port import IExcelDetailPort
 from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
 from app.application.use_cases.review_and_confirm import ReviewAndConfirmUseCase
 from app.application.use_cases.export_excel import ExportExcelUseCase
+from app.domain.ports.task_queue_port import ITaskQueue
+from app.infrastructure.queue.async_task_queue import AsyncTaskQueue
 
 async def get_db_conn() -> aiosqlite.Connection:
     db = await get_db()
@@ -85,3 +87,22 @@ def get_export_excel_uc(
     storage=Depends(get_storage), settings: Settings = Depends(get_settings)
 ) -> ExportExcelUseCase:
     return ExportExcelUseCase(storage=storage, bucket_exports=settings.rustfs_bucket_exports)
+
+def get_exports_uc(
+    storage=Depends(get_storage),
+    settings: Settings = Depends(get_settings),
+    repo=Depends(get_job_repo),
+):
+    from app.application.use_cases.get_exports import GetExportsUseCase
+    return GetExportsUseCase(
+        storage=storage,
+        bucket_exports=settings.rustfs_bucket_exports,
+        template_aggregate="Mau_xuat_du_lieu.xlsx",
+        template_detail="Mau_xuat_du_lieu_chi_tiet.xlsx",
+        repo=repo,
+    )
+
+_task_queue = AsyncTaskQueue()
+
+def get_task_queue() -> ITaskQueue:
+    return _task_queue

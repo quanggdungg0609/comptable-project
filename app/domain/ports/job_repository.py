@@ -35,3 +35,9 @@ class IJobRepository(ABC):
 
     @abstractmethod
     async def update_line_items(self, job_id: str, items: list[InvoiceLineItem]) -> None: ...
+
+    @abstractmethod
+    async def get_items_by_month(self, year: int, month: int) -> list[InvoiceItem]: ...
+
+    @abstractmethod
+    async def get_line_items_by_month(self, year: int, month: int) -> list[InvoiceLineItem]: ...

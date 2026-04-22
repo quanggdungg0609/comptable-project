@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0 text-secondary">Tháng {{ "%02d"|format(month) }}/{{ year }}</h5>
+</div>
+
+<ul class="nav nav-tabs" id="exportTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="agg-tab" data-bs-toggle="tab" data-bs-target="#agg-panel"
+                type="button" role="tab">
+            Bảng kê thuế
+            <span class="badge bg-secondary ms-1">{{ aggregate.rows | length }}</span>
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="detail-tab" data-bs-toggle="tab" data-bs-target="#detail-panel"
+                type="button" role="tab">
+            Chi tiết hóa đơn
+            <span class="badge bg-secondary ms-1">{{ detail.rows | length }}</span>
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content border border-top-0 rounded-bottom p-3 bg-white">
+
+    {# --- Tab Bảng kê thuế --- #}
+    <div class="tab-pane fade show active" id="agg-panel" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted small">{{ agg_filename }}</span>
+            <a href="/exports/download?year={{ year }}&month={{ month }}&type=aggregate"
+               class="btn btn-sm btn-success">
+                ⬇ Tải xuống
+            </a>
+        </div>
+        {% if aggregate.rows %}
+        <div class="table-responsive" style="max-height:400px; overflow-y:auto">
+            <table class="table table-sm table-bordered table-hover mb-0" style="font-size:0.82rem">
+                <thead class="table-dark sticky-top">
+                    <tr>
+                        {% for h in aggregate.headers %}<th>{{ h }}</th>{% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in aggregate.rows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{{ cell if cell is not none else "" }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center text-muted py-4">
+            <p class="mb-0">Chưa có dữ liệu cho tháng {{ "%02d"|format(month) }}/{{ year }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {# --- Tab Chi tiết hóa đơn --- #}
+    <div class="tab-pane fade" id="detail-panel" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted small">{{ detail_filename }}</span>
+            <a href="/exports/download?year={{ year }}&month={{ month }}&type=detail"
+               class="btn btn-sm btn-success">
+                ⬇ Tải xuống
+            </a>
+        </div>
+        {% if detail.rows %}
+        <div class="table-responsive" style="max-height:400px; overflow-y:auto">
+            <table class="table table-sm table-bordered table-hover mb-0" style="font-size:0.82rem">
+                <thead class="table-dark sticky-top">
+                    <tr>
+                        {% for h in detail.headers %}<th>{{ h }}</th>{% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in detail.rows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{{ cell if cell is not none else "" }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center text-muted py-4">
+            <p class="mb-0">Chưa có dữ liệu cho tháng {{ "%02d"|format(month) }}/{{ year }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</div>

@@ -158,7 +158,14 @@
     box-shadow: 0 0 0 2px rgba(13,110,253,.1);
   }
   .li-input.num { font-family: monospace; text-align: right; }
-  .li-name { min-width: 140px; }
+  .li-name { 
+    min-width: 140px; 
+    min-height: 40px;
+    resize: vertical;
+    overflow-y: auto;
+    display: block;
+    line-height: 1.2;
+  }
   .badge-count {
     font-size: 10px;
     background: #0d6efd;
@@ -225,11 +232,7 @@
         .xml-match { background: rgba(229,192,123,.3); border-radius: 2px; }
       </style>
 
-      <div id="xml-loading" class="p-4 text-muted small d-flex align-items-center gap-2"
-           style="background:#1e2127; color:#5c6370 !important;">
-        <div class="spinner-border spinner-border-sm" role="status" style="color:#5c6370;"></div>
-        Đang tải file...
-      </div>
+
       <div id="xml-viewer" style="display:none;">
         <div id="xml-toolbar">
           <input id="xml-search" placeholder="🔍  Tìm tag hoặc giá trị...">
@@ -390,11 +393,9 @@
               var el = buildNode(child, 0);
               if (el) tree.appendChild(el);
             });
-            document.getElementById('xml-loading').style.display = 'none';
             document.getElementById('xml-viewer').style.display = 'flex';
           })
           .catch(function() {
-            document.getElementById('xml-loading').style.display = 'none';
             document.getElementById('xml-error').style.display = 'block';
           });
       })();
@@ -436,7 +437,7 @@
               </div>
               <div class="col-3 field-group">
                 <div class="field-label">Ngày phát hành</div>
-                <input class="field-input" type="text" name="invoice_date_{{ item.id }}" value="{{ item.invoice_date.isoformat() }}">
+                <input class="field-input" type="text" name="invoice_date_{{ item.id }}" value="{{ item.invoice_date.strftime('%d/%m/%Y') }}">
               </div>
             </div>
 
@@ -464,7 +465,7 @@
               </div>
               <div class="col-2 field-group">
                 <div class="field-label">Thuế suất</div>
-                <input class="field-input amount" type="text" name="tax_rate_{{ item.id }}" value="{{ item.tax_rate }}">
+                <input class="field-input amount tax-rate-field" type="text" name="tax_rate_{{ item.id }}" value="{{ (item.tax_rate * 100) | int }}">
               </div>
               <div class="col-5 field-group">
                 <div class="field-label">Thuế GTGT (₫)</div>
@@ -503,11 +504,10 @@
                 <tr>
                   <td style="color:#aaa; font-size:11px;">{{ loop.index }}</td>
                   <td>
-                    <input class="li-input li-name" type="text"
-                           name="li_ten_hang_hoa_{{ li.id }}" value="{{ li.ten_hang_hoa }}">
+                    <textarea class="li-input li-name" name="li_ten_hang_hoa_{{ li.id }}">{{ li.ten_hang_hoa }}</textarea>
                   </td>
                   <td>
-                    <input class="li-input" type="text" style="min-width:50px;"
+                    <input class="li-input" type="text" style="min-width:60px; text-align:center;"
                            name="li_don_vi_tinh_{{ li.id }}" value="{{ li.don_vi_tinh }}">
                   </td>
                   <td>
@@ -526,8 +526,8 @@
                            value="{{ li.thanh_tien }}" readonly style="background:#f8f9fa;">
                   </td>
                   <td>
-                    <input class="li-input num" type="text" style="min-width:45px;"
-                           name="li_tax_rate_{{ li.id }}" value="{{ li.tax_rate }}">
+                    <input class="li-input num tax-rate-field" type="text" style="min-width:45px;"
+                           name="li_tax_rate_{{ li.id }}" value="{{ (li.tax_rate * 100) | int }}">
                   </td>
                   <td>
                     <input class="li-input num" type="text" style="min-width:85px;"
@@ -554,12 +554,55 @@
 
 </div>
 <script>
+function formatNum(val) {
+  if (val === undefined || val === null || val === '') return '';
+  // Remove non-numeric except decimal comma if needed, but here we handle mostly whole numbers or dot decimals
+  let str = val.toString().replace(/[^\d]/g, ''); 
+  return str.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function parseNum(val) {
+  return parseFloat(val.toString().replace(/\./g, '')) || 0;
+}
+
 function recalc(rowId) {
-  var sl = parseFloat(document.querySelector('[name="li_so_luong_' + rowId + '"]').value) || 0;
-  var dg = parseFloat(document.querySelector('[name="li_don_gia_' + rowId + '"]').value) || 0;
+  var sl = parseNum(document.querySelector('[name="li_so_luong_' + rowId + '"]').value);
+  var dg = parseNum(document.querySelector('[name="li_don_gia_' + rowId + '"]').value);
   var tt = sl * dg;
   var ttEl = document.getElementById('li_thanh_tien_' + rowId);
-  if (ttEl) ttEl.value = tt.toFixed(0);
+  if (ttEl) ttEl.value = formatNum(tt.toFixed(0));
 }
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+function applyFormatting(el) {
+  let val = el.value;
+  let formatted = formatNum(val);
+  if (formatted !== val) {
+    let start = el.selectionStart;
+    let dotBefore = (val.substring(0, start).match(/\./g) || []).length;
+    el.value = formatted;
+    let dotAfter = (formatted.substring(0, start).match(/\./g) || []).length;
+    el.setSelectionRange(start + (dotAfter - dotBefore), start + (dotAfter - dotBefore));
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.li-name').forEach(function(el) {
+    autoResize(el);
+    el.addEventListener('input', function() { autoResize(this); });
+  });
+
+  // Initial formatting for all amount/num fields
+  document.querySelectorAll('.amount, .num').forEach(function(el) {
+    if (el.tagName === 'INPUT' && !el.classList.contains('tax-rate-field')) {
+      el.value = formatNum(el.value);
+      el.addEventListener('input', function() { applyFormatting(this); });
+    }
+  });
+});
 </script>
 {% endblock %}

@@ -106,6 +106,30 @@ class SQLiteJobRepository(IJobRepository):
         await self._db.commit()
         await self.save_line_items(job_id, items)
 
+    async def get_items_by_month(self, year: int, month: int) -> list[InvoiceItem]:
+        prefix = f"{year}-{month:02d}"
+        async with self._db.execute(
+            """SELECT ii.* FROM invoice_items ii
+               JOIN jobs j ON ii.job_id = j.id
+               WHERE j.status = 'CONFIRMED'
+               AND ii.invoice_date LIKE ?
+               ORDER BY ii.invoice_date""",
+            (f"{prefix}%",),
+        ) as cur:
+            return [_row_to_item(r) for r in await cur.fetchall()]
+
+    async def get_line_items_by_month(self, year: int, month: int) -> list[InvoiceLineItem]:
+        prefix = f"{year}-{month:02d}"
+        async with self._db.execute(
+            """SELECT li.* FROM invoice_line_items li
+               JOIN jobs j ON li.job_id = j.id
+               WHERE j.status = 'CONFIRMED'
+               AND li.invoice_date LIKE ?
+               ORDER BY li.invoice_date""",
+            (f"{prefix}%",),
+        ) as cur:
+            return [_row_to_line_item(r) for r in await cur.fetchall()]
+
 
 def _item_to_row(job_id: str, item: InvoiceItem) -> tuple:
     return (

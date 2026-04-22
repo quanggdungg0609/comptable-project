@@ -70,10 +70,9 @@ async def close_db() -> None:
 
 async def init_db() -> None:
     db = await get_db()
-    try:
-        await db.execute(CREATE_JOBS_TABLE)
-        await db.execute(CREATE_INVOICE_ITEMS_TABLE)
-        await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
-        await db.commit()
-    finally:
-        pass
+    await db.execute("PRAGMA journal_mode=WAL")
+    await db.execute("PRAGMA synchronous=NORMAL")
+    await db.execute(CREATE_JOBS_TABLE)
+    await db.execute(CREATE_INVOICE_ITEMS_TABLE)
+    await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
+    await db.commit()

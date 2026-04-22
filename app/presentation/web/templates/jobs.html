@@ -20,11 +20,11 @@
             <td>
                 {% set badge = {
                 "PENDING": "secondary", "PROCESSING": "info",
-                "AWAITING_REVIEW": "warning", "CONFIRMED": "success",
-                "REJECTED": "danger", "FAILED": "dark"
+                "AWAITING_REVIEW": "warning", "CONFIRMING": "primary", 
+                "CONFIRMED": "success", "REJECTED": "danger", "FAILED": "dark"
                 } %}
                 <span class="badge bg-{{ badge.get(job.status.value, 'secondary') }}">
-                    {{ job.status.value }}
+                    {% if job.status.value == "CONFIRMING" %}Đang lưu Excel...{% else %}{{ job.status.value }}{% endif %}
                 </span>
             </td>
             <td>{{ job.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
