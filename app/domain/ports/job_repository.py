@@ -48,6 +48,7 @@ class IJobRepository(ABC):
         invoice_symbol: str,
         invoice_number: str,
         seller_tax_code: str,
+        exclude_job_id: Optional[str] = None,
     ) -> Optional[ProcessingJob]: ...
 
     @abstractmethod

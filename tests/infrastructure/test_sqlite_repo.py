@@ -98,8 +98,9 @@ async def test_find_duplicate_returns_awaiting_review_match(repo):
     assert result.id == job1.id
 
 
-async def test_find_duplicate_ignores_failed_and_rejected(repo):
-    for status in [InvoiceStatus.FAILED, InvoiceStatus.REJECTED]:
+async def test_find_duplicate_ignores_non_matching_statuses(repo):
+    for status in [InvoiceStatus.FAILED, InvoiceStatus.REJECTED, InvoiceStatus.PENDING,
+                   InvoiceStatus.PROCESSING, InvoiceStatus.CONFIRMING, InvoiceStatus.DUPLICATE]:
         job = ProcessingJob.create("hd001.xml", FileType.XML)
         await repo.save(job)
         item = InvoiceItem(
@@ -131,3 +132,26 @@ async def test_update_duplicate_of(repo):
 
     fetched = await repo.get(job2.id)
     assert fetched.duplicate_of == job1.id
+
+
+async def test_find_duplicate_excludes_job_id(repo):
+    job1 = ProcessingJob.create("hd001.xml", FileType.XML)
+    await repo.save(job1)
+    item1 = InvoiceItem(
+        invoice_symbol="1C26TAA", invoice_number="49",
+        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        seller_tax_code="0901212659", description="Mua vật tư",
+        price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
+        price_after_tax=Decimal("2903000"),
+    )
+    await repo.save_items(job1.id, [item1])
+    await repo.update_status(job1.id, InvoiceStatus.CONFIRMED)
+
+    # Without exclusion: finds job1
+    result = await repo.find_duplicate("1C26TAA", "49", "0901212659")
+    assert result is not None
+    assert result.id == job1.id
+
+    # With exclusion: ignores job1, returns None
+    result_excluded = await repo.find_duplicate("1C26TAA", "49", "0901212659", exclude_job_id=job1.id)
+    assert result_excluded is None

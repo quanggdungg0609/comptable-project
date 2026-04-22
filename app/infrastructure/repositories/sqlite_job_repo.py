@@ -136,17 +136,20 @@ class SQLiteJobRepository(IJobRepository):
         invoice_symbol: str,
         invoice_number: str,
         seller_tax_code: str,
+        exclude_job_id: Optional[str] = None,
     ) -> Optional[ProcessingJob]:
-        async with self._db.execute(
-            """SELECT DISTINCT j.id FROM jobs j
+        query = """SELECT j.id FROM jobs j
                JOIN invoice_items ii ON ii.job_id = j.id
                WHERE ii.invoice_symbol = ?
                  AND ii.invoice_number = ?
                  AND ii.seller_tax_code = ?
-                 AND j.status IN ('CONFIRMED', 'AWAITING_REVIEW')
-               LIMIT 1""",
-            (invoice_symbol, invoice_number, seller_tax_code),
-        ) as cur:
+                 AND j.status IN ('CONFIRMED', 'AWAITING_REVIEW')"""
+        params: list = [invoice_symbol, invoice_number, seller_tax_code]
+        if exclude_job_id is not None:
+            query += " AND j.id != ?"
+            params.append(exclude_job_id)
+        query += " LIMIT 1"
+        async with self._db.execute(query, params) as cur:
             row = await cur.fetchone()
         if row is None:
             return None
