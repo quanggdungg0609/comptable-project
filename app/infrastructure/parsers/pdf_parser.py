@@ -1,8 +1,13 @@
 import tempfile
 import os
-from markitdown import MarkItDown
+_converter = None
 
-_converter = MarkItDown()
+def get_converter():
+    global _converter
+    if _converter is None:
+        from markitdown import MarkItDown
+        _converter = MarkItDown()
+    return _converter
 
 def extract_text_from_pdf(data: bytes) -> str:
     """Convert PDF bytes to markdown text using markitdown."""
@@ -13,7 +18,8 @@ def extract_text_from_pdf(data: bytes) -> str:
         tmp.write(data)
         tmp_path = tmp.name
     try:
-        result = _converter.convert(tmp_path)
+        converter = get_converter()
+        result = converter.convert(tmp_path)
         if not result or not result.text_content:
             raise ValueError("PDF conversion resulted in empty content")
         return result.text_content

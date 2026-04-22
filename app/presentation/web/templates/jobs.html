@@ -24,17 +24,21 @@
                 "CONFIRMED": "success", "REJECTED": "danger", "FAILED": "dark",
                 "DUPLICATE": "warning"
                 } %}
+                {% set status_vn = {
+                "PENDING": "Đang chờ", "PROCESSING": "Đang xử lý",
+                "AWAITING_REVIEW": "Chờ duyệt", "CONFIRMING": "Đang lưu Excel...",
+                "CONFIRMED": "Đã xác nhận", "REJECTED": "Từ chối", "FAILED": "Lỗi",
+                "DUPLICATE": "Trùng lặp"
+                } %}
                 <span class="badge bg-{{ badge.get(job.status.value, 'secondary') }}"
                       {% if job.status.value == "DUPLICATE" %}style="background-color: #fd7e14 !important;"{% endif %}>
-                    {% if job.status.value == "CONFIRMING" %}Đang lưu Excel...
-                    {% elif job.status.value == "DUPLICATE" %}Trùng lặp
-                    {% else %}{{ job.status.value }}{% endif %}
+                    {{ status_vn.get(job.status.value, job.status.value) }}
                 </span>
             </td>
             <td>{{ job.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
             <td>
                 {% if job.status.value == "AWAITING_REVIEW" %}
-                <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-warning">Review</a>
+                <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-warning">Xem/Duyệt</a>
                 {% endif %}
                 {% if job.status.value == "DUPLICATE" %}
                 <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-outline-warning">Xem chi tiết</a>
