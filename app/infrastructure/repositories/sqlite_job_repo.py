@@ -16,9 +16,9 @@ class SQLiteJobRepository(IJobRepository):
 
     async def save(self, job: ProcessingJob) -> None:
         await self._db.execute(
-            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths) VALUES (?,?,?,?,?,?)",
+            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths, duplicate_of) VALUES (?,?,?,?,?,?,?)",
             (job.id, job.filename, job.file_type.value, job.status.value,
-             job.created_at.isoformat(), json.dumps(job.source_paths)),
+             job.created_at.isoformat(), json.dumps(job.source_paths), job.duplicate_of),
         )
         await self._db.commit()
 
@@ -35,6 +35,7 @@ class SQLiteJobRepository(IJobRepository):
             source_paths=json.loads(row["source_paths"] or "[]"),
             error=row["error"],
             pending_file_path=row["pending_file_path"],
+            duplicate_of=row["duplicate_of"],
         )
         async with self._db.execute(
             "SELECT * FROM invoice_items WHERE job_id = ?", (job_id,)
@@ -129,6 +130,34 @@ class SQLiteJobRepository(IJobRepository):
             (f"{prefix}%",),
         ) as cur:
             return [_row_to_line_item(r) for r in await cur.fetchall()]
+
+    async def find_duplicate(
+        self,
+        invoice_symbol: str,
+        invoice_number: str,
+        seller_tax_code: str,
+    ) -> Optional[ProcessingJob]:
+        async with self._db.execute(
+            """SELECT DISTINCT j.id FROM jobs j
+               JOIN invoice_items ii ON ii.job_id = j.id
+               WHERE ii.invoice_symbol = ?
+                 AND ii.invoice_number = ?
+                 AND ii.seller_tax_code = ?
+                 AND j.status IN ('CONFIRMED', 'AWAITING_REVIEW')
+               LIMIT 1""",
+            (invoice_symbol, invoice_number, seller_tax_code),
+        ) as cur:
+            row = await cur.fetchone()
+        if row is None:
+            return None
+        return await self.get(row["id"])
+
+    async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None:
+        await self._db.execute(
+            "UPDATE jobs SET duplicate_of = ? WHERE id = ?",
+            (duplicate_of_id, job_id),
+        )
+        await self._db.commit()
 
 
 def _item_to_row(job_id: str, item: InvoiceItem) -> tuple:
