@@ -35,7 +35,6 @@ class ProcessInvoiceUseCase:
         await self._repo.update_status(job.id, InvoiceStatus.PROCESSING)
 
         try:
-            # Save raw file to data/pending/ for later RustFS archiving on confirm
             import os
             pending_dir = "data/pending"
             os.makedirs(pending_dir, exist_ok=True)
@@ -61,11 +60,28 @@ class ProcessInvoiceUseCase:
             job.extracted_items = items
             job.extracted_line_items = line_items
             await self._repo.save_items(job.id, items)
+
+            # Duplicate check — soft fail: DB error must not block the job
+            if items:
+                try:
+                    item = items[0]
+                    dup = await self._repo.find_duplicate(
+                        item.invoice_symbol, item.invoice_number, item.seller_tax_code,
+                        exclude_job_id=job.id,
+                    )
+                    if dup:
+                        await self._repo.update_duplicate_of(job.id, dup.id)
+                        await self._repo.update_status(job.id, InvoiceStatus.DUPLICATE)
+                        job.status = InvoiceStatus.DUPLICATE
+                        job.duplicate_of = dup.id
+                        return job
+                except Exception as dup_exc:
+                    logger.warning("Duplicate check failed for job %s: %s", job.id, dup_exc)
+
             await self._repo.save_line_items(job.id, line_items)
             await self._repo.update_status(job.id, InvoiceStatus.AWAITING_REVIEW)
             job.status = InvoiceStatus.AWAITING_REVIEW
 
-            # Notify staff — failure here must not fail the job
             if self._notification:
                 try:
                     await self._notification.notify_new_invoice(job.id, filename)

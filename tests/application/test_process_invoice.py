@@ -4,6 +4,7 @@ from decimal import Decimal
 from datetime import date
 from app.application.use_cases.process_invoice import ProcessInvoiceUseCase
 from app.domain.entities.invoice_item import InvoiceItem
+from app.domain.entities.processing_job import ProcessingJob
 from app.domain.value_objects.invoice_status import InvoiceStatus
 from app.domain.value_objects.file_type import FileType
 
@@ -22,6 +23,7 @@ def use_case():
     llm = AsyncMock()
     notification = AsyncMock()
     llm.extract_invoice.return_value = ([make_item()], [])
+    repo.find_duplicate = AsyncMock(return_value=None)
     return ProcessInvoiceUseCase(repo=repo, llm=llm, notification=notification), repo, llm, notification
 
 async def test_xml_file_creates_job_awaiting_review(use_case):
@@ -67,3 +69,61 @@ async def test_llm_failure_sets_failed_status(use_case):
     )
     assert job.status == InvoiceStatus.FAILED
     assert "LLM timeout" in job.error
+
+
+async def test_duplicate_job_sets_duplicate_status(use_case):
+    uc, repo, llm, notification = use_case
+    existing_job = ProcessingJob.create("hd049_original.xml", FileType.XML)
+    existing_job.status = InvoiceStatus.CONFIRMED
+    repo.find_duplicate = AsyncMock(return_value=existing_job)
+
+    job = await uc.execute(
+        filename="hd049_copy.xml",
+        file_data=b"<HDon><SHDon>49</SHDon></HDon>",
+        paired_pdf=None,
+    )
+
+    assert job.status == InvoiceStatus.DUPLICATE
+    assert job.duplicate_of == existing_job.id
+
+
+async def test_duplicate_job_does_not_notify(use_case):
+    uc, repo, llm, notification = use_case
+    existing_job = ProcessingJob.create("hd049_original.xml", FileType.XML)
+    existing_job.status = InvoiceStatus.CONFIRMED
+    repo.find_duplicate = AsyncMock(return_value=existing_job)
+
+    await uc.execute(
+        filename="hd049_copy.xml",
+        file_data=b"<HDon><SHDon>49</SHDon></HDon>",
+        paired_pdf=None,
+    )
+
+    notification.notify_new_invoice.assert_not_called()
+
+
+async def test_non_duplicate_job_still_notifies(use_case):
+    uc, repo, llm, notification = use_case
+    repo.find_duplicate = AsyncMock(return_value=None)
+
+    job = await uc.execute(
+        filename="hd049.xml",
+        file_data=b"<HDon><SHDon>49</SHDon></HDon>",
+        paired_pdf=None,
+    )
+
+    assert job.status == InvoiceStatus.AWAITING_REVIEW
+    notification.notify_new_invoice.assert_called_once()
+
+
+async def test_find_duplicate_exception_does_not_fail_job(use_case):
+    uc, repo, llm, notification = use_case
+    repo.find_duplicate = AsyncMock(side_effect=Exception("DB error"))
+
+    job = await uc.execute(
+        filename="hd049.xml",
+        file_data=b"<HDon><SHDon>49</SHDon></HDon>",
+        paired_pdf=None,
+    )
+
+    assert job.status == InvoiceStatus.AWAITING_REVIEW
