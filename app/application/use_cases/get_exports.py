@@ -1,8 +1,11 @@
 import asyncio
+import logging
 from io import BytesIO
 import openpyxl
 from app.domain.ports.storage_port import IStoragePort
 from app.domain.ports.job_repository import IJobRepository
+
+logger = logging.getLogger(__name__)
 
 AGGREGATE_SHEET = "Bang ke thue"
 AGGREGATE_DATA_START = 13
@@ -41,10 +44,15 @@ class GetExportsUseCase:
         self._repo = repo
 
     async def get_preview(self, year: int, month: int) -> dict:
+        logger.info(f"[GetExports] Getting preview for {year}/{month:02d}")
+        logger.debug(f"[GetExports] Fetching items and line items from repository")
+
         items, line_items = await asyncio.gather(
             self._repo.get_items_by_month(year, month),
             self._repo.get_line_items_by_month(year, month),
         )
+
+        logger.info(f"[GetExports] Found {len(items)} items and {len(line_items)} line items for {year}/{month:02d}")
 
         agg_rows = [
             [
@@ -67,6 +75,8 @@ class GetExportsUseCase:
             for idx, li in enumerate(line_items, start=1)
         ]
 
+        logger.debug(f"[GetExports] Formatted {len(agg_rows)} aggregate rows and {len(detail_rows)} detail rows")
+
         return {
             "year": year,
             "month": month,
@@ -77,12 +87,16 @@ class GetExportsUseCase:
         }
 
     async def get_download(self, year: int, month: int, file_type: str) -> tuple[bytes, str]:
+        logger.info(f"[GetExports] Getting download for {file_type} {year}/{month:02d}")
+
         data = await self._fetch(year, month, file_type)
         filename = (
             f"Bang_ke_thue_{year}_{month:02d}.xlsx"
             if file_type == "aggregate"
             else f"Chi_tiet_hoa_don_T{month}_{year}.xlsx"
         )
+
+        logger.info(f"[GetExports] Returning {filename} ({len(data)} bytes)")
         return data, filename
 
     async def _fetch(self, year: int, month: int, file_type: str) -> bytes:
@@ -91,19 +105,33 @@ class GetExportsUseCase:
             if file_type == "aggregate"
             else f"{year}/{month:02d}/Chi_tiet_hoa_don_T{month}_{year}.xlsx"
         )
+
+        logger.debug(f"[GetExports] Fetching {file_type} from storage: {key}")
+
         try:
-            return await asyncio.wait_for(
+            logger.debug(f"[GetExports] Attempting to download from storage (timeout: {_STORAGE_TIMEOUT}s)")
+            data = await asyncio.wait_for(
                 self._storage.download_file(self._bucket_exports, key),
                 timeout=_STORAGE_TIMEOUT,
             )
-        except Exception:
-            pass
+            logger.info(f"[GetExports] Successfully fetched from storage ({len(data)} bytes)")
+            return data
+        except asyncio.TimeoutError:
+            logger.warning(f"[GetExports] Storage download timed out, trying template")
+        except Exception as e:
+            logger.debug(f"[GetExports] Storage download failed: {e}, trying template")
 
         # File not in storage — try loading from template, then fall back to minimal xlsx
         try:
-            return await asyncio.to_thread(self._from_template, file_type)
-        except Exception:
-            return self._minimal_empty(file_type)
+            logger.debug(f"[GetExports] Loading from template")
+            data = await asyncio.to_thread(self._from_template, file_type)
+            logger.info(f"[GetExports] Generated from template ({len(data)} bytes)")
+            return data
+        except Exception as e:
+            logger.warning(f"[GetExports] Template loading failed: {e}, generating minimal xlsx")
+            data = self._minimal_empty(file_type)
+            logger.info(f"[GetExports] Generated minimal xlsx ({len(data)} bytes)")
+            return data
 
     def _from_template(self, file_type: str) -> bytes:
         template = self._template_aggregate if file_type == "aggregate" else self._template_detail

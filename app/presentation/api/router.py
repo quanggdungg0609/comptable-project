@@ -72,48 +72,9 @@ async def confirm_job(
         updated_line_items=job.extracted_line_items,
     )
 
-    # Then queue the heavy lifting in the background
-    import asyncio
-    async def run_finalize():
-        await asyncio.sleep(0.3)
-        db = None
-        try:
-            from app.core.database import get_db
-            from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
-            from app.infrastructure.storage.rustfs_storage import RustFSStorage
-            from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
-            from app.infrastructure.excel.openpyxl_detail_writer import OpenpyxlDetailWriter
-            from app.core.config import get_settings
-
-            settings = get_settings()
-            # USE NEW CONNECTION
-            db = await get_db(new_connection=True)
-            bg_repo = SQLiteJobRepository(db)
-            storage = RustFSStorage(
-                endpoint=settings.rustfs_endpoint,
-                access_key=settings.rustfs_access_key,
-                secret_key=settings.rustfs_secret_key,
-            )
-            excel = OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
-            excel_detail = OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
-            bg_confirm_uc = type(confirm_uc)(
-                repo=bg_repo, storage=storage, excel=excel, excel_detail=excel_detail,
-                bucket_invoices=settings.rustfs_bucket_invoices,
-                bucket_exports=settings.rustfs_bucket_exports,
-            )
-            await bg_confirm_uc.finalize_confirm(
-                job_id=job_id,
-                updated_items=job.extracted_items,
-                updated_line_items=job.extracted_line_items,
-            )
-        except Exception as e:
-            import logging, traceback
-            logging.error(f"Background API finalize failed: {e}\n{traceback.format_exc()}")
-        finally:
-            if db:
-                await db.close()
-            
-    asyncio.create_task(run_finalize())
+    # Fire-and-forget finalization using cached singletons + bg DB connection.
+    from app.application.services.bg_finalize import spawn_finalize
+    spawn_finalize(job_id, job.extracted_items, job.extracted_line_items)
 
     return _job_to_response(result)
 
@@ -141,7 +102,7 @@ def _job_to_response(job) -> JobResponse:
         status=job.status.value, created_at=job.created_at,
         extracted_items=[InvoiceItemSchema(**{
             "id": i.id, "invoice_symbol": i.invoice_symbol, "invoice_number": i.invoice_number,
-            "invoice_date": i.invoice_date, "seller_name": i.seller_name, "seller_tax_code": i.seller_tax_code,
+            "invoice_date": i.invoice_date, "seller_name": i.seller_name, "seller_address": i.seller_address, "seller_tax_code": i.seller_tax_code,
             "description": i.description, "price_before_tax": i.price_before_tax, "tax_rate": i.tax_rate, "price_after_tax": i.price_after_tax,
         }) for i in job.extracted_items],
         source_paths=job.source_paths, error=job.error,

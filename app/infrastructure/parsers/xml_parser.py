@@ -37,6 +37,7 @@ def extract_text_from_xml(data: bytes) -> str:
     nban = _find_elem(root, "NBan")
     if nban is not None:
         lines.append(f"NBan.Ten: {_first_text(nban, 'Ten')}")
+        lines.append(f"NBan.DChi: {_first_text(nban, 'DChi')}")
         lines.append(f"NBan.MST: {_first_text(nban, 'MST')}")
 
     # Line items — only fields the prompt uses
@@ -83,6 +84,7 @@ def extract_line_items_from_xml(data: bytes) -> list[InvoiceLineItem]:
 
     nban = _find_elem(root, "NBan")
     seller_name = _first_text(nban, "Ten") if nban is not None else ""
+    seller_address = _first_text(nban, "DChi") if nban is not None else ""
     seller_tax_code = _first_text(nban, "MST") if nban is not None else ""
 
     items = []
@@ -118,6 +120,7 @@ def extract_line_items_from_xml(data: bytes) -> list[InvoiceLineItem]:
             invoice_number=invoice_number,
             invoice_date=invoice_date,
             seller_name=seller_name,
+            seller_address=seller_address,
             seller_tax_code=seller_tax_code,
             ten_hang_hoa=_first_text(el, "THHDVu"),
             don_vi_tinh=_first_text(el, "DVTinh"),

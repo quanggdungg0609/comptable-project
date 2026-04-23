@@ -10,6 +10,7 @@ class InvoiceLineItem:
     invoice_number: str
     invoice_date: date
     seller_name: str
+    seller_address: str
     seller_tax_code: str
     ten_hang_hoa: str
     don_vi_tinh: str

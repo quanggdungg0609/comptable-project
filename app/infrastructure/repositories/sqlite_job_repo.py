@@ -49,15 +49,53 @@ class SQLiteJobRepository(IJobRepository):
         return job
 
     async def list_all(self, status: Optional[InvoiceStatus] = None) -> list[ProcessingJob]:
+        # 3 queries total (jobs + items + line_items), no N+1.
         if status:
-            async with self._db.execute(
-                "SELECT id FROM jobs WHERE status = ? ORDER BY created_at DESC", (status.value,)
-            ) as cur:
-                ids = [r["id"] for r in await cur.fetchall()]
+            jobs_sql = "SELECT * FROM jobs WHERE status = ? ORDER BY created_at DESC"
+            params: tuple = (status.value,)
         else:
-            async with self._db.execute("SELECT id FROM jobs ORDER BY created_at DESC") as cur:
-                ids = [r["id"] for r in await cur.fetchall()]
-        return [j for j_id in ids if (j := await self.get(j_id)) is not None]
+            jobs_sql = "SELECT * FROM jobs ORDER BY created_at DESC"
+            params = ()
+
+        async with self._db.execute(jobs_sql, params) as cur:
+            job_rows = await cur.fetchall()
+        if not job_rows:
+            return []
+
+        ids = [r["id"] for r in job_rows]
+        placeholders = ",".join("?" * len(ids))
+
+        items_by_job: dict[str, list[InvoiceItem]] = {i: [] for i in ids}
+        async with self._db.execute(
+            f"SELECT * FROM invoice_items WHERE job_id IN ({placeholders})", ids
+        ) as cur:
+            async for r in cur:
+                items_by_job[r["job_id"]].append(_row_to_item(r))
+
+        lines_by_job: dict[str, list[InvoiceLineItem]] = {i: [] for i in ids}
+        async with self._db.execute(
+            f"SELECT * FROM invoice_line_items WHERE job_id IN ({placeholders})", ids
+        ) as cur:
+            async for r in cur:
+                lines_by_job[r["job_id"]].append(_row_to_line_item(r))
+
+        jobs: list[ProcessingJob] = []
+        for row in job_rows:
+            job = ProcessingJob(
+                id=row["id"], filename=row["filename"],
+                file_type=FileType(row["file_type"]),
+                status=InvoiceStatus(row["status"]),
+                created_at=datetime.fromisoformat(row["created_at"]),
+                source_paths=json.loads(row["source_paths"] or "[]"),
+                error=row["error"],
+                pending_file_path=row["pending_file_path"],
+                pending_pdf_path=row["pending_pdf_path"],
+                duplicate_of=row["duplicate_of"],
+            )
+            job.extracted_items = items_by_job.get(row["id"], [])
+            job.extracted_line_items = lines_by_job.get(row["id"], [])
+            jobs.append(job)
+        return jobs
 
     async def update_status(self, job_id: str, status: InvoiceStatus, error: Optional[str] = None) -> None:
         await self._db.execute(
@@ -69,8 +107,8 @@ class SQLiteJobRepository(IJobRepository):
     async def save_items(self, job_id: str, items: list[InvoiceItem]) -> None:
         await self._db.executemany(
             """INSERT INTO invoice_items
-               (id, job_id, invoice_symbol, invoice_number, invoice_date, seller_name, seller_tax_code, description, price_before_tax, tax_rate, price_after_tax)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+               (id, job_id, invoice_symbol, invoice_number, invoice_date, seller_name, seller_address, seller_tax_code, description, price_before_tax, tax_rate, price_after_tax)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
             [_item_to_row(job_id, i) for i in items],
         )
         await self._db.commit()
@@ -100,9 +138,9 @@ class SQLiteJobRepository(IJobRepository):
         await self._db.executemany(
             """INSERT INTO invoice_line_items
                (id, job_id, invoice_symbol, invoice_number, invoice_date,
-                seller_name, seller_tax_code, ten_hang_hoa, don_vi_tinh,
+                seller_name, seller_address, seller_tax_code, ten_hang_hoa, don_vi_tinh,
                 so_luong, don_gia, thanh_tien, tax_rate, tax_amount)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             [_line_item_to_row(job_id, li) for li in items],
         )
         await self._db.commit()
@@ -171,7 +209,7 @@ class SQLiteJobRepository(IJobRepository):
 def _item_to_row(job_id: str, item: InvoiceItem) -> tuple:
     return (
         item.id, job_id, item.invoice_symbol, item.invoice_number,
-        item.invoice_date.isoformat(), item.seller_name, item.seller_tax_code, item.description,
+        item.invoice_date.isoformat(), item.seller_name, item.seller_address, item.seller_tax_code, item.description,
         str(item.price_before_tax), str(item.tax_rate), str(item.price_after_tax),
     )
 
@@ -179,14 +217,14 @@ def _row_to_item(row) -> InvoiceItem:
     return InvoiceItem(
         id=row["id"], invoice_symbol=row["invoice_symbol"], invoice_number=row["invoice_number"],
         invoice_date=date.fromisoformat(row["invoice_date"]),
-        seller_name=row["seller_name"], seller_tax_code=row["seller_tax_code"], description=row["description"],
+        seller_name=row["seller_name"], seller_address=row["seller_address"] or "", seller_tax_code=row["seller_tax_code"], description=row["description"],
         price_before_tax=Decimal(row["price_before_tax"]), tax_rate=Decimal(row["tax_rate"]), price_after_tax=Decimal(row["price_after_tax"]),
     )
 
 def _line_item_to_row(job_id: str, li: InvoiceLineItem) -> tuple:
     return (
         li.id, job_id, li.invoice_symbol, li.invoice_number,
-        li.invoice_date.isoformat(), li.seller_name, li.seller_tax_code,
+        li.invoice_date.isoformat(), li.seller_name, li.seller_address, li.seller_tax_code,
         li.ten_hang_hoa, li.don_vi_tinh,
         str(li.so_luong), str(li.don_gia), str(li.thanh_tien),
         str(li.tax_rate), str(li.tax_amount),
@@ -199,6 +237,7 @@ def _row_to_line_item(row) -> InvoiceLineItem:
         invoice_number=row["invoice_number"],
         invoice_date=date.fromisoformat(row["invoice_date"]),
         seller_name=row["seller_name"],
+        seller_address=row["seller_address"] or "",
         seller_tax_code=row["seller_tax_code"],
         ten_hang_hoa=row["ten_hang_hoa"],
         don_vi_tinh=row["don_vi_tinh"],

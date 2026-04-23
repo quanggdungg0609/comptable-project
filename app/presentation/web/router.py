@@ -115,6 +115,7 @@ async def web_confirm(job_id: str, request: Request,
             invoice_number=form.get(f"invoice_number_{item.id}", item.invoice_number),
             invoice_date=datetime.strptime(form.get(f"invoice_date_{item.id}", item.invoice_date.strftime('%d/%m/%Y')), '%d/%m/%Y').date(),
             seller_name=form.get(f"seller_name_{item.id}", item.seller_name),
+            seller_address=form.get(f"seller_address_{item.id}", item.seller_address),
             seller_tax_code=form.get(f"seller_tax_code_{item.id}", item.seller_tax_code),
             description=form.get(f"description_{item.id}", item.description),
             price_before_tax=Decimal(clean_num(form.get(f"price_before_tax_{item.id}", str(item.price_before_tax)))),
@@ -131,6 +132,7 @@ async def web_confirm(job_id: str, request: Request,
             invoice_number=li.invoice_number,
             invoice_date=li.invoice_date,
             seller_name=li.seller_name,
+            seller_address=li.seller_address,
             seller_tax_code=li.seller_tax_code,
             ten_hang_hoa=form.get(f"li_ten_hang_hoa_{li.id}", li.ten_hang_hoa),
             don_vi_tinh=form.get(f"li_don_vi_tinh_{li.id}", li.don_vi_tinh),
@@ -144,47 +146,11 @@ async def web_confirm(job_id: str, request: Request,
     # Set status immediately so UI shows "Đang lưu Excel..." right away
     await repo.update_status(job_id, InvoiceStatus.CONFIRMING)
 
-    # All heavy work runs in background — use case created lazily to avoid slow DI
-    import asyncio
-    async def run_finalize():
-        # Delay slightly to ensure the redirect starts and doesn't conflict with main thread commit
-        await asyncio.sleep(0.3)
-        db = None
-        try:
-            from app.core.database import get_db
-            from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
-            from app.infrastructure.storage.rustfs_storage import RustFSStorage
-            from app.infrastructure.excel.openpyxl_writer import OpenpyxlWriter
-            from app.infrastructure.excel.openpyxl_detail_writer import OpenpyxlDetailWriter
-            from app.application.use_cases.review_and_confirm import ReviewAndConfirmUseCase
-            from app.core.config import get_settings
+    # Fire-and-forget: reuse cached singletons + bg DB connection so
+    # the event loop is not blocked by XLSX parsing / boto3 init.
+    from app.application.services.bg_finalize import spawn_finalize
+    spawn_finalize(job_id, items, line_items)
 
-            settings = get_settings()
-            # USE NEW CONNECTION to avoid blocking main thread
-            db = await get_db(new_connection=True)
-            bg_repo = SQLiteJobRepository(db)
-            storage = RustFSStorage(
-                endpoint=settings.rustfs_endpoint,
-                access_key=settings.rustfs_access_key,
-                secret_key=settings.rustfs_secret_key,
-            )
-            excel = OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
-            excel_detail = OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
-            confirm_uc = ReviewAndConfirmUseCase(
-                repo=bg_repo, storage=storage, excel=excel, excel_detail=excel_detail,
-                bucket_invoices=settings.rustfs_bucket_invoices,
-                bucket_exports=settings.rustfs_bucket_exports,
-            )
-            await confirm_uc.finalize_confirm(job_id=job_id, updated_items=items, updated_line_items=line_items)
-        except Exception as e:
-            import logging, traceback
-            logging.error(f"Background finalize failed: {e}\n{traceback.format_exc()}")
-        finally:
-            if db:
-                await db.close()
-            
-    asyncio.create_task(run_finalize())
-    
     return RedirectResponse("/jobs", status_code=303)
 
 @router.get("/exports", response_class=HTMLResponse)

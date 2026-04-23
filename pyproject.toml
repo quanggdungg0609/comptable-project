@@ -19,7 +19,8 @@ dependencies = [
     "httpx (>=0.28.1,<0.29.0)",
     "uvicorn (>=0.45.0,<0.46.0)",
     "fastapi (>=0.136.0,<0.137.0)",
-    "python-multipart (>=0.0.26,<0.0.27)"
+    "python-multipart (>=0.0.26,<0.0.27)",
+    "imapclient (>=3.0.1,<4.0.0)"
 ]
 
 

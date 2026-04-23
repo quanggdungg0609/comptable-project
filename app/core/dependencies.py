@@ -39,19 +39,45 @@ def get_llm(settings: Settings = Depends(get_settings)):
         return FallbackLLMClient(primary=ollama, secondary=gemini)
     return ollama  # default
 
+_storage_singleton: RustFSStorage | None = None
+_excel_singleton: OpenpyxlWriter | None = None
+_excel_detail_singleton: OpenpyxlDetailWriter | None = None
+
+
+def get_storage_singleton() -> RustFSStorage:
+    global _storage_singleton
+    if _storage_singleton is None:
+        s = get_settings()
+        _storage_singleton = RustFSStorage(
+            endpoint=s.rustfs_endpoint,
+            access_key=s.rustfs_access_key,
+            secret_key=s.rustfs_secret_key,
+        )
+    return _storage_singleton
+
+
+def get_excel_singleton() -> OpenpyxlWriter:
+    global _excel_singleton
+    if _excel_singleton is None:
+        _excel_singleton = OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
+    return _excel_singleton
+
+
+def get_excel_detail_singleton() -> OpenpyxlDetailWriter:
+    global _excel_detail_singleton
+    if _excel_detail_singleton is None:
+        _excel_detail_singleton = OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
+    return _excel_detail_singleton
+
+
 def get_storage(settings: Settings = Depends(get_settings)) -> RustFSStorage:
-    return RustFSStorage(
-        endpoint=settings.rustfs_endpoint,
-        access_key=settings.rustfs_access_key,
-        secret_key=settings.rustfs_secret_key,
-    )
+    return get_storage_singleton()
 
 def get_excel() -> OpenpyxlWriter:
-    # Hardcode template path cho đơn giản, có thể đưa vào Settings nếu cần
-    return OpenpyxlWriter(template_path="Mau_xuat_du_lieu.xlsx")
+    return get_excel_singleton()
 
 def get_excel_detail() -> OpenpyxlDetailWriter:
-    return OpenpyxlDetailWriter(template_path="Mau_xuat_du_lieu_chi_tiet.xlsx")
+    return get_excel_detail_singleton()
 
 def get_notifier():
     from app.core.config import get_settings

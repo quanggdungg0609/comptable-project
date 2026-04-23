@@ -18,7 +18,7 @@ Trả về JSON với 2 phần:
 1. "items": gộp các dòng theo thuế suất (một item per mức thuế, cộng dồn ThTien và TThue)
 2. "line_items": từng dòng hàng hóa/dịch vụ riêng lẻ
 
-{{"items":[{{"invoice_symbol":"KHHDon","invoice_number":"SHDon","invoice_date":"DD/MM/YYYY","seller_name":"NBan.Ten","seller_tax_code":"NBan.MST","description":"loại mặt hàng","price_before_tax":0,"tax_rate":0.08,"price_after_tax":0}}],"line_items":[{{"ten_hang_hoa":"tên mặt hàng","don_vi_tinh":"đơn vị","so_luong":1,"don_gia":0,"thanh_tien":0,"tax_rate":0.08,"tax_amount":0}}]}}"""
+{{"items":[{{"invoice_symbol":"KHHDon","invoice_number":"SHDon","invoice_date":"DD/MM/YYYY","seller_name":"NBan.Ten","seller_address":"NBan.DChi","seller_tax_code":"NBan.MST","description":"loại mặt hàng","price_before_tax":0,"tax_rate":0.08,"price_after_tax":0}}],"line_items":[{{"ten_hang_hoa":"tên mặt hàng","don_vi_tinh":"đơn vị","so_luong":1,"don_gia":0,"thanh_tien":0,"tax_rate":0.08,"tax_amount":0}}]}}"""
 
 
 LlamaCppClient = None  # kept for import compatibility
@@ -67,6 +67,7 @@ def _parse_item(d: dict) -> InvoiceItem:
         invoice_number=str(d.get("invoice_number", "")),
         invoice_date=invoice_date,
         seller_name=str(d.get("seller_name", "")),
+        seller_address=str(d.get("seller_address", "")),
         seller_tax_code=str(d.get("seller_tax_code", "")),
         description=str(d.get("description", "")),
         price_before_tax=Decimal(str(d.get("price_before_tax", 0))),
@@ -82,6 +83,7 @@ def _parse_line_item(d: dict, items: list[InvoiceItem]) -> InvoiceLineItem:
         invoice_number=header.invoice_number if header else "",
         invoice_date=header.invoice_date if header else date.today(),
         seller_name=header.seller_name if header else "",
+        seller_address=header.seller_address if header else "",
         seller_tax_code=header.seller_tax_code if header else "",
         ten_hang_hoa=str(d.get("ten_hang_hoa", "")),
         don_vi_tinh=str(d.get("don_vi_tinh", "")),

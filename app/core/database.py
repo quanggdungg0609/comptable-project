@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS invoice_items (
     invoice_number TEXT DEFAULT '',
     invoice_date TEXT DEFAULT '',
     seller_name TEXT DEFAULT '',
+    seller_address TEXT DEFAULT '',
     seller_tax_code TEXT DEFAULT '',
     description TEXT DEFAULT '',
     price_before_tax TEXT DEFAULT '0',
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
     invoice_number TEXT DEFAULT '',
     invoice_date TEXT DEFAULT '',
     seller_name TEXT DEFAULT '',
+    seller_address TEXT DEFAULT '',
     seller_tax_code TEXT DEFAULT '',
     ten_hang_hoa TEXT DEFAULT '',
     don_vi_tinh TEXT DEFAULT '',
@@ -53,6 +55,7 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
 """
 
 _db_connection: aiosqlite.Connection | None = None
+_bg_db_connection: aiosqlite.Connection | None = None
 
 async def get_db(new_connection: bool = False) -> aiosqlite.Connection:
     global _db_connection
@@ -70,16 +73,35 @@ async def get_db(new_connection: bool = False) -> aiosqlite.Connection:
         _db_connection.row_factory = aiosqlite.Row
     return _db_connection
 
+async def get_bg_db() -> aiosqlite.Connection:
+    """Persistent separate connection reserved for background finalization.
+    Keeps writes off the main connection's queue so HTTP requests stay responsive."""
+    global _bg_db_connection
+    if _bg_db_connection is None:
+        settings = get_settings()
+        Path(settings.database_path).parent.mkdir(parents=True, exist_ok=True)
+        _bg_db_connection = await aiosqlite.connect(settings.database_path)
+        _bg_db_connection.row_factory = aiosqlite.Row
+        await _bg_db_connection.execute("PRAGMA journal_mode=WAL")
+        await _bg_db_connection.execute("PRAGMA synchronous=NORMAL")
+        await _bg_db_connection.execute("PRAGMA busy_timeout=5000")
+        await _bg_db_connection.commit()
+    return _bg_db_connection
+
 async def close_db() -> None:
-    global _db_connection
+    global _db_connection, _bg_db_connection
     if _db_connection is not None:
         await _db_connection.close()
         _db_connection = None
+    if _bg_db_connection is not None:
+        await _bg_db_connection.close()
+        _bg_db_connection = None
 
 async def init_db() -> None:
     db = await get_db()
     await db.execute("PRAGMA journal_mode=WAL")
     await db.execute("PRAGMA synchronous=NORMAL")
+    await db.execute("PRAGMA busy_timeout=5000")
     await db.execute(CREATE_JOBS_TABLE)
     await db.execute(CREATE_INVOICE_ITEMS_TABLE)
     await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
@@ -90,5 +112,13 @@ async def init_db() -> None:
     try:
         await db.execute("ALTER TABLE jobs ADD COLUMN duplicate_of TEXT")
     except Exception:
-        pass  # column already exists
+        pass
+    try:
+        await db.execute("ALTER TABLE invoice_items ADD COLUMN seller_address TEXT DEFAULT ''")
+    except Exception:
+        pass
+    try:
+        await db.execute("ALTER TABLE invoice_line_items ADD COLUMN seller_address TEXT DEFAULT ''")
+    except Exception:
+        pass
     await db.commit()

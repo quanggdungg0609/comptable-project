@@ -13,10 +13,10 @@ def _append_rows_detail_process(template_bytes: bytes, items: list[InvoiceLineIt
     wb = openpyxl.load_workbook(BytesIO(src))
     ws = wb.active
 
-    # Tìm hàng cuối có dữ liệu (cột H = ten_hang_hoa)
+    # Tìm hàng cuối có dữ liệu (cột I = ten_hang_hoa)
     last_row = DATA_START_ROW - 1
     for row in range(ws.max_row, DATA_START_ROW - 1, -1):
-        if ws.cell(row=row, column=8).value is not None:
+        if ws.cell(row=row, column=9).value is not None:
             last_row = row
             break
 
@@ -35,14 +35,15 @@ def _append_rows_detail_process(template_bytes: bytes, items: list[InvoiceLineIt
         ws.cell(row=r, column=4).value = li.invoice_number   # Số HĐ
         ws.cell(row=r, column=5).value = li.invoice_date     # Ngày phát hành
         ws.cell(row=r, column=6).value = li.seller_name      # Tên nhà cung cấp
-        ws.cell(row=r, column=7).value = li.seller_tax_code  # MST
-        ws.cell(row=r, column=8).value = li.ten_hang_hoa     # Mặt hàng
-        ws.cell(row=r, column=9).value = li.don_vi_tinh      # Đơn vị tính
-        ws.cell(row=r, column=10).value = float(li.so_luong) # Số lượng
-        ws.cell(row=r, column=11).value = float(li.don_gia)  # Đơn giá
-        ws.cell(row=r, column=12).value = float(li.thanh_tien)  # Thành tiền
-        ws.cell(row=r, column=13).value = int(li.tax_rate * 100)  # Thuế suất %
-        ws.cell(row=r, column=14).value = float(li.tax_amount)    # Thuế GTGT
+        ws.cell(row=r, column=7).value = li.seller_address   # Địa chỉ người bán
+        ws.cell(row=r, column=8).value = li.seller_tax_code  # MST
+        ws.cell(row=r, column=9).value = li.ten_hang_hoa     # Mặt hàng
+        ws.cell(row=r, column=10).value = li.don_vi_tinh     # Đơn vị tính
+        ws.cell(row=r, column=11).value = float(li.so_luong) # Số lượng
+        ws.cell(row=r, column=12).value = float(li.don_gia)  # Đơn giá
+        ws.cell(row=r, column=13).value = float(li.thanh_tien)  # Thành tiền
+        ws.cell(row=r, column=14).value = int(li.tax_rate * 100)  # Thuế suất %
+        ws.cell(row=r, column=15).value = float(li.tax_amount)    # Thuế GTGT
 
     buf = BytesIO()
     wb.save(buf)

@@ -1,0 +1,2 @@
+[2026-04-23 19:13:00,212] ERROR    [app.infrastructure.email.imap_client:idle_listen:238] [IMAPClient] Error in IDLE mode: AttributeError: Unknown IMAP4 command: 'idle'
+[2026-04-23 19:18:28,296] ERROR    [app.infrastructure.email.email_listener:start:123] [EmailListener] Error in listener: AttributeError: 'IMAPClient' object has no attribute 'idle_listen'

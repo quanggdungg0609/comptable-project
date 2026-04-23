@@ -38,12 +38,13 @@ def _append_rows_process(template_bytes: bytes, items: list[InvoiceItem], existi
         ws.cell(row=r, column=5).value = item.invoice_number
         ws.cell(row=r, column=6).value = item.invoice_date
         ws.cell(row=r, column=7).value = item.seller_name
-        ws.cell(row=r, column=8).value = item.seller_tax_code
-        ws.cell(row=r, column=9).value = item.description
-        ws.cell(row=r, column=10).value = float(item.price_before_tax)
-        ws.cell(row=r, column=11).value = int(item.tax_rate * 100)
-        ws.cell(row=r, column=12).value = float(item.tax_rate)
-        ws.cell(row=r, column=13).value = float(item.price_after_tax)
+        ws.cell(row=r, column=8).value = item.seller_address
+        ws.cell(row=r, column=9).value = item.seller_tax_code
+        ws.cell(row=r, column=10).value = item.description
+        ws.cell(row=r, column=11).value = float(item.price_before_tax)
+        ws.cell(row=r, column=12).value = int(item.tax_rate * 100)
+        ws.cell(row=r, column=13).value = float(item.tax_rate)
+        ws.cell(row=r, column=14).value = float(item.price_after_tax)
 
     buf = BytesIO()
     wb.save(buf)
