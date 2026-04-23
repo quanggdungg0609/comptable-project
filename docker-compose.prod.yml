@@ -29,26 +29,26 @@ services:
       retries: 3
       start_period: 10s
 
-  ollama:
-    image: ollama/ollama:latest
-    container_name: collect-invoice-ollama-prod
-    volumes:
-      - ollama_data:/root/.ollama
-      - ./ollama-entrypoint.sh:/ollama-entrypoint.sh:ro
-    ports:
-      - "11434:11434"
-    environment:
-      OLLAMA_HOST: 0.0.0.0:11434
-    entrypoint: /bin/bash /ollama-entrypoint.sh
-    restart: unless-stopped
-    networks:
-      - invoice-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 30s
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: collect-invoice-ollama-prod
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #     - ./ollama-entrypoint.sh:/ollama-entrypoint.sh:ro
+  #   ports:
+  #     - "11434:11434"
+  #   environment:
+  #     OLLAMA_HOST: 0.0.0.0:11434
+  #   entrypoint: /bin/bash /ollama-entrypoint.sh
+  #   restart: unless-stopped
+  #   networks:
+  #     - invoice-network
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #     start_period: 30s
 
   rustfs:
     image: rustfs/rustfs:latest

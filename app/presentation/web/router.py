@@ -8,6 +8,17 @@ from app.core.config import get_settings
 from fastapi.responses import Response
 
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
+
+def format_number(value):
+    if value is None or value == "":
+        return ""
+    try:
+        num = float(str(value).replace(",", "").replace(".", ""))
+        return f"{int(num):,}".replace(",", ".")
+    except (ValueError, AttributeError):
+        return value
+
+templates.env.filters["format_number"] = format_number
 router = APIRouter()
 
 @router.get("/", response_class=HTMLResponse)
