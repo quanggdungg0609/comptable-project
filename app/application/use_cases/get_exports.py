@@ -9,18 +9,18 @@ logger = logging.getLogger(__name__)
 
 AGGREGATE_SHEET = "Bang ke thue"
 AGGREGATE_DATA_START = 13
-AGGREGATE_COLS = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+AGGREGATE_COLS = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 AGGREGATE_HEADERS = [
     "STT", "Ký hiệu HĐ", "Số HĐ", "Ngày HĐ",
-    "Tên người bán", "MST", "Diễn giải",
+    "Tên người bán", "Địa chỉ", "MST", "Diễn giải",
     "Tiền trước thuế", "Thuế suất %", "Hệ số thuế", "Tiền sau thuế",
 ]
 
 DETAIL_DATA_START = 6
-DETAIL_COLS = list(range(1, 15))
+DETAIL_COLS = list(range(1, 16))
 DETAIL_HEADERS = [
     "STT", "KH Mẫu HĐ", "Ký hiệu HĐ", "Số HĐ", "Ngày phát hành",
-    "Tên NCC", "MST", "Tên hàng hóa", "ĐVT",
+    "Tên NCC", "Địa chỉ", "MST", "Tên hàng hóa", "ĐVT",
     "Số lượng", "Đơn giá", "Thành tiền", "Thuế suất %", "Thuế GTGT",
 ]
 
@@ -58,7 +58,7 @@ class GetExportsUseCase:
             [
                 idx,
                 it.invoice_symbol, it.invoice_number, it.invoice_date,
-                it.seller_name, it.seller_tax_code, it.description,
+                it.seller_name, it.seller_address, it.seller_tax_code, it.description,
                 it.price_before_tax, int(it.tax_rate * 100), it.tax_rate, it.price_after_tax,
             ]
             for idx, it in enumerate(items, start=1)
@@ -68,7 +68,7 @@ class GetExportsUseCase:
             [
                 idx, "",
                 li.invoice_symbol, li.invoice_number, li.invoice_date,
-                li.seller_name, li.seller_tax_code, li.ten_hang_hoa, li.don_vi_tinh,
+                li.seller_name, li.seller_address, li.seller_tax_code, li.ten_hang_hoa, li.don_vi_tinh,
                 li.so_luong, li.don_gia, li.thanh_tien,
                 int(li.tax_rate * 100), li.tax_amount,
             ]

@@ -1,2 +1,22 @@
 [2026-04-23 19:13:00,212] ERROR    [app.infrastructure.email.imap_client:idle_listen:238] [IMAPClient] Error in IDLE mode: AttributeError: Unknown IMAP4 command: 'idle'
 [2026-04-23 19:18:28,296] ERROR    [app.infrastructure.email.email_listener:start:123] [EmailListener] Error in listener: AttributeError: 'IMAPClient' object has no attribute 'idle_listen'
+[2026-04-24 11:01:39,886] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-04-24 11:01:40,230] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job d6f3d3a4-1850-46cd-868d-eb718d1a35e1 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-04-24 11:02:19,158] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-04-24 11:02:19,579] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job b74f28bc-0a88-49aa-98a6-5bf4443dda28 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+

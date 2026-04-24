@@ -1091,3 +1091,1134 @@
 [2026-04-23 22:54:54,721] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
 [2026-04-23 22:54:54,914] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
 [2026-04-23 22:54:55,373] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:15:46,152] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:20:46,757] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:25:47,358] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:30:48,109] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:35:48,714] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:40:49,393] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:45:50,033] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:50:50,710] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-23 23:55:51,429] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:00:52,064] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:05:52,759] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:10:53,380] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:15:54,118] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:20:54,728] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:25:55,468] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:30:56,141] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:35:56,722] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:40:57,377] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:45:58,073] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:50:58,732] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 00:55:59,401] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:01:00,266] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:06:00,905] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:11:01,558] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:16:02,142] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:21:02,958] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:26:03,624] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:31:04,312] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:36:04,944] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:41:05,520] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:46:06,176] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:51:06,860] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 01:56:07,553] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:01:08,220] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:06:08,900] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:11:09,680] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:16:10,363] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:21:10,939] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:26:11,522] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:31:12,149] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:36:12,718] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:41:13,297] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:46:13,855] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:51:15,014] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 02:56:15,733] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:01:16,303] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:06:16,970] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:11:17,672] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:16:18,340] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:21:18,966] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:26:19,598] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:31:20,295] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:36:20,992] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:41:21,614] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:46:22,221] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:51:22,822] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 03:56:23,515] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:01:24,598] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:06:25,344] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:11:26,216] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:16:27,008] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:21:27,679] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:26:28,323] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:31:29,023] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:36:29,684] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:41:30,415] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:46:31,238] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:51:31,956] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 04:56:32,592] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:01:33,129] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:06:33,758] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:11:34,491] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:16:35,253] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:21:36,107] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:26:36,815] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:31:37,437] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:36:38,119] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:41:38,665] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:46:39,340] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:51:39,986] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 05:56:40,622] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:01:41,272] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:06:42,016] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:11:42,711] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:16:43,363] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:21:44,044] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:26:44,639] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:31:45,335] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:36:45,946] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:41:46,658] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:46:47,293] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:51:47,937] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 06:56:48,597] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:01:49,192] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:06:49,889] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:11:50,600] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:16:51,264] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:21:51,897] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:26:52,587] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:31:53,267] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:36:53,989] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:41:54,568] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:46:55,164] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:47:55,526] INFO     [app.infrastructure.email.imap_client:idle_listen:164] [IMAPClient] IDLE push received: [(3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (3, b'EXPUNGE'), (2, b'EXISTS')]
+[2026-04-24 07:47:55,529] INFO     [app.infrastructure.email.imap_client:idle_listen:171] [IMAPClient] New email detected, triggering callback
+[2026-04-24 07:47:55,862] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:48:26,132] INFO     [app.infrastructure.email.imap_client:idle_listen:164] [IMAPClient] IDLE push received: [(3, b'EXISTS')]
+[2026-04-24 07:48:26,132] INFO     [app.infrastructure.email.imap_client:idle_listen:171] [IMAPClient] New email detected, triggering callback
+[2026-04-24 07:48:26,461] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 1 UNSEEN emails in INBOX
+[2026-04-24 07:48:27,193] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:123] [IMAPClient] Successfully fetched 1 emails from INBOX
+[2026-04-24 07:48:27,193] INFO     [app.infrastructure.email.email_listener:_process_emails:49] [EmailListener] Found 1 new emails to process
+[2026-04-24 07:48:27,194] INFO     [app.infrastructure.email.email_listener:_process_emails:53] [EmailListener] Email 1/1 - From: Quang Dung <quangdung.hk0609@gmail.com>, Subject: =?UTF-8?B?SMOzYSDEkcahbg==?=
+[2026-04-24 07:48:27,204] INFO     [app.infrastructure.email.email_listener:_process_emails:119] [EmailListener] Processing attachment: C26TTS_479_0200168458.pdf (314700 bytes)
+[2026-04-24 07:48:27,206] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 810dfbb8-d352-4a62-a488-3071478dd2d8: C26TTS_479_0200168458.pdf (PDF)
+[2026-04-24 07:48:27,212] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 810dfbb8-d352-4a62-a488-3071478dd2d8 status set to PROCESSING
+[2026-04-24 07:48:27,216] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/810dfbb8-d352-4a62-a488-3071478dd2d8.pdf
+[2026-04-24 07:48:28,095] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 07:48:40,656] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[2026-04-24 07:48:40,659] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 07:48:40,659] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (1 items)
+[2026-04-24 07:48:40,660] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 810dfbb8-d352-4a62-a488-3071478dd2d8 status set to AWAITING_REVIEW
+[2026-04-24 07:48:40,661] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:14] [Notification] New invoice ready for review: C26TTS_479_0200168458.pdf (job 810dfbb8-d352-4a62-a488-3071478dd2d8)
+[2026-04-24 07:48:40,661] INFO     [app.application.use_cases.process_invoice:execute:121] [ProcessInvoice] Notification sent for job 810dfbb8-d352-4a62-a488-3071478dd2d8
+[2026-04-24 07:48:40,661] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Successfully completed job 810dfbb8-d352-4a62-a488-3071478dd2d8
+[2026-04-24 07:48:40,661] INFO     [app.infrastructure.email.email_listener:_process_emails:127] [EmailListener] Successfully created job 810dfbb8-d352-4a62-a488-3071478dd2d8 from C26TTS_479_0200168458.pdf (Status: InvoiceStatus.AWAITING_REVIEW)
+[2026-04-24 07:48:40,661] INFO     [app.infrastructure.email.email_listener:_process_emails:134] [EmailListener] Processed 1 attachments from 1 emails
+[2026-04-24 07:49:30,294] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:64] [ReviewAndConfirm] Starting background finalization for job 810dfbb8-d352-4a62-a488-3071478dd2d8
+[2026-04-24 07:49:30,334] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:113] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 07:49:30,785] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:194] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 07:49:31,148] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:169] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 07:49:31,149] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:129] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 07:49:31,152] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:141] [ReviewAndConfirm] Job 810dfbb8-d352-4a62-a488-3071478dd2d8 successfully confirmed and finalized
+[2026-04-24 07:49:44,782] INFO     [app.application.use_cases.get_exports:get_preview:47] [GetExports] Getting preview for 2026/03
+[2026-04-24 07:49:44,785] INFO     [app.application.use_cases.get_exports:get_preview:55] [GetExports] Found 1 items and 1 line items for 2026/03
+[2026-04-24 07:49:52,755] INFO     [app.application.use_cases.get_exports:get_download:90] [GetExports] Getting download for aggregate 2026/03
+[2026-04-24 07:49:52,770] INFO     [app.application.use_cases.get_exports:_fetch:117] [GetExports] Successfully fetched from storage (101372 bytes)
+[2026-04-24 07:49:52,770] INFO     [app.application.use_cases.get_exports:get_download:99] [GetExports] Returning Bang_ke_thue_2026_03.xlsx (101372 bytes)
+[2026-04-24 07:52:07,289] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 07:52:07,291] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 07:52:07,292] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 07:52:07,295] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 07:52:07,296] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 07:52:07,297] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 07:52:07,297] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 07:52:07,297] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 07:52:07,298] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 07:52:07,298] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 07:52:07,306] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 07:52:07,306] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 07:52:07,803] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 07:52:07,803] INFO     [root:setup_logging:85] Application started at 2026-04-24T07:52:07.803820
+[2026-04-24 07:52:07,803] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 07:52:07,804] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 07:52:07,811] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 07:52:07,813] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 07:52:07,816] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 07:52:07,896] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 07:52:07,897] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 07:52:07,898] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 07:52:08,972] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 07:52:08,978] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 07:52:08,978] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 07:52:08,978] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 07:52:10,591] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 07:52:10,591] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 07:52:10,591] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 07:52:11,202] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 07:52:12,127] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:52:15,666] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 07:52:15,666] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 07:52:15,667] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 07:52:15,668] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 07:52:15,669] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 07:52:15,670] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 07:52:15,670] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 07:52:15,670] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 07:52:15,670] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 07:52:15,670] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 07:52:15,672] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 07:52:15,672] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 07:52:16,263] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 07:52:16,264] INFO     [root:setup_logging:85] Application started at 2026-04-24T07:52:16.264148
+[2026-04-24 07:52:16,264] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 07:52:16,264] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 07:52:16,272] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 07:52:16,274] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 07:52:16,277] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 07:52:16,348] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 07:52:16,349] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 07:52:16,349] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 07:52:17,101] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 07:52:17,107] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 07:52:17,107] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 07:52:17,107] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 07:52:17,678] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 07:52:17,678] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 07:52:17,678] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 07:52:17,838] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 07:52:18,224] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:52:27,008] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 07:52:27,009] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 07:52:27,010] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 07:52:27,015] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 07:52:27,016] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 07:52:27,016] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 07:52:27,016] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 07:52:27,016] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 07:52:27,017] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 07:52:27,017] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 07:52:27,021] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 07:52:27,021] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 07:52:28,941] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 07:52:28,941] INFO     [root:setup_logging:85] Application started at 2026-04-24T07:52:28.941716
+[2026-04-24 07:52:28,941] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 07:52:28,942] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 07:52:28,951] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 07:52:28,953] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 07:52:28,956] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 07:52:29,037] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 07:52:29,038] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 07:52:29,038] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 07:52:29,855] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 07:52:29,863] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 07:52:29,863] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 07:52:29,863] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 07:52:30,331] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 07:52:30,331] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 07:52:30,331] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 07:52:30,498] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 07:52:31,059] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 07:57:04,251] INFO     [app.application.use_cases.get_exports:get_preview:47] [GetExports] Getting preview for 2026/03
+[2026-04-24 07:57:04,255] INFO     [app.application.use_cases.get_exports:get_preview:55] [GetExports] Found 1 items and 1 line items for 2026/03
+[2026-04-24 07:57:31,767] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:02:32,448] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:07:33,136] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:12:33,792] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:17:34,655] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:22:35,297] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:27:35,997] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:32:36,640] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:37:37,353] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:42:38,002] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:47:38,713] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:52:16,504] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:52:16,506] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:52:16,507] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:52:16,512] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:52:16,513] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:52:16,513] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:52:16,513] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:52:16,514] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:52:16,514] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:52:16,514] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:52:16,520] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:52:16,520] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:52:17,382] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:52:17,382] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:52:17.382781
+[2026-04-24 08:52:17,382] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:52:17,383] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:52:17,396] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:52:17,398] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:52:17,402] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:52:17,512] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:52:17,514] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:52:17,515] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:52:18,416] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:52:18,425] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:52:18,425] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:52:18,425] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:52:18,914] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:52:18,915] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:52:18,915] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:52:19,090] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:52:19,581] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:54:22,531] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:54:22,533] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:54:22,534] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:54:22,538] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:54:22,540] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:54:22,540] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:54:22,540] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:54:22,541] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:54:22,542] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:54:22,542] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:54:22,546] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:54:22,546] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:54:23,797] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:54:23,797] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:54:23.797674
+[2026-04-24 08:54:23,798] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:54:23,798] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:54:23,837] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:54:23,841] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:54:24,001] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:54:24,221] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:54:24,228] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:54:24,229] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:54:25,811] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:54:25,831] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:54:25,835] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:54:25,837] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:54:26,447] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:54:26,447] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:54:26,447] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:54:26,649] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:54:27,220] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:55:28,232] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:55:28,233] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:55:28,234] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:55:28,239] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:55:28,241] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:55:28,241] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:55:28,242] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:55:28,242] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:55:28,242] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:55:28,243] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:55:28,246] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:55:28,246] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:55:29,489] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:55:29,489] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:55:29.489741
+[2026-04-24 08:55:29,489] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:55:29,490] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:55:29,504] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:55:29,507] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:55:29,514] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:55:29,625] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:55:29,627] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:55:29,628] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:55:30,844] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:55:30,864] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:55:30,864] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:55:30,864] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:55:31,594] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:55:31,595] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:55:31,595] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:55:32,026] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:55:32,513] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:57:42,676] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:57:42,678] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:57:42,681] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:57:42,692] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:57:42,693] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:57:42,694] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:57:42,694] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:57:42,694] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:57:42,696] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:57:42,697] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:57:42,703] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:57:42,703] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:57:43,629] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:57:43,630] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:57:43.630079
+[2026-04-24 08:57:43,630] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:57:43,630] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:57:43,643] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:57:43,646] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:57:43,664] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:57:43,806] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:57:43,807] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:57:43,808] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:57:44,896] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:57:44,910] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:57:44,911] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:57:44,911] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:57:45,808] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:57:45,809] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:57:45,809] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:57:45,966] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:57:46,642] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:57:51,622] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:57:51,623] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:57:51,624] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:57:51,628] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:57:51,629] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:57:51,630] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:57:51,630] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:57:51,631] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:57:51,631] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:57:51,631] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:57:51,635] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:57:51,635] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:57:53,084] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:57:53,085] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:57:53.085085
+[2026-04-24 08:57:53,085] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:57:53,085] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:57:53,095] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:57:53,098] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:57:53,104] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:57:53,316] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:57:53,320] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:57:53,322] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:57:54,793] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:57:54,811] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:57:54,812] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:57:54,812] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:57:55,562] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:57:55,562] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:57:55,562] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:57:55,830] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:57:56,436] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:58:03,815] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:58:03,816] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:58:03,817] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:58:03,820] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:58:03,821] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:58:03,822] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:58:03,822] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:58:03,822] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:58:03,823] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:58:03,823] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:58:03,827] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:58:03,827] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:58:04,576] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:58:04,576] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:58:04.576688
+[2026-04-24 08:58:04,576] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:58:04,577] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:58:04,590] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:58:04,592] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:58:04,596] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:58:04,703] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:58:04,708] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:58:04,708] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:58:05,647] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:58:05,656] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:58:05,656] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:58:05,656] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:58:06,107] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:58:06,108] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:58:06,108] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:58:06,269] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:58:06,721] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:59:31,168] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:59:31,169] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:59:31,170] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:59:31,175] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:59:31,177] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:59:31,177] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:59:31,177] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:59:31,177] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:59:31,178] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:59:31,178] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:59:31,181] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:59:31,181] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:59:31,896] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:59:31,896] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:59:31.896705
+[2026-04-24 08:59:31,896] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:59:31,897] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:59:31,906] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:59:31,908] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:59:31,912] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:59:32,009] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:59:32,010] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:59:32,011] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:59:32,798] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:59:32,808] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:59:32,808] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:59:32,808] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:59:33,273] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:59:33,273] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:59:33,273] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:59:33,424] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:59:33,856] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:59:36,843] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:59:36,844] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:59:36,844] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:59:36,847] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:59:36,849] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:59:36,849] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:59:36,850] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:59:36,850] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:59:36,851] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:59:36,851] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:59:36,853] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:59:36,853] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:59:37,493] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:59:37,493] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:59:37.493809
+[2026-04-24 08:59:37,494] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:59:37,494] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:59:37,508] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:59:37,511] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:59:37,518] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:59:37,585] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:59:37,586] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:59:37,586] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:59:38,405] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:59:38,411] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:59:38,411] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:59:38,411] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:59:38,918] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:59:38,918] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:59:38,918] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:59:39,080] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:59:39,507] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:59:42,749] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:59:42,749] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:59:42,749] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:59:42,751] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:59:42,752] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:59:42,752] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:59:42,752] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:59:42,753] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:59:42,753] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:59:42,753] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:59:42,755] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:59:42,755] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:59:43,275] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:59:43,275] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:59:43.275750
+[2026-04-24 08:59:43,276] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:59:43,276] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:59:43,285] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:59:43,286] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:59:43,290] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:59:43,352] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:59:43,353] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:59:43,353] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 08:59:44,185] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 08:59:44,190] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 08:59:44,191] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 08:59:44,191] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 08:59:44,609] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 08:59:44,610] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 08:59:44,610] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 08:59:44,760] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 08:59:45,175] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 08:59:56,619] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 08:59:56,621] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 08:59:56,622] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 08:59:56,628] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 08:59:56,630] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 08:59:56,631] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 08:59:56,632] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 08:59:56,632] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 08:59:56,636] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 08:59:56,636] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 08:59:56,650] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 08:59:56,651] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 08:59:58,056] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 08:59:58,057] INFO     [root:setup_logging:85] Application started at 2026-04-24T08:59:58.057709
+[2026-04-24 08:59:58,058] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 08:59:58,059] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 08:59:58,093] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 08:59:58,098] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 08:59:58,109] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 08:59:58,289] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 08:59:58,291] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 08:59:58,291] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:00:00,707] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:00:00,736] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:00:00,737] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:00:00,738] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:00:01,255] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:00:01,256] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:00:01,256] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:00:01,388] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:00:01,782] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:00:13,644] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:00:13,648] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:00:13,649] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:00:13,656] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:00:13,658] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:00:13,658] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:00:13,658] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:00:13,659] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:00:13,660] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:00:13,660] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:00:13,670] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:00:13,670] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:00:14,753] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:00:14,754] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:00:14.754160
+[2026-04-24 09:00:14,754] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:00:14,754] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:00:14,768] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:00:14,772] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:00:14,778] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:00:14,886] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:00:14,888] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:00:14,889] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:00:15,906] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:00:15,915] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:00:15,916] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:00:15,916] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:00:16,677] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:00:16,678] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:00:16,678] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:00:16,886] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:00:17,644] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:01:34,680] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:01:34,682] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:01:34,683] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:01:34,688] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:01:34,689] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:01:34,689] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:01:34,690] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:01:34,690] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:01:34,691] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:01:34,691] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:01:34,693] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:01:34,694] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:01:35,381] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:01:35,382] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:01:35.382251
+[2026-04-24 09:01:35,382] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:01:35,382] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:01:35,392] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:01:35,394] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:01:35,397] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:01:35,479] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:01:35,481] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:01:35,481] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:01:36,274] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:01:36,286] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:01:36,287] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:01:36,287] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:01:36,817] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:01:36,817] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:01:36,817] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:01:36,981] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:01:37,475] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:01:39,847] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 11:01:39,847] INFO     [root:setup_logging:85] Application started at 2026-04-24T11:01:39.847571
+[2026-04-24 11:01:39,847] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 11:01:39,847] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 11:01:39,885] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-04-24 11:01:39,885] INFO     [app.application.use_cases.export_excel:execute:22] [ExportExcel] Successfully downloaded Bang_ke_thue_2026_03.xlsx (10 bytes)
+[2026-04-24 11:01:39,886] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-04-24 11:01:39,886] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-04-24 11:01:39,888] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 2458cf07-f47f-4e0c-af21-c6d00733af96: hd049.xml (XML)
+[2026-04-24 11:01:39,888] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 2458cf07-f47f-4e0c-af21-c6d00733af96 status set to PROCESSING
+[2026-04-24 11:01:39,889] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/2458cf07-f47f-4e0c-af21-c6d00733af96.xml
+[2026-04-24 11:01:39,889] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:39,889] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:39,890] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 2458cf07-f47f-4e0c-af21-c6d00733af96 status set to AWAITING_REVIEW
+[2026-04-24 11:01:39,891] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 2458cf07-f47f-4e0c-af21-c6d00733af96
+[2026-04-24 11:01:39,891] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 2458cf07-f47f-4e0c-af21-c6d00733af96
+[2026-04-24 11:01:39,892] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 73a593ad-911c-46f1-b58a-83257e8fd131: hd049.pdf (PDF)
+[2026-04-24 11:01:39,893] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 73a593ad-911c-46f1-b58a-83257e8fd131 status set to PROCESSING
+[2026-04-24 11:01:39,893] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/73a593ad-911c-46f1-b58a-83257e8fd131.pdf
+[2026-04-24 11:01:40,213] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 11:01:40,213] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,213] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (0 items)
+[2026-04-24 11:01:40,214] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 73a593ad-911c-46f1-b58a-83257e8fd131 status set to AWAITING_REVIEW
+[2026-04-24 11:01:40,215] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 73a593ad-911c-46f1-b58a-83257e8fd131
+[2026-04-24 11:01:40,215] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 73a593ad-911c-46f1-b58a-83257e8fd131
+[2026-04-24 11:01:40,219] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 7366ace4-c995-42da-9e7d-a5636664df59: hd049.xml (XML)
+[2026-04-24 11:01:40,220] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 7366ace4-c995-42da-9e7d-a5636664df59 status set to PROCESSING
+[2026-04-24 11:01:40,220] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/7366ace4-c995-42da-9e7d-a5636664df59.xml
+[2026-04-24 11:01:40,220] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,220] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,221] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 7366ace4-c995-42da-9e7d-a5636664df59 status set to AWAITING_REVIEW
+[2026-04-24 11:01:40,222] WARNING  [app.application.use_cases.process_invoice:execute:126] [ProcessInvoice] Notification failed for job 7366ace4-c995-42da-9e7d-a5636664df59: Telegram timeout
+[2026-04-24 11:01:40,222] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 7366ace4-c995-42da-9e7d-a5636664df59
+[2026-04-24 11:01:40,225] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job d6f3d3a4-1850-46cd-868d-eb718d1a35e1: hd049.xml (XML)
+[2026-04-24 11:01:40,227] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job d6f3d3a4-1850-46cd-868d-eb718d1a35e1 status set to PROCESSING
+[2026-04-24 11:01:40,228] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/d6f3d3a4-1850-46cd-868d-eb718d1a35e1.xml
+[2026-04-24 11:01:40,228] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,230] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job d6f3d3a4-1850-46cd-868d-eb718d1a35e1 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-04-24 11:01:40,233] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 0cf6f555-1fb3-40d9-b83b-4d96e293777d: hd049_copy.xml (XML)
+[2026-04-24 11:01:40,234] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 0cf6f555-1fb3-40d9-b83b-4d96e293777d status set to PROCESSING
+[2026-04-24 11:01:40,234] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/0cf6f555-1fb3-40d9-b83b-4d96e293777d.xml
+[2026-04-24 11:01:40,234] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,234] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,235] WARNING  [app.application.use_cases.process_invoice:execute:98] [ProcessInvoice] Found duplicate! Job 0cf6f555-1fb3-40d9-b83b-4d96e293777d is duplicate of ba25bc55-5dd6-4807-a906-39c1c42609c7
+[2026-04-24 11:01:40,235] INFO     [app.application.use_cases.process_invoice:execute:103] [ProcessInvoice] Job 0cf6f555-1fb3-40d9-b83b-4d96e293777d marked as DUPLICATE
+[2026-04-24 11:01:40,237] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 59377bdf-c113-4c22-91af-008c49d9d9b3: hd049_copy.xml (XML)
+[2026-04-24 11:01:40,238] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 59377bdf-c113-4c22-91af-008c49d9d9b3 status set to PROCESSING
+[2026-04-24 11:01:40,239] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/59377bdf-c113-4c22-91af-008c49d9d9b3.xml
+[2026-04-24 11:01:40,239] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,240] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,240] WARNING  [app.application.use_cases.process_invoice:execute:98] [ProcessInvoice] Found duplicate! Job 59377bdf-c113-4c22-91af-008c49d9d9b3 is duplicate of 97b6c148-3af4-49ea-971c-6da7d9f44e1a
+[2026-04-24 11:01:40,240] INFO     [app.application.use_cases.process_invoice:execute:103] [ProcessInvoice] Job 59377bdf-c113-4c22-91af-008c49d9d9b3 marked as DUPLICATE
+[2026-04-24 11:01:40,243] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 4fa18634-052c-4797-a69f-d439d2925512: hd049.xml (XML)
+[2026-04-24 11:01:40,243] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 4fa18634-052c-4797-a69f-d439d2925512 status set to PROCESSING
+[2026-04-24 11:01:40,243] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/4fa18634-052c-4797-a69f-d439d2925512.xml
+[2026-04-24 11:01:40,243] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,243] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,244] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 4fa18634-052c-4797-a69f-d439d2925512 status set to AWAITING_REVIEW
+[2026-04-24 11:01:40,244] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 4fa18634-052c-4797-a69f-d439d2925512
+[2026-04-24 11:01:40,244] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 4fa18634-052c-4797-a69f-d439d2925512
+[2026-04-24 11:01:40,246] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job be6cdab4-8f1e-4f44-80f6-60b533e90b51: hd049.xml (XML)
+[2026-04-24 11:01:40,247] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job be6cdab4-8f1e-4f44-80f6-60b533e90b51 status set to PROCESSING
+[2026-04-24 11:01:40,248] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/be6cdab4-8f1e-4f44-80f6-60b533e90b51.xml
+[2026-04-24 11:01:40,248] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:01:40,249] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:01:40,249] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Duplicate check failed for job be6cdab4-8f1e-4f44-80f6-60b533e90b51: DB error
+[2026-04-24 11:01:40,250] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job be6cdab4-8f1e-4f44-80f6-60b533e90b51 status set to AWAITING_REVIEW
+[2026-04-24 11:01:40,250] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job be6cdab4-8f1e-4f44-80f6-60b533e90b51
+[2026-04-24 11:01:40,250] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job be6cdab4-8f1e-4f44-80f6-60b533e90b51
+[2026-04-24 11:01:40,307] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job ed0e352b-0424-4039-9ed9-2433f07c145e
+[2026-04-24 11:01:40,307] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:01:40,308] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:01:40,308] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:01:40,308] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:01:40,309] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job ed0e352b-0424-4039-9ed9-2433f07c145e successfully confirmed and finalized
+[2026-04-24 11:01:40,310] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job 3742574f-4fce-49eb-abf8-386ec8d0abd5
+[2026-04-24 11:01:40,310] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job 3742574f-4fce-49eb-abf8-386ec8d0abd5 marked as REJECTED
+[2026-04-24 11:01:40,312] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 4d5f72f9-8fc3-477a-b7c2-65d54f58ecdb
+[2026-04-24 11:01:40,312] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:01:40,312] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:01:40,313] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:01:40,313] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:01:40,313] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 4d5f72f9-8fc3-477a-b7c2-65d54f58ecdb successfully confirmed and finalized
+[2026-04-24 11:01:40,317] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job bed4bc38-0ec3-467b-aa5e-362d8cab42e7
+[2026-04-24 11:01:40,317] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job bed4bc38-0ec3-467b-aa5e-362d8cab42e7 marked as REJECTED
+[2026-04-24 11:01:40,321] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job f16ca8a2-aaf0-437f-b330-ef0df4986566
+[2026-04-24 11:01:40,321] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:01:40,322] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:01:40,322] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:01:40,322] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:01:40,323] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job f16ca8a2-aaf0-437f-b330-ef0df4986566 successfully confirmed and finalized
+[2026-04-24 11:01:40,323] WARNING  [app.application.use_cases.review_and_confirm:finalize_confirm:153] [ReviewAndConfirm] Notification failed for job f16ca8a2-aaf0-437f-b330-ef0df4986566: Telegram down
+[2026-04-24 11:01:40,336] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:8] [Notification] Hóa đơn mới cần xem xét: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:01:40,337] INFO     [app.infrastructure.notifications.console_notifier:notify_confirmed:11] [Notification] Hóa đơn đã xác nhận: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:01:40,338] INFO     [app.infrastructure.notifications.console_notifier:notify_rejected:14] [Notification] Hóa đơn đã từ chối: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:01:44,402] WARNING  [app.infrastructure.notifications.telegram_notifier:_send:61] [TelegramNotifier] Gửi thông báo thất bại: Connection refused
+[2026-04-24 11:01:44,634] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/49283993-b172-4549-a6a7-46ee6e9f1a26/preview "HTTP/1.1 200 OK"
+[2026-04-24 11:01:44,638] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/e43e5269-f3b7-4334-9bd8-0d13471e6b4a/preview "HTTP/1.1 200 OK"
+[2026-04-24 11:01:44,640] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/nonexistent-id/preview "HTTP/1.1 404 Not Found"
+[2026-04-24 11:01:44,643] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/f67fe3e1-12db-4dae-91f3-b2b9ed805729/preview "HTTP/1.1 404 Not Found"
+[2026-04-24 11:01:44,646] INFO     [httpx:_send_single_request:1025] HTTP Request: POST http://testserver/jobs/baed294d-595f-4160-966c-0d95a61b70ba/confirm "HTTP/1.1 400 Bad Request"
+[2026-04-24 11:02:19,077] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 11:02:19,078] INFO     [root:setup_logging:85] Application started at 2026-04-24T11:02:19.078280
+[2026-04-24 11:02:19,078] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 11:02:19,078] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 11:02:19,152] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-04-24 11:02:19,153] INFO     [app.application.use_cases.export_excel:execute:22] [ExportExcel] Successfully downloaded Bang_ke_thue_2026_03.xlsx (10 bytes)
+[2026-04-24 11:02:19,156] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-04-24 11:02:19,158] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-04-24 11:02:19,162] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c: hd049.xml (XML)
+[2026-04-24 11:02:19,163] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c status set to PROCESSING
+[2026-04-24 11:02:19,164] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c.xml
+[2026-04-24 11:02:19,164] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,164] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,165] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c status set to AWAITING_REVIEW
+[2026-04-24 11:02:19,166] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c
+[2026-04-24 11:02:19,166] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job db00eb91-a5e4-43f9-8dd1-fb61c6b7c32c
+[2026-04-24 11:02:19,169] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job d5aa99ea-fb27-47ee-93af-0167cd3dfa34: hd049.pdf (PDF)
+[2026-04-24 11:02:19,170] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job d5aa99ea-fb27-47ee-93af-0167cd3dfa34 status set to PROCESSING
+[2026-04-24 11:02:19,171] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/d5aa99ea-fb27-47ee-93af-0167cd3dfa34.pdf
+[2026-04-24 11:02:19,560] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 11:02:19,560] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,560] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (0 items)
+[2026-04-24 11:02:19,561] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job d5aa99ea-fb27-47ee-93af-0167cd3dfa34 status set to AWAITING_REVIEW
+[2026-04-24 11:02:19,562] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job d5aa99ea-fb27-47ee-93af-0167cd3dfa34
+[2026-04-24 11:02:19,562] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job d5aa99ea-fb27-47ee-93af-0167cd3dfa34
+[2026-04-24 11:02:19,566] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job ed69c040-bb41-44b9-8c34-40b2a9bf715b: hd049.xml (XML)
+[2026-04-24 11:02:19,567] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job ed69c040-bb41-44b9-8c34-40b2a9bf715b status set to PROCESSING
+[2026-04-24 11:02:19,568] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/ed69c040-bb41-44b9-8c34-40b2a9bf715b.xml
+[2026-04-24 11:02:19,569] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,569] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,570] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job ed69c040-bb41-44b9-8c34-40b2a9bf715b status set to AWAITING_REVIEW
+[2026-04-24 11:02:19,570] WARNING  [app.application.use_cases.process_invoice:execute:126] [ProcessInvoice] Notification failed for job ed69c040-bb41-44b9-8c34-40b2a9bf715b: Telegram timeout
+[2026-04-24 11:02:19,570] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job ed69c040-bb41-44b9-8c34-40b2a9bf715b
+[2026-04-24 11:02:19,573] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job b74f28bc-0a88-49aa-98a6-5bf4443dda28: hd049.xml (XML)
+[2026-04-24 11:02:19,576] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job b74f28bc-0a88-49aa-98a6-5bf4443dda28 status set to PROCESSING
+[2026-04-24 11:02:19,577] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/b74f28bc-0a88-49aa-98a6-5bf4443dda28.xml
+[2026-04-24 11:02:19,577] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,579] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job b74f28bc-0a88-49aa-98a6-5bf4443dda28 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-04-24 11:02:19,582] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job c17c48bd-3a5b-43d6-b411-82de13e73066: hd049_copy.xml (XML)
+[2026-04-24 11:02:19,584] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job c17c48bd-3a5b-43d6-b411-82de13e73066 status set to PROCESSING
+[2026-04-24 11:02:19,585] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/c17c48bd-3a5b-43d6-b411-82de13e73066.xml
+[2026-04-24 11:02:19,585] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,585] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,586] WARNING  [app.application.use_cases.process_invoice:execute:98] [ProcessInvoice] Found duplicate! Job c17c48bd-3a5b-43d6-b411-82de13e73066 is duplicate of 7148449a-1c52-4a38-afe0-fb50df749659
+[2026-04-24 11:02:19,586] INFO     [app.application.use_cases.process_invoice:execute:103] [ProcessInvoice] Job c17c48bd-3a5b-43d6-b411-82de13e73066 marked as DUPLICATE
+[2026-04-24 11:02:19,590] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job b05cd96d-0ba5-478a-ad11-6c59672162fc: hd049_copy.xml (XML)
+[2026-04-24 11:02:19,590] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job b05cd96d-0ba5-478a-ad11-6c59672162fc status set to PROCESSING
+[2026-04-24 11:02:19,591] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/b05cd96d-0ba5-478a-ad11-6c59672162fc.xml
+[2026-04-24 11:02:19,591] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,591] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,592] WARNING  [app.application.use_cases.process_invoice:execute:98] [ProcessInvoice] Found duplicate! Job b05cd96d-0ba5-478a-ad11-6c59672162fc is duplicate of 95628b08-8749-4cc2-bd93-75ed323057c4
+[2026-04-24 11:02:19,592] INFO     [app.application.use_cases.process_invoice:execute:103] [ProcessInvoice] Job b05cd96d-0ba5-478a-ad11-6c59672162fc marked as DUPLICATE
+[2026-04-24 11:02:19,595] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 16963abf-2b7f-4dad-a967-76d5906b673c: hd049.xml (XML)
+[2026-04-24 11:02:19,595] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 16963abf-2b7f-4dad-a967-76d5906b673c status set to PROCESSING
+[2026-04-24 11:02:19,596] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/16963abf-2b7f-4dad-a967-76d5906b673c.xml
+[2026-04-24 11:02:19,596] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,596] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,596] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 16963abf-2b7f-4dad-a967-76d5906b673c status set to AWAITING_REVIEW
+[2026-04-24 11:02:19,597] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 16963abf-2b7f-4dad-a967-76d5906b673c
+[2026-04-24 11:02:19,597] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 16963abf-2b7f-4dad-a967-76d5906b673c
+[2026-04-24 11:02:19,602] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 7ec45b6c-75e5-4115-af28-1f0481d74c2a: hd049.xml (XML)
+[2026-04-24 11:02:19,602] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 7ec45b6c-75e5-4115-af28-1f0481d74c2a status set to PROCESSING
+[2026-04-24 11:02:19,603] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/7ec45b6c-75e5-4115-af28-1f0481d74c2a.xml
+[2026-04-24 11:02:19,603] INFO     [app.application.use_cases.process_invoice:execute:69] [ProcessInvoice] Extracted 0 line items from XML
+[2026-04-24 11:02:19,603] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 11:02:19,603] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Duplicate check failed for job 7ec45b6c-75e5-4115-af28-1f0481d74c2a: DB error
+[2026-04-24 11:02:19,603] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 7ec45b6c-75e5-4115-af28-1f0481d74c2a status set to AWAITING_REVIEW
+[2026-04-24 11:02:19,604] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 7ec45b6c-75e5-4115-af28-1f0481d74c2a
+[2026-04-24 11:02:19,604] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 7ec45b6c-75e5-4115-af28-1f0481d74c2a
+[2026-04-24 11:02:19,682] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 473cd1f2-9ce4-4458-a301-4b9ada29136f
+[2026-04-24 11:02:19,683] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:02:19,684] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:02:19,684] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:02:19,684] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:02:19,684] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 473cd1f2-9ce4-4458-a301-4b9ada29136f successfully confirmed and finalized
+[2026-04-24 11:02:19,686] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job 1df8a49f-b810-41f7-b478-e09036f524bd
+[2026-04-24 11:02:19,687] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job 1df8a49f-b810-41f7-b478-e09036f524bd marked as REJECTED
+[2026-04-24 11:02:19,692] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 94b26b4d-7a58-46d9-bf06-2af2c21ccca1
+[2026-04-24 11:02:19,693] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:02:19,693] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:02:19,694] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:02:19,694] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:02:19,694] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 94b26b4d-7a58-46d9-bf06-2af2c21ccca1 successfully confirmed and finalized
+[2026-04-24 11:02:19,697] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job 2fc550fd-841f-4667-bbbd-e01cf50a92d1
+[2026-04-24 11:02:19,697] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job 2fc550fd-841f-4667-bbbd-e01cf50a92d1 marked as REJECTED
+[2026-04-24 11:02:19,704] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 5036da34-ab2c-4a8e-853e-d27c40ff1002
+[2026-04-24 11:02:19,706] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 11:02:19,706] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 11:02:19,706] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 11:02:19,707] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 11:02:19,708] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 5036da34-ab2c-4a8e-853e-d27c40ff1002 successfully confirmed and finalized
+[2026-04-24 11:02:19,708] WARNING  [app.application.use_cases.review_and_confirm:finalize_confirm:153] [ReviewAndConfirm] Notification failed for job 5036da34-ab2c-4a8e-853e-d27c40ff1002: Telegram down
+[2026-04-24 11:02:19,730] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:8] [Notification] Hóa đơn mới cần xem xét: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:02:19,731] INFO     [app.infrastructure.notifications.console_notifier:notify_confirmed:11] [Notification] Hóa đơn đã xác nhận: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:02:19,733] INFO     [app.infrastructure.notifications.console_notifier:notify_rejected:14] [Notification] Hóa đơn đã từ chối: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-04-24 11:02:26,107] WARNING  [app.infrastructure.notifications.telegram_notifier:_send:61] [TelegramNotifier] Gửi thông báo thất bại: Connection refused
+[2026-04-24 11:02:26,343] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/d09cfdac-0711-4422-aa0a-9ed7cd2e65df/preview "HTTP/1.1 200 OK"
+[2026-04-24 11:02:26,348] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/68f94c74-eaed-423d-a45f-8f5ae6cf2c0a/preview "HTTP/1.1 200 OK"
+[2026-04-24 11:02:26,354] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/nonexistent-id/preview "HTTP/1.1 404 Not Found"
+[2026-04-24 11:02:26,357] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/d69aef5f-0a77-4813-8141-92abac55c6c5/preview "HTTP/1.1 404 Not Found"
+[2026-04-24 11:02:26,371] INFO     [httpx:_send_single_request:1025] HTTP Request: POST http://testserver/jobs/f54fc668-036c-441c-ad29-e116142469a5/confirm "HTTP/1.1 400 Bad Request"
+[2026-04-24 09:03:47,193] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:03:47,193] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:03:47.193323
+[2026-04-24 09:03:47,193] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:03:47,194] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:03:47,211] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:03:47,214] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:03:47,222] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:03:47,334] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:03:47,339] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:03:47,339] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:03:48,483] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:03:48,500] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:03:48,500] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:03:48,501] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:03:49,184] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:03:49,185] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:03:49,185] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:03:49,454] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:03:49,984] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:05:23,108] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:05:23,109] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:05:23,110] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:05:23,136] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:05:23,138] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:05:23,138] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:05:23,138] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:05:23,139] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:05:23,139] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:05:23,139] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:05:23,144] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:05:23,144] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:05:23,905] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:05:23,905] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:05:23.905741
+[2026-04-24 09:05:23,905] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:05:23,906] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:05:23,921] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:05:23,923] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:05:23,927] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:05:24,060] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:05:24,063] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:05:24,063] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:05:24,963] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:05:24,973] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:05:24,973] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:05:24,973] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:05:25,075] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:05:25,076] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:05:25,076] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:05:25,076] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:05:25,076] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:05:25,076] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:05:25,076] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:05:25,076] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:05:25,077] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:05:25,078] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:05:25,614] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:05:25,615] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:05:25.615278
+[2026-04-24 09:05:25,615] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:05:25,615] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:05:25,624] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:05:25,626] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:05:25,629] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:05:25,756] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:05:25,757] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:05:25,757] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:05:26,723] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:05:26,732] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:05:26,733] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:05:26,733] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:05:27,194] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:05:27,195] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:05:27,195] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:05:27,348] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:05:27,759] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:05:34,268] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:05:34,269] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:05:34,270] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:05:34,271] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:05:34,272] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:05:34,273] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:05:34,273] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:05:34,273] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:05:34,274] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:05:34,274] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:05:34,276] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:05:34,276] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:05:34,826] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:05:34,826] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:05:34.826723
+[2026-04-24 09:05:34,826] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:05:34,827] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:05:34,837] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:05:34,839] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:05:34,841] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:05:34,926] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:05:34,928] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:05:34,928] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:05:35,730] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:05:35,738] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:05:35,738] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:05:35,738] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:05:36,284] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:05:36,285] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:05:36,285] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:05:36,436] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:05:36,939] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:05:39,565] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:05:39,566] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:05:39,567] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:05:39,572] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:05:39,573] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:05:39,573] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:05:39,573] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:05:39,574] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:05:39,574] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:05:39,574] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:05:39,577] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:05:39,577] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:05:40,208] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:05:40,208] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:05:40.208720
+[2026-04-24 09:05:40,208] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:05:40,209] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:05:40,224] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:05:40,227] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:05:40,231] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:05:40,308] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:05:40,310] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:05:40,310] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:05:41,122] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:05:41,128] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:05:41,128] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:05:41,128] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:05:41,674] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:05:41,674] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:05:41,675] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:05:41,841] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:05:42,326] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:06:57,868] INFO     [app.infrastructure.queue.async_task_queue:enqueue:22] Enqueued task for: download.pdf
+[2026-04-24 09:06:57,870] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:53] Worker-0 processing: download.pdf
+[2026-04-24 09:06:57,871] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb: download.pdf (PDF)
+[2026-04-24 09:06:57,877] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb status set to PROCESSING
+[2026-04-24 09:06:57,880] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/7e8a0570-2405-4922-b689-ae9c9e5cbbfb.pdf
+[2026-04-24 09:06:58,818] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 09:07:22,494] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[2026-04-24 09:07:22,503] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 09:07:22,504] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (3 items)
+[2026-04-24 09:07:22,509] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb status set to AWAITING_REVIEW
+[2026-04-24 09:07:22,509] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:9] [Notification] Hóa đơn mới cần xem xét: download.pdf (NCC: CÔNG TY CỔ PHẦN ẮC QUY TIA SÁNG, Số: 459, job: 7e8a0570-2405-4922-b689-ae9c9e5cbbfb)
+[2026-04-24 09:07:22,509] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb
+[2026-04-24 09:07:22,510] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb
+[2026-04-24 09:07:22,510] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:59] Worker-0 finished: download.pdf
+[2026-04-24 09:10:42,965] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:11:22,579] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:11:22,581] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:11:22,583] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:11:22,588] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:11:22,589] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:11:22,589] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:11:22,589] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:11:22,590] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:11:22,590] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:11:22,590] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:11:22,599] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:11:22,600] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:11:24,827] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:11:24,827] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:11:24.827694
+[2026-04-24 09:11:24,827] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:11:24,828] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:11:24,840] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:11:24,841] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:11:24,845] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:11:24,936] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:11:24,938] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:11:24,938] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:11:25,726] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:11:25,744] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:11:25,744] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:11:25,745] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:11:26,296] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:11:26,296] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:11:26,297] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:11:26,467] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:11:26,990] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:12:07,127] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb
+[2026-04-24 09:12:07,191] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 09:12:07,701] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 09:12:08,012] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 09:12:08,012] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 09:12:08,021] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 7e8a0570-2405-4922-b689-ae9c9e5cbbfb successfully confirmed and finalized
+[2026-04-24 09:13:28,232] INFO     [app.infrastructure.queue.async_task_queue:enqueue:22] Enqueued task for: 1C26TDN_00000552_0201712790.pdf
+[2026-04-24 09:13:28,236] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:53] Worker-0 processing: 1C26TDN_00000552_0201712790.pdf
+[2026-04-24 09:13:28,238] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 355b1812-68a4-46ce-b5c7-b59da831ea80: 1C26TDN_00000552_0201712790.pdf (PDF)
+[2026-04-24 09:13:28,247] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 355b1812-68a4-46ce-b5c7-b59da831ea80 status set to PROCESSING
+[2026-04-24 09:13:28,255] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/355b1812-68a4-46ce-b5c7-b59da831ea80.pdf
+[2026-04-24 09:13:33,914] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 09:13:48,107] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[2026-04-24 09:13:48,113] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 09:13:48,114] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (21 items)
+[2026-04-24 09:13:48,118] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 355b1812-68a4-46ce-b5c7-b59da831ea80 status set to AWAITING_REVIEW
+[2026-04-24 09:13:48,118] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:9] [Notification] Hóa đơn mới cần xem xét: 1C26TDN_00000552_0201712790.pdf (NCC: CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI DONARCO, Số: 00000552, job: 355b1812-68a4-46ce-b5c7-b59da831ea80)
+[2026-04-24 09:13:48,118] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 355b1812-68a4-46ce-b5c7-b59da831ea80
+[2026-04-24 09:13:48,118] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 355b1812-68a4-46ce-b5c7-b59da831ea80
+[2026-04-24 09:13:48,118] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:59] Worker-0 finished: 1C26TDN_00000552_0201712790.pdf
+[2026-04-24 09:15:04,841] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:15:04,842] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:15:04,843] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:15:04,846] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:15:04,848] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:15:04,848] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:15:04,848] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:15:04,848] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:15:04,849] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:15:04,849] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:15:04,855] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:15:04,855] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:15:08,464] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:15:08,464] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:15:08.464790
+[2026-04-24 09:15:08,465] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:15:08,465] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:15:08,475] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:15:08,478] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:15:08,482] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:15:08,605] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:15:08,608] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:15:08,608] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:15:09,488] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:15:09,544] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:15:09,544] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:15:09,545] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:15:10,050] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:15:10,050] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:15:10,050] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:15:10,209] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:15:10,674] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:16:40,190] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 355b1812-68a4-46ce-b5c7-b59da831ea80
+[2026-04-24 09:16:40,232] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 09:16:40,817] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 09:16:41,130] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 09:16:41,130] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 09:16:41,133] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 355b1812-68a4-46ce-b5c7-b59da831ea80 successfully confirmed and finalized
+[2026-04-24 09:18:05,035] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 09:18:05,037] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 09:18:05,037] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 09:18:05,043] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 09:18:05,045] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 09:18:05,046] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 09:18:05,046] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 09:18:05,046] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 09:18:05,047] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 09:18:05,048] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 09:18:05,055] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 09:18:05,055] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete
+[2026-04-24 09:18:21,836] INFO     [root:setup_logging:84] ================================================================================
+[2026-04-24 09:18:21,836] INFO     [root:setup_logging:85] Application started at 2026-04-24T09:18:21.836469
+[2026-04-24 09:18:21,836] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-04-24 09:18:21,836] INFO     [root:setup_logging:87] ================================================================================
+[2026-04-24 09:18:21,853] INFO     [app.main:lifespan:32] [App Startup] Initializing application
+[2026-04-24 09:18:21,856] INFO     [app.main:lifespan:34] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-04-24 09:18:21,867] INFO     [app.main:lifespan:38] [App Startup] Database initialized
+[2026-04-24 09:18:22,063] INFO     [app.main:lifespan:51] [App Startup] RustFS storage initialized
+[2026-04-24 09:18:22,071] INFO     [app.infrastructure.queue.async_task_queue:start_workers:33] Started 2 background workers for invoice processing.
+[2026-04-24 09:18:22,072] INFO     [app.main:lifespan:87] [App Startup] Task queue workers started (concurrency: 2)
+[2026-04-24 09:18:23,240] INFO     [app.main:lifespan:103] [App Startup] Background finalize singletons ready
+[2026-04-24 09:18:23,282] INFO     [app.main:lifespan:117] [App Startup] Email listener started (polling every 300s)
+[2026-04-24 09:18:23,283] INFO     [app.main:lifespan:121] [App Startup] Application ready to receive requests
+[2026-04-24 09:18:23,283] INFO     [app.infrastructure.email.email_listener:start:147] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-04-24 09:18:23,883] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as chu0tc0n196@gmail.com
+[2026-04-24 09:18:23,884] INFO     [app.infrastructure.email.email_listener:start:152] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-04-24 09:18:23,884] INFO     [app.infrastructure.email.imap_client:idle_listen:138] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-04-24 09:18:24,057] INFO     [app.infrastructure.email.imap_client:idle_listen:142] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-04-24 09:18:24,555] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:19:17,538] INFO     [app.infrastructure.queue.async_task_queue:enqueue:22] Enqueued task for: 0201185752_1_K26TCK_0003546.pdf
+[2026-04-24 09:19:17,541] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:53] Worker-0 processing: 0201185752_1_K26TCK_0003546.pdf
+[2026-04-24 09:19:17,542] INFO     [app.application.use_cases.process_invoice:execute:35] [ProcessInvoice] Starting processing for job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f: 0201185752_1_K26TCK_0003546.pdf (PDF)
+[2026-04-24 09:19:17,553] INFO     [app.application.use_cases.process_invoice:execute:40] [ProcessInvoice] Job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f status set to PROCESSING
+[2026-04-24 09:19:17,556] INFO     [app.application.use_cases.process_invoice:execute:54] [ProcessInvoice] File saved: data/pending/6336fa26-5ab5-4027-b1b2-ecf7e50af26f.pdf
+[2026-04-24 09:19:18,889] INFO     [app.application.use_cases.process_invoice:execute:73] [ProcessInvoice] Extracted text from PDF
+[2026-04-24 09:19:23,833] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-04-24 09:19:23,839] WARNING  [app.infrastructure.llm.gemini_client:extract_invoice:56] Gemini 503 — attempt 1/3, waiting 30s.
+[2026-04-24 09:20:12,618] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-04-24 09:20:12,622] WARNING  [app.infrastructure.llm.gemini_client:extract_invoice:56] Gemini 503 — attempt 2/3, waiting 60s.
+[2026-04-24 09:21:43,220] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[2026-04-24 09:21:43,227] INFO     [app.application.use_cases.process_invoice:execute:77] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-04-24 09:21:43,227] INFO     [app.application.use_cases.process_invoice:execute:81] [ProcessInvoice] Using LLM-extracted line items (1 items)
+[2026-04-24 09:21:43,231] INFO     [app.application.use_cases.process_invoice:execute:115] [ProcessInvoice] Job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f status set to AWAITING_REVIEW
+[2026-04-24 09:21:43,382] INFO     [httpx:_send_single_request:1740] HTTP Request: POST https://api.telegram.org/bot8427565961:AAES_y4B3SW_hatu4dKHS_Y1BSj4T_8D5Hs/sendMessage "HTTP/1.1 200 OK"
+[2026-04-24 09:21:43,383] INFO     [app.application.use_cases.process_invoice:execute:124] [ProcessInvoice] Notification sent for job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f
+[2026-04-24 09:21:43,383] INFO     [app.application.use_cases.process_invoice:execute:128] [ProcessInvoice] Successfully completed job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f
+[2026-04-24 09:21:43,384] INFO     [app.infrastructure.queue.async_task_queue:_worker_loop:59] Worker-0 finished: 0201185752_1_K26TCK_0003546.pdf
+[2026-04-24 09:23:25,160] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:28:26,083] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:30:42,610] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f
+[2026-04-24 09:30:42,621] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-04-24 09:30:43,332] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-04-24 09:30:43,676] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-04-24 09:30:43,676] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-04-24 09:30:43,680] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 6336fa26-5ab5-4027-b1b2-ecf7e50af26f successfully confirmed and finalized
+[2026-04-24 09:33:26,969] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 09:38:27,991] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
