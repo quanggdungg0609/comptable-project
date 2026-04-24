@@ -107,6 +107,7 @@ def get_review_confirm_uc(
         repo=repo, storage=storage, excel=excel, excel_detail=excel_detail,
         bucket_invoices=settings.rustfs_bucket_invoices,
         bucket_exports=settings.rustfs_bucket_exports,
+        notification=get_notifier(),
     )
 
 def get_export_excel_uc(
