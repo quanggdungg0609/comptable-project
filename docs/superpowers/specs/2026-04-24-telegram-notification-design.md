@@ -17,9 +17,16 @@ Gửi thông báo Telegram tới nhóm chat kế toán khi có hóa đơn mới 
 
 ### 1. Mở rộng `INotificationPort`
 
-Thêm 2 method abstract vào `app/domain/ports/notification_port.py`:
+Cập nhật `app/domain/ports/notification_port.py`:
+
+- `notify_new_invoice` — cập nhật signature thêm `seller_name` và `invoice_number`
+- Thêm 2 method abstract mới:
 
 ```python
+@abstractmethod
+async def notify_new_invoice(self, job_id: str, filename: str, seller_name: str, invoice_number: str) -> None:
+    """Thông báo hóa đơn mới cần xem xét."""
+
 @abstractmethod
 async def notify_confirmed(self, job_id: str, filename: str, seller_name: str, invoice_number: str) -> None:
     """Thông báo hóa đơn đã được xác nhận."""
@@ -28,6 +35,8 @@ async def notify_confirmed(self, job_id: str, filename: str, seller_name: str, i
 async def notify_rejected(self, job_id: str, filename: str, seller_name: str, invoice_number: str) -> None:
     """Thông báo hóa đơn đã bị từ chối."""
 ```
+
+`seller_name` và `invoice_number` được truyền từ `items[0]` (đã có sau khi LLM xử lý xong). Nếu `items` rỗng → fallback `"Chưa xác định"`.
 
 ### 2. `TelegramNotifier` (file mới)
 
@@ -46,7 +55,7 @@ Thêm implement cho 2 method mới (`notify_confirmed`, `notify_rejected`) — l
 
 - Constructor nhận thêm `notification: Optional[INotificationPort] = None`
 - `finalize_confirm`: gọi `notify_confirmed` sau khi job status = `CONFIRMED`, truyền `seller_name` và `invoice_number` từ `updated_items[0]`
-- `reject`: gọi `notify_rejected` sau khi job status = `REJECTED`, lấy item data từ repo
+- `reject`: gọi `notify_rejected` sau khi job status = `REJECTED`. Vì `reject()` hiện chỉ nhận `job_id`, cần query repo để lấy `items` trước khi gọi notify. Nếu không có items → fallback `"Chưa xác định"`.
 
 ### 5. `dependencies.py`
 
@@ -123,9 +132,10 @@ APP_BASE_URL=http://localhost:8000
 
 | File | Thay đổi |
 |------|----------|
-| `app/domain/ports/notification_port.py` | Thêm `notify_confirmed`, `notify_rejected` |
+| `app/domain/ports/notification_port.py` | Cập nhật `notify_new_invoice`, thêm `notify_confirmed`, `notify_rejected` |
 | `app/infrastructure/notifications/telegram_notifier.py` | Tạo mới |
 | `app/infrastructure/notifications/console_notifier.py` | Thêm 2 method mới |
-| `app/application/use_cases/review_and_confirm.py` | Inject notifier, gọi notify |
+| `app/application/use_cases/process_invoice.py` | Truyền `seller_name`, `invoice_number` vào `notify_new_invoice` |
+| `app/application/use_cases/review_and_confirm.py` | Inject notifier, gọi notify confirmed/rejected |
 | `app/core/dependencies.py` | Inject notifier vào `get_review_confirm_uc` |
 | `.env` | Thêm Telegram config |
