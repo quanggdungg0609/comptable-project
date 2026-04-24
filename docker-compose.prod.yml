@@ -57,7 +57,7 @@ services:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - rustfs_data:/data
+      - ./data/storage:/data
     environment:
       RUSTFS_VOLUMES: /data
       RUSTFS_ROOT_USER: rustfsadmin
@@ -74,7 +74,6 @@ services:
 
 volumes:
   ollama_data:
-  rustfs_data:
 
 networks:
   invoice-network:

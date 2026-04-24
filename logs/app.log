@@ -3665,3 +3665,20 @@ Exception: LLM timeout
 [2026-04-24 11:17:45,471] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
 [2026-04-24 11:22:46,271] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
 [2026-04-24 11:27:47,115] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:32:47,983] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:37:48,772] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:42:49,776] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:47:50,581] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:52:51,462] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-04-24 11:54:45,189] INFO     [app.main:lifespan:124] [App Shutdown] Shutting down application
+[2026-04-24 11:54:45,190] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-04-24 11:54:45,190] INFO     [app.infrastructure.email.imap_client:idle_listen:194] [IMAPClient] IDLE cancelled
+[2026-04-24 11:54:45,194] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-04-24 11:54:45,196] INFO     [app.infrastructure.email.imap_client:close:224] [IMAPClient] IMAP connection closed
+[2026-04-24 11:54:45,196] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-04-24 11:54:45,197] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-04-24 11:54:45,197] INFO     [app.main:lifespan:136] [App Shutdown] Email listener stopped
+[2026-04-24 11:54:45,198] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-04-24 11:54:45,198] INFO     [app.main:lifespan:140] [App Shutdown] Task queue workers stopped
+[2026-04-24 11:54:45,204] INFO     [app.main:lifespan:144] [App Shutdown] Database closed
+[2026-04-24 11:54:45,205] INFO     [app.main:lifespan:145] [App Shutdown] Application shutdown complete

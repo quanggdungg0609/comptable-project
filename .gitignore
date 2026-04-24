@@ -5,7 +5,9 @@ plans/*
 data/*
 output_test/*
 __pycache__/*
-
+logs/app.log
+logs/error.log
+deploy_production/
 # Python
 __pycache__/
 *.py[cod]
