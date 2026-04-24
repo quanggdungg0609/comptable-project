@@ -11,13 +11,15 @@
     gap: 8px;
     font-size: 13px;
   }
+
   .item-card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     margin-bottom: 16px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
   }
+
   .item-card-header {
     background: linear-gradient(90deg, #0d6efd 0%, #0b5ed7 100%);
     color: #fff;
@@ -28,11 +30,19 @@
     align-items: center;
     gap: 8px;
   }
+
   .item-card-header.zero-row {
     background: linear-gradient(90deg, #6c757d 0%, #5a6268 100%);
   }
-  .item-card-body { padding: 14px; }
-  .field-group { margin-bottom: 10px; }
+
+  .item-card-body {
+    padding: 14px;
+  }
+
+  .field-group {
+    margin-bottom: 10px;
+  }
+
   .field-label {
     font-size: 11px;
     font-weight: 600;
@@ -41,6 +51,7 @@
     letter-spacing: .4px;
     margin-bottom: 3px;
   }
+
   .field-input {
     font-size: 13px;
     border: 1px solid #dee2e6;
@@ -50,12 +61,18 @@
     background: #fff;
     transition: border-color .15s;
   }
+
   .field-input:focus {
     outline: none;
     border-color: #0d6efd;
-    box-shadow: 0 0 0 3px rgba(13,110,253,.12);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, .12);
   }
-  .field-input.amount { font-family: monospace; font-size: 13px; }
+
+  .field-input.amount {
+    font-family: monospace;
+    font-size: 13px;
+  }
+
   .section-divider {
     font-size: 11px;
     font-weight: 700;
@@ -66,6 +83,7 @@
     padding-bottom: 4px;
     border-bottom: 1px solid #f0f0f0;
   }
+
   .review-header {
     padding: 12px 16px;
     border-bottom: 1px solid #dee2e6;
@@ -77,36 +95,52 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .action-bar {
     padding: 14px 16px 24px;
     display: flex;
     gap: 8px;
   }
+
   /* Loading overlay */
   .loading-overlay {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(255,255,255,.85);
+    background: rgba(255, 255, 255, .85);
     backdrop-filter: blur(4px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 14px;
   }
-  .loading-overlay.active { display: flex; }
+
+  .loading-overlay.active {
+    display: flex;
+  }
+
   .loading-spinner {
-    width: 36px; height: 36px;
+    width: 36px;
+    height: 36px;
     border: 3px solid #e0e0e0;
     border-top-color: #0d6efd;
     border-radius: 50%;
     animation: spin .7s linear infinite;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-text {
-    font-size: 14px; font-weight: 600; color: #495057;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
+
+  .loading-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+  }
+
   .badge-filetype {
     font-size: 10px;
     padding: 3px 7px;
@@ -115,6 +149,7 @@
     background: #198754;
     color: #fff;
   }
+
   .zero-warning {
     font-size: 11px;
     color: #dc3545;
@@ -123,10 +158,12 @@
     align-items: center;
     gap: 4px;
   }
+
   .line-items-section {
     margin-top: 20px;
     padding: 0 0 24px;
   }
+
   .line-items-header {
     font-size: 12px;
     font-weight: 700;
@@ -141,6 +178,7 @@
     align-items: center;
     gap: 8px;
   }
+
   .line-items-table {
     width: 100%;
     border-collapse: collapse;
@@ -150,6 +188,7 @@
     border-radius: 0 0 6px 6px;
     overflow: hidden;
   }
+
   .line-items-table th {
     background: #f8f9fa;
     padding: 6px 8px;
@@ -162,12 +201,17 @@
     border-bottom: 1px solid #dee2e6;
     white-space: nowrap;
   }
+
   .line-items-table td {
     padding: 4px 5px;
     border-bottom: 1px solid #f0f0f0;
     vertical-align: middle;
   }
-  .line-items-table tr:last-child td { border-bottom: none; }
+
+  .line-items-table tr:last-child td {
+    border-bottom: none;
+  }
+
   .li-input {
     width: 100%;
     font-size: 12px;
@@ -177,20 +221,27 @@
     background: #fff;
     min-width: 60px;
   }
+
   .li-input:focus {
     outline: none;
     border-color: #0d6efd;
-    box-shadow: 0 0 0 2px rgba(13,110,253,.1);
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, .1);
   }
-  .li-input.num { font-family: monospace; text-align: right; }
-  .li-name { 
-    min-width: 140px; 
+
+  .li-input.num {
+    font-family: monospace;
+    text-align: right;
+  }
+
+  .li-name {
+    min-width: 140px;
     min-height: 40px;
     resize: vertical;
     overflow-y: auto;
     display: block;
     line-height: 1.2;
   }
+
   .badge-count {
     font-size: 10px;
     background: #0d6efd;
@@ -199,80 +250,221 @@
     border-radius: 10px;
     font-weight: 700;
   }
+
+  @media (max-width: 767.98px) {
+    .layout-row {
+      display: flex;
+      flex-direction: column;
+      min-height: auto !important;
+    }
+
+    .preview-col {
+      position: static !important;
+      height: 45vh !important;
+    }
+
+    .form-col {
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    .preview-iframe,
+    #xml-viewer {
+      height: calc(45vh - 45px) !important;
+    }
+
+    .action-bar {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      z-index: 100;
+      border-top: 1px solid #dee2e6;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .preview-col,
+    .form-col {
+      height: 100vh;
+      overflow: auto;
+    }
+
+    .preview-col {
+      position: sticky;
+      top: 0;
+    }
+  }
 </style>
 
-<div class="row g-0" style="min-height: 100vh;">
+<div class="row g-0 layout-row">
 
   {# ── Cột trái: preview file ── #}
-  <div class="col-md-6 border-end" style="position: sticky; top: 0; height: 100vh; overflow: auto;">
+  <div class="col-md-6 border-end preview-col">
     <div class="preview-header">
       <span class="fw-semibold">{{ job.filename }}</span>
       <span class="badge-filetype">{{ job.file_type.value }}</span>
     </div>
 
     {% if job.file_type.value == "PDF" %}
-      <iframe src="/jobs/{{ job.id }}/preview"
-              style="width:100%; height:calc(100vh - 45px); border:none;">
-        <p class="p-3 text-muted">Trình duyệt không hỗ trợ xem PDF trực tiếp.</p>
-      </iframe>
+    <iframe src="/jobs/{{ job.id }}/preview" class="preview-iframe"
+      style="width:100%; height:calc(100vh - 45px); border:none;">
+      <p class="p-3 text-muted">Trình duyệt không hỗ trợ xem PDF trực tiếp.</p>
+    </iframe>
 
     {% else %}
-      <style>
-        #xml-viewer { height: calc(100vh - 45px); display: flex; flex-direction: column; background: #1e2127; }
-        #xml-toolbar {
-          display: flex; align-items: center; gap: 6px; padding: 6px 10px;
-          background: #21252b; border-bottom: 1px solid #3a3f4b; flex-shrink: 0;
-        }
-        #xml-search {
-          flex: 1; background: #2c313a; border: 1px solid #3a3f4b; border-radius: 4px;
-          color: #abb2bf; font-size: 12px; padding: 3px 8px; outline: none;
-        }
-        #xml-search:focus { border-color: #528bff; }
-        #xml-search::placeholder { color: #5c6370; }
-        .xml-btn {
-          background: #2c313a; border: 1px solid #3a3f4b; border-radius: 4px;
-          color: #9da5b4; font-size: 11px; padding: 3px 8px; cursor: pointer;
-          white-space: nowrap;
-        }
-        .xml-btn:hover { background: #3a3f4b; color: #abb2bf; }
-        #xml-tree-wrap { overflow: auto; flex: 1; padding: 10px 6px; }
-        .xml-node { position: relative; }
-        .xml-line {
-          display: flex; align-items: baseline; white-space: nowrap;
-          font-family: 'JetBrains Mono','Fira Code',Consolas,monospace;
-          font-size: 13px; line-height: 1.9; padding: 0 4px; border-radius: 3px;
-        }
-        .xml-line:hover { background: rgba(255,255,255,.04); }
-        .xml-toggle {
-          width: 16px; flex-shrink: 0; color: #5c6370; cursor: pointer;
-          font-size: 10px; user-select: none; text-align: center;
-        }
-        .xml-toggle:hover { color: #abb2bf; }
-        .xml-spacer { width: 16px; flex-shrink: 0; }
-        .xml-tag { color: #e06c75; }
-        .xml-key { color: #61afef; font-weight: 700; }
-        .xml-text { color: #98c379; margin: 0 1px; white-space: pre-wrap; word-break: break-all; }
-        .xml-hint { color: #5c6370; font-size: 11px; font-style: italic; margin-left: 4px; }
-        .xml-key-line { background: rgba(97,175,239,.06); border-left: 2px solid #61afef; }
-        .xml-match { background: rgba(229,192,123,.3); border-radius: 2px; }
-      </style>
+    <style>
+      #xml-viewer {
+        height: calc(100vh - 45px);
+        display: flex;
+        flex-direction: column;
+        background: #1e2127;
+      }
+
+      #xml-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        background: #21252b;
+        border-bottom: 1px solid #3a3f4b;
+        flex-shrink: 0;
+      }
+
+      #xml-search {
+        flex: 1;
+        background: #2c313a;
+        border: 1px solid #3a3f4b;
+        border-radius: 4px;
+        color: #abb2bf;
+        font-size: 12px;
+        padding: 3px 8px;
+        outline: none;
+      }
+
+      #xml-search:focus {
+        border-color: #528bff;
+      }
+
+      #xml-search::placeholder {
+        color: #5c6370;
+      }
+
+      .xml-btn {
+        background: #2c313a;
+        border: 1px solid #3a3f4b;
+        border-radius: 4px;
+        color: #9da5b4;
+        font-size: 11px;
+        padding: 3px 8px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .xml-btn:hover {
+        background: #3a3f4b;
+        color: #abb2bf;
+      }
+
+      #xml-tree-wrap {
+        overflow: auto;
+        flex: 1;
+        padding: 10px 6px;
+      }
+
+      .xml-node {
+        position: relative;
+      }
+
+      .xml-line {
+        display: flex;
+        align-items: baseline;
+        white-space: nowrap;
+        font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.9;
+        padding: 0 4px;
+        border-radius: 3px;
+      }
+
+      .xml-line:hover {
+        background: rgba(255, 255, 255, .04);
+      }
+
+      .xml-toggle {
+        width: 16px;
+        flex-shrink: 0;
+        color: #5c6370;
+        cursor: pointer;
+        font-size: 10px;
+        user-select: none;
+        text-align: center;
+      }
+
+      .xml-toggle:hover {
+        color: #abb2bf;
+      }
+
+      .xml-spacer {
+        width: 16px;
+        flex-shrink: 0;
+      }
+
+      .xml-tag {
+        color: #e06c75;
+      }
+
+      .xml-key {
+        color: #61afef;
+        font-weight: 700;
+      }
+
+      .xml-text {
+        color: #98c379;
+        margin: 0 1px;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .xml-hint {
+        color: #5c6370;
+        font-size: 11px;
+        font-style: italic;
+        margin-left: 4px;
+      }
+
+      .xml-key-line {
+        background: rgba(97, 175, 239, .06);
+        border-left: 2px solid #61afef;
+      }
+
+      .xml-match {
+        background: rgba(229, 192, 123, .3);
+        border-radius: 2px;
+      }
+    </style>
 
 
-      <div id="xml-viewer" style="display:none;">
-        <div id="xml-toolbar">
-          <input id="xml-search" placeholder="🔍  Tìm tag hoặc giá trị...">
-          <button class="xml-btn" onclick="xmlExpandAll()">Mở rộng</button>
-          <button class="xml-btn" onclick="xmlCollapseAll()">Thu gọn</button>
-        </div>
-        <div id="xml-tree-wrap"><div id="xml-tree"></div></div>
+    <div id="xml-viewer" style="display:none;">
+      <div id="xml-toolbar">
+        <input id="xml-search" placeholder="🔍  Tìm tag hoặc giá trị...">
+        <button class="xml-btn" onclick="xmlExpandAll()">Mở rộng</button>
+        <button class="xml-btn" onclick="xmlCollapseAll()">Thu gọn</button>
       </div>
-      <div id="xml-error" style="display:none;" class="p-4 small" style="color:#e06c75;">⚠ Không thể tải file.</div>
+      <div id="xml-tree-wrap">
+        <div id="xml-tree"></div>
+      </div>
+    </div>
+    <div id="xml-error" style="display:none;" class="p-4 small" style="color:#e06c75;">⚠ Không thể tải file.</div>
 
-      <script>
+    <script>
       (function () {
-        var KEY_TAGS = {TTChung:1,NBan:1,NMua:1,DSHHDVu:1,HHDVu:1,
-          Ten:1,MST:1,KHHDon:1,KHMSo:1,SHDon:1,NLap:1,THHDVu:1,
-          TLCKhau:1,ThTien:1,TToan:1,DGia:1,SLuong:1,TGia:1};
+        var KEY_TAGS = {
+          TTChung: 1, NBan: 1, NMua: 1, DSHHDVu: 1, HHDVu: 1,
+          Ten: 1, MST: 1, KHHDon: 1, KHMSo: 1, SHDon: 1, NLap: 1, THHDVu: 1,
+          TLCKhau: 1, ThTien: 1, TToan: 1, DGia: 1, SLuong: 1, TGia: 1
+        };
         var AUTO_COLLAPSE_DEPTH = 2;
         var nodeCounter = 0;
         var allToggles = [];
@@ -295,10 +487,10 @@
 
           var tag = xmlNode.tagName;
           var isKey = !!KEY_TAGS[tag];
-          var elChildren = Array.from(xmlNode.childNodes).filter(function(n) {
+          var elChildren = Array.from(xmlNode.childNodes).filter(function (n) {
             return n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim());
           });
-          var hasElChildren = elChildren.some(function(n) { return n.nodeType === 1; });
+          var hasElChildren = elChildren.some(function (n) { return n.nodeType === 1; });
 
           var wrapper = makeEl('div', 'xml-node');
           var line = makeEl('div', 'xml-line' + (isKey ? ' xml-key-line' : ''));
@@ -322,7 +514,7 @@
             var toggle = makeEl('span', 'xml-toggle');
             toggle.textContent = shouldCollapse ? '▸' : '▾';
             toggle.dataset.id = id;
-            toggle.onclick = function() {
+            toggle.onclick = function () {
               var ch = document.getElementById(this.dataset.id);
               var hint = document.getElementById(this.dataset.id + 'h');
               var isHidden = ch.style.display === 'none';
@@ -336,7 +528,7 @@
             open.textContent = '<' + tag + '>';
             var hint = makeEl('span', 'xml-hint');
             hint.id = id + 'h';
-            hint.textContent = '… ' + elChildren.filter(function(n){return n.nodeType===1;}).length + ' mục …';
+            hint.textContent = '… ' + elChildren.filter(function (n) { return n.nodeType === 1; }).length + ' mục …';
             hint.style.display = shouldCollapse ? '' : 'none';
 
             line.appendChild(toggle); line.appendChild(open); line.appendChild(hint);
@@ -346,7 +538,7 @@
             childWrap.id = id;
             childWrap.style.display = shouldCollapse ? 'none' : '';
 
-            Array.from(xmlNode.childNodes).forEach(function(child) {
+            Array.from(xmlNode.childNodes).forEach(function (child) {
               var el = buildNode(child, depth + 1);
               if (el) childWrap.appendChild(el);
             });
@@ -362,7 +554,7 @@
         }
 
         function xmlExpandAll() {
-          allToggles.forEach(function(t) {
+          allToggles.forEach(function (t) {
             var ch = document.getElementById(t.dataset.id);
             var hint = document.getElementById(t.dataset.id + 'h');
             if (ch) ch.style.display = '';
@@ -371,7 +563,7 @@
           });
         }
         function xmlCollapseAll() {
-          allToggles.forEach(function(t) {
+          allToggles.forEach(function (t) {
             var ch = document.getElementById(t.dataset.id);
             var hint = document.getElementById(t.dataset.id + 'h');
             if (ch) ch.style.display = 'none';
@@ -382,18 +574,18 @@
         window.xmlExpandAll = xmlExpandAll;
         window.xmlCollapseAll = xmlCollapseAll;
 
-        document.getElementById('xml-search').addEventListener('input', function() {
+        document.getElementById('xml-search').addEventListener('input', function () {
           var q = this.value.trim().toLowerCase();
-          document.querySelectorAll('#xml-tree .xml-line').forEach(function(line) {
+          document.querySelectorAll('#xml-tree .xml-line').forEach(function (line) {
             line.style.display = '';
           });
           if (!q) {
-            document.querySelectorAll('#xml-tree .xml-match').forEach(function(el) {
+            document.querySelectorAll('#xml-tree .xml-match').forEach(function (el) {
               el.classList.remove('xml-match');
             });
             return;
           }
-          document.querySelectorAll('#xml-tree .xml-line').forEach(function(line) {
+          document.querySelectorAll('#xml-tree .xml-line').forEach(function (line) {
             var txt = line.textContent.toLowerCase();
             var matches = txt.includes(q);
             line.classList.toggle('xml-match', matches);
@@ -408,28 +600,28 @@
         });
 
         fetch('/jobs/{{ job.id }}/preview')
-          .then(function(r) { if (!r.ok) throw new Error(); return r.text(); })
-          .then(function(text) {
+          .then(function (r) { if (!r.ok) throw new Error(); return r.text(); })
+          .then(function (text) {
             var parser = new DOMParser();
             var doc = parser.parseFromString(text, 'application/xml');
             if (doc.querySelector('parsererror')) throw new Error();
             var tree = document.getElementById('xml-tree');
-            Array.from(doc.childNodes).forEach(function(child) {
+            Array.from(doc.childNodes).forEach(function (child) {
               var el = buildNode(child, 0);
               if (el) tree.appendChild(el);
             });
             document.getElementById('xml-viewer').style.display = 'flex';
           })
-          .catch(function() {
+          .catch(function () {
             document.getElementById('xml-error').style.display = 'block';
           });
       })();
-      </script>
+    </script>
     {% endif %}
   </div>
 
   {# ── Cột phải: form review ── #}
-  <div class="col-md-6" style="height: 100vh; overflow: auto; background: #f9fafb;">
+  <div class="col-md-6 form-col" style="background: #f9fafb;">
     <div class="review-header">
       <div>
         <div class="fw-semibold" style="font-size:14px;">{{ job.filename }}</div>
@@ -439,8 +631,10 @@
 
     {% if job.status.value == "DUPLICATE" %}
     <div class="alert alert-danger d-flex align-items-center gap-2 mb-3" role="alert">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0" viewBox="0 0 16 16">
-        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill flex-shrink-0" viewBox="0 0 16 16">
+        <path
+          d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
       </svg>
       <div>
         <strong>Hóa đơn trùng lặp!</strong> Hóa đơn này đã tồn tại trong hệ thống.
@@ -468,15 +662,18 @@
             <div class="row g-2">
               <div class="col-5 field-group">
                 <div class="field-label">Ký hiệu HĐ</div>
-                <input class="field-input" type="text" name="invoice_symbol_{{ item.id }}" value="{{ item.invoice_symbol }}">
+                <input class="field-input" type="text" name="invoice_symbol_{{ item.id }}"
+                  value="{{ item.invoice_symbol }}">
               </div>
               <div class="col-4 field-group">
                 <div class="field-label">Số HĐ</div>
-                <input class="field-input" type="text" name="invoice_number_{{ item.id }}" value="{{ item.invoice_number }}">
+                <input class="field-input" type="text" name="invoice_number_{{ item.id }}"
+                  value="{{ item.invoice_number }}">
               </div>
               <div class="col-3 field-group">
                 <div class="field-label">Ngày phát hành</div>
-                <input class="field-input" type="text" name="invoice_date_{{ item.id }}" value="{{ item.invoice_date.strftime('%d/%m/%Y') }}">
+                <input class="field-input" type="text" name="invoice_date_{{ item.id }}"
+                  value="{{ item.invoice_date.strftime('%d/%m/%Y') }}">
               </div>
             </div>
 
@@ -488,13 +685,15 @@
               </div>
               <div class="col-4 field-group">
                 <div class="field-label">Mã số thuế</div>
-                <input class="field-input" type="text" name="seller_tax_code_{{ item.id }}" value="{{ item.seller_tax_code }}">
+                <input class="field-input" type="text" name="seller_tax_code_{{ item.id }}"
+                  value="{{ item.seller_tax_code }}">
               </div>
             </div>
             <div class="row g-2">
               <div class="col-12 field-group">
                 <div class="field-label">Địa chỉ người bán</div>
-                <input class="field-input" type="text" name="seller_address_{{ item.id }}" value="{{ item.seller_address }}">
+                <input class="field-input" type="text" name="seller_address_{{ item.id }}"
+                  value="{{ item.seller_address }}">
               </div>
             </div>
 
@@ -506,15 +705,18 @@
             <div class="row g-2">
               <div class="col-5 field-group">
                 <div class="field-label">Doanh số chưa thuế (₫)</div>
-                <input class="field-input amount" type="text" name="price_before_tax_{{ item.id }}" value="{{ item.price_before_tax }}">
+                <input class="field-input amount" type="text" name="price_before_tax_{{ item.id }}"
+                  value="{{ item.price_before_tax }}">
               </div>
               <div class="col-2 field-group">
                 <div class="field-label">Thuế suất</div>
-                <input class="field-input amount tax-rate-field" type="text" name="tax_rate_{{ item.id }}" value="{{ (item.tax_rate * 100) | int }}">
+                <input class="field-input amount tax-rate-field" type="text" name="tax_rate_{{ item.id }}"
+                  value="{{ (item.tax_rate * 100) | int }}">
               </div>
               <div class="col-5 field-group">
                 <div class="field-label">Thuế GTGT (₫)</div>
-                <input class="field-input amount" type="text" name="price_after_tax_{{ item.id }}" value="{{ item.price_after_tax }}">
+                <input class="field-input amount" type="text" name="price_after_tax_{{ item.id }}"
+                  value="{{ item.price_after_tax }}">
               </div>
             </div>
 
@@ -549,35 +751,32 @@
                 <tr>
                   <td style="color:#aaa; font-size:11px;">{{ loop.index }}</td>
                   <td>
-                    <textarea class="li-input li-name" name="li_ten_hang_hoa_{{ li.id }}">{{ li.ten_hang_hoa }}</textarea>
+                    <textarea class="li-input li-name"
+                      name="li_ten_hang_hoa_{{ li.id }}">{{ li.ten_hang_hoa }}</textarea>
                   </td>
                   <td>
                     <input class="li-input" type="text" style="min-width:60px; text-align:center;"
-                           name="li_don_vi_tinh_{{ li.id }}" value="{{ li.don_vi_tinh }}">
+                      name="li_don_vi_tinh_{{ li.id }}" value="{{ li.don_vi_tinh }}">
                   </td>
                   <td>
-                    <input class="li-input num" type="text" style="min-width:55px;"
-                           name="li_so_luong_{{ li.id }}" value="{{ li.so_luong }}"
-                           data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
+                    <input class="li-input num" type="text" style="min-width:55px;" name="li_so_luong_{{ li.id }}"
+                      value="{{ li.so_luong }}" data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
                   </td>
                   <td>
-                    <input class="li-input num" type="text" style="min-width:80px;"
-                           name="li_don_gia_{{ li.id }}" value="{{ li.don_gia }}"
-                           data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
+                    <input class="li-input num" type="text" style="min-width:80px;" name="li_don_gia_{{ li.id }}"
+                      value="{{ li.don_gia }}" data-row="{{ li.id }}" oninput="recalc('{{ li.id }}')">
                   </td>
                   <td>
-                    <input class="li-input num" type="text" style="min-width:90px;"
-                           name="li_thanh_tien_{{ li.id }}" id="li_thanh_tien_{{ li.id }}"
-                           value="{{ li.thanh_tien }}" readonly style="background:#f8f9fa;">
+                    <input class="li-input num" type="text" style="min-width:90px;" name="li_thanh_tien_{{ li.id }}"
+                      id="li_thanh_tien_{{ li.id }}" value="{{ li.thanh_tien }}" readonly style="background:#f8f9fa;">
                   </td>
                   <td>
                     <input class="li-input num tax-rate-field" type="text" style="min-width:45px;"
-                           name="li_tax_rate_{{ li.id }}" value="{{ (li.tax_rate * 100) | int }}">
+                      name="li_tax_rate_{{ li.id }}" value="{{ (li.tax_rate * 100) | int }}">
                   </td>
                   <td>
-                    <input class="li-input num" type="text" style="min-width:85px;"
-                           name="li_tax_amount_{{ li.id }}" id="li_tax_amount_{{ li.id }}"
-                           value="{{ li.tax_amount }}">
+                    <input class="li-input num" type="text" style="min-width:85px;" name="li_tax_amount_{{ li.id }}"
+                      id="li_tax_amount_{{ li.id }}" value="{{ li.tax_amount }}">
                   </td>
                 </tr>
                 {% endfor %}
@@ -590,10 +789,11 @@
 
       <div class="action-bar">
         {% if job.status.value != "DUPLICATE" %}
-        <button type="button" id="confirmBtn" class="btn btn-success btn-sm px-4" onclick="submitConfirm()">✓ Xác nhận & Lưu XLS</button>
+        <button type="button" id="confirmBtn" class="btn btn-success btn-sm px-4" onclick="submitConfirm()">✓ Xác nhận &
+          Lưu XLS</button>
         {% endif %}
         <a href="/jobs/{{ job.id }}/reject" id="rejectBtn" class="btn btn-outline-danger btn-sm"
-           onclick="return handleReject(event)">✗ Từ chối</a>
+          onclick="return handleReject(event)">✗ Từ chối</a>
         <a href="/jobs" class="btn btn-outline-secondary btn-sm ms-auto">← Quay lại</a>
       </div>
     </form>
@@ -607,88 +807,88 @@
 
 </div>
 <script>
-function formatNum(val) {
-  if (val === undefined || val === null || val === '') return '';
-  // Remove non-numeric except decimal comma if needed, but here we handle mostly whole numbers or dot decimals
-  let str = val.toString().replace(/[^\d]/g, ''); 
-  return str.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-function parseNum(val) {
-  return parseFloat(val.toString().replace(/\./g, '')) || 0;
-}
-
-function recalc(rowId) {
-  var sl = parseNum(document.querySelector('[name="li_so_luong_' + rowId + '"]').value);
-  var dg = parseNum(document.querySelector('[name="li_don_gia_' + rowId + '"]').value);
-  var tt = sl * dg;
-  var ttEl = document.getElementById('li_thanh_tien_' + rowId);
-  if (ttEl) ttEl.value = formatNum(tt.toFixed(0));
-}
-
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
-
-function applyFormatting(el) {
-  let val = el.value;
-  let formatted = formatNum(val);
-  if (formatted !== val) {
-    let start = el.selectionStart;
-    let dotBefore = (val.substring(0, start).match(/\./g) || []).length;
-    el.value = formatted;
-    let dotAfter = (formatted.substring(0, start).match(/\./g) || []).length;
-    el.setSelectionRange(start + (dotAfter - dotBefore), start + (dotAfter - dotBefore));
+  function formatNum(val) {
+    if (val === undefined || val === null || val === '') return '';
+    // Remove non-numeric except decimal comma if needed, but here we handle mostly whole numbers or dot decimals
+    let str = val.toString().replace(/[^\d]/g, '');
+    return str.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.li-name').forEach(function(el) {
-    autoResize(el);
-    el.addEventListener('input', function() { autoResize(this); });
-  });
+  function parseNum(val) {
+    return parseFloat(val.toString().replace(/\./g, '')) || 0;
+  }
 
-  // Initial formatting for all amount/num fields
-  document.querySelectorAll('.amount, .num').forEach(function(el) {
-    if (el.tagName === 'INPUT' && !el.classList.contains('tax-rate-field')) {
-      el.value = formatNum(el.value);
-      el.addEventListener('input', function() { applyFormatting(this); });
+  function recalc(rowId) {
+    var sl = parseNum(document.querySelector('[name="li_so_luong_' + rowId + '"]').value);
+    var dg = parseNum(document.querySelector('[name="li_don_gia_' + rowId + '"]').value);
+    var tt = sl * dg;
+    var ttEl = document.getElementById('li_thanh_tien_' + rowId);
+    if (ttEl) ttEl.value = formatNum(tt.toFixed(0));
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  function applyFormatting(el) {
+    let val = el.value;
+    let formatted = formatNum(val);
+    if (formatted !== val) {
+      let start = el.selectionStart;
+      let dotBefore = (val.substring(0, start).match(/\./g) || []).length;
+      el.value = formatted;
+      let dotAfter = (formatted.substring(0, start).match(/\./g) || []).length;
+      el.setSelectionRange(start + (dotAfter - dotBefore), start + (dotAfter - dotBefore));
     }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.li-name').forEach(function (el) {
+      autoResize(el);
+      el.addEventListener('input', function () { autoResize(this); });
+    });
+
+    // Initial formatting for all amount/num fields
+    document.querySelectorAll('.amount, .num').forEach(function (el) {
+      if (el.tagName === 'INPUT' && !el.classList.contains('tax-rate-field')) {
+        el.value = formatNum(el.value);
+        el.addEventListener('input', function () { applyFormatting(this); });
+      }
+    });
   });
-});
 
-function showLoading(text) {
-  document.getElementById('loadingText').textContent = text || 'Đang xử lý...';
-  document.getElementById('loadingOverlay').classList.add('active');
-}
+  function showLoading(text) {
+    document.getElementById('loadingText').textContent = text || 'Đang xử lý...';
+    document.getElementById('loadingOverlay').classList.add('active');
+  }
 
-function submitConfirm() {
-  var form = document.querySelector('form[action*="/confirm"]');
-  var btn = document.getElementById('confirmBtn');
-  if (btn) btn.disabled = true;
-  showLoading('Đang xác nhận hóa đơn...');
+  function submitConfirm() {
+    var form = document.querySelector('form[action*="/confirm"]');
+    var btn = document.getElementById('confirmBtn');
+    if (btn) btn.disabled = true;
+    showLoading('Đang xác nhận hóa đơn...');
 
-  // Sử dụng fetch thay vì sendBeacon để đảm bảo server đã xử lý xong và cập nhật trạng thái
-  // trước khi redirect, tránh race condition khiến UI hiển thị sai trạng thái.
-  var formData = new FormData(form);
-  fetch(form.action, {
-    method: 'POST',
-    body: formData
-  }).then(function() {
-    window.location.href = '/jobs';
-  }).catch(function(err) {
-    console.error(err);
-    window.location.href = '/jobs';
-  });
-}
+    // Sử dụng fetch thay vì sendBeacon để đảm bảo server đã xử lý xong và cập nhật trạng thái
+    // trước khi redirect, tránh race condition khiến UI hiển thị sai trạng thái.
+    var formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData
+    }).then(function () {
+      window.location.href = '/jobs';
+    }).catch(function (err) {
+      console.error(err);
+      window.location.href = '/jobs';
+    });
+  }
 
-function handleReject(e) {
-  e.preventDefault();
-  if (!confirm('Từ chối hóa đơn này?')) return false;
-  showLoading('Đang từ chối hóa đơn...');
-  window.location.href = document.getElementById('rejectBtn').href;
-  return false;
-}
+  function handleReject(e) {
+    e.preventDefault();
+    if (!confirm('Từ chối hóa đơn này?')) return false;
+    showLoading('Đang từ chối hóa đơn...');
+    window.location.href = document.getElementById('rejectBtn').href;
+    return false;
+  }
 </script>
 {% endblock %}

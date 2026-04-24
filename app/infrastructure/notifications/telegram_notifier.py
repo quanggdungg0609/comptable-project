@@ -21,7 +21,7 @@ class TelegramNotifier(INotificationPort):
             f"📁 File: {filename}\n"
             f"🏢 Nhà cung cấp: {seller}\n"
             f"🔢 Số hóa đơn: {number}\n"
-            f"🔗 Xem xét: {self._app_base_url}/review/{job_id}"
+            f"🔗 Xem xét: {self._app_base_url}/jobs/{job_id}/review"
         )
         await self._send(text)
 

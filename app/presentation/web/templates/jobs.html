@@ -2,53 +2,55 @@
 {% block title %}Danh sách Hóa Đơn{% endblock %}
 {% block content %}
 <h2 class="mb-4">Danh sách Hóa Đơn</h2>
-<table class="table table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>File</th>
-            <th>Loại</th>
-            <th>Trạng thái</th>
-            <th>Ngày tạo</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for job in jobs %}
-        <tr>
-            <td>{{ job.filename }}</td>
-            <td>{{ job.file_type.value }}</td>
-            <td>
-                {% set badge = {
-                "PENDING": "secondary", "PROCESSING": "info",
-                "AWAITING_REVIEW": "warning", "CONFIRMING": "primary",
-                "CONFIRMED": "success", "REJECTED": "danger", "FAILED": "dark",
-                "DUPLICATE": "warning"
-                } %}
-                {% set status_vn = {
-                "PENDING": "Đang chờ", "PROCESSING": "Đang xử lý",
-                "AWAITING_REVIEW": "Chờ duyệt", "CONFIRMING": "Đang lưu Excel...",
-                "CONFIRMED": "Đã xác nhận", "REJECTED": "Từ chối", "FAILED": "Lỗi",
-                "DUPLICATE": "Trùng lặp"
-                } %}
-                <span class="badge bg-{{ badge.get(job.status.value, 'secondary') }}"
-                      {% if job.status.value == "DUPLICATE" %}style="background-color: #fd7e14 !important;"{% endif %}>
-                    {{ status_vn.get(job.status.value, job.status.value) }}
-                </span>
-            </td>
-            <td>{{ job.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
-            <td>
-                {% if job.status.value == "AWAITING_REVIEW" %}
-                <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-warning">Xem/Duyệt</a>
-                {% endif %}
-                {% if job.status.value == "DUPLICATE" %}
-                <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-outline-warning">Xem chi tiết</a>
-                {% endif %}
-                {% if job.status.value == "FAILED" %}
-                <span class="text-danger small">{{ job.error }}</span>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle mb-0">
+        <thead class="table-dark text-nowrap">
+            <tr>
+                <th>File</th>
+                <th>Loại</th>
+                <th>Trạng thái</th>
+                <th class="d-none d-md-table-cell">Ngày tạo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td class="text-nowrap" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;" title="{{ job.filename }}">{{ job.filename }}</td>
+                <td>{{ job.file_type.value }}</td>
+                <td class="text-nowrap">
+                    {% set badge = {
+                    "PENDING": "secondary", "PROCESSING": "info",
+                    "AWAITING_REVIEW": "warning", "CONFIRMING": "primary",
+                    "CONFIRMED": "success", "REJECTED": "danger", "FAILED": "dark",
+                    "DUPLICATE": "warning"
+                    } %}
+                    {% set status_vn = {
+                    "PENDING": "Đang chờ", "PROCESSING": "Đang xử lý",
+                    "AWAITING_REVIEW": "Chờ duyệt", "CONFIRMING": "Đang lưu Excel...",
+                    "CONFIRMED": "Đã xác nhận", "REJECTED": "Từ chối", "FAILED": "Lỗi",
+                    "DUPLICATE": "Trùng lặp"
+                    } %}
+                    <span class="badge bg-{{ badge.get(job.status.value, 'secondary') }}"
+                          {% if job.status.value == "DUPLICATE" %}style="background-color: #fd7e14 !important;"{% endif %}>
+                        {{ status_vn.get(job.status.value, job.status.value) }}
+                    </span>
+                </td>
+                <td class="d-none d-md-table-cell text-nowrap">{{ job.created_at.strftime("%d/%m/%Y %H:%M") }}</td>
+                <td class="text-nowrap text-end">
+                    {% if job.status.value == "AWAITING_REVIEW" %}
+                    <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-warning">Xem/Duyệt</a>
+                    {% endif %}
+                    {% if job.status.value == "DUPLICATE" %}
+                    <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-outline-warning">Chi tiết</a>
+                    {% endif %}
+                    {% if job.status.value == "FAILED" %}
+                    <span class="text-danger small">{{ job.error }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

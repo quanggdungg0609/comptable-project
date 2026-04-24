@@ -33,7 +33,7 @@ async def test_notify_new_invoice_calls_telegram_api(notifier):
         assert "hd001.xml" in payload["text"]
         assert "Cty ABC" in payload["text"]
         assert "0001" in payload["text"]
-        assert "http://localhost:8000/review/job-1" in payload["text"]
+        assert "http://localhost:8000/jobs/job-1/review" in payload["text"]
 
 
 @pytest.mark.asyncio

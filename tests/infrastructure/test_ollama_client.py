@@ -35,7 +35,7 @@ async def test_extract_invoice_returns_items(client):
     
     with patch("httpx.AsyncClient.post", new_callable=AsyncMock) as mock_post:
         mock_post.return_value = mock_response
-        items = await client.extract_invoice("KHHDon: C26TAA\nSHDon: 00000064\n...")
+        items, line_items = await client.extract_invoice("KHHDon: C26TAA\nSHDon: 00000064\n...")
     assert len(items) == 1
     assert items[0].invoice_number == "00000064"
     assert items[0].price_before_tax == Decimal("445000000")

@@ -12,6 +12,7 @@ def make_line_item(**kwargs):
     defaults = dict(
         invoice_symbol="1C26TAA", invoice_number="49",
         invoice_date=date(2026, 3, 12),
+        seller_address="123 Missing St",
         seller_name="Cty TNHH ĐT và TM Linh Chi Nguyễn",
         seller_tax_code="0901212659",
         ten_hang_hoa="Thép tấm 10mm", don_vi_tinh="Kg",

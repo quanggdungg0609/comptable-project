@@ -11,7 +11,7 @@ TEMPLATE_PATH = "Mau_xuat_du_lieu.xlsx"
 def make_item(**kwargs):
     defaults = dict(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),

@@ -1,4 +1,5 @@
 from functools import lru_cache
+import socket
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
@@ -36,6 +37,24 @@ class Settings(BaseSettings):
 
     model_config = {"env_file": ".env"}
 
+def _get_local_ip() -> str:
+    """Detect the local IP address of the machine."""
+    try:
+        # Create a dummy socket to detect the preferred local IP
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # Use a non-routable IP to avoid actually sending data
+        s.connect(("10.255.255.255", 1))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    settings = Settings()
+    # Automatically resolve {{LOCAL_IP}} placeholder if present
+    if "{{LOCAL_IP}}" in settings.app_base_url:
+        local_ip = _get_local_ip()
+        settings.app_base_url = settings.app_base_url.replace("{{LOCAL_IP}}", local_ip)
+    return settings

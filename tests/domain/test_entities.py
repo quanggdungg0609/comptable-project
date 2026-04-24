@@ -12,7 +12,7 @@ def test_invoice_item_creation():
         invoice_symbol="1C26TAA",
         invoice_number="49",
         invoice_date=date(2026, 3, 12),
-        seller_name="Công ty TNHH XYZ",
+        seller_address="123 Missing St", seller_name="Công ty TNHH XYZ",
         seller_tax_code="0901212659",
         description="Mua vật tư",
         price_before_tax=Decimal("29030000"),

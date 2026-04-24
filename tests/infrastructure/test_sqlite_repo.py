@@ -40,7 +40,7 @@ async def test_save_and_get_items(repo):
     await repo.save(job)
     item = InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Mua vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),
@@ -67,7 +67,7 @@ async def test_find_duplicate_returns_confirmed_match(repo):
     await repo.save(job1)
     item1 = InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Mua vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),
@@ -85,7 +85,7 @@ async def test_find_duplicate_returns_awaiting_review_match(repo):
     await repo.save(job1)
     item1 = InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Mua vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),
@@ -105,7 +105,7 @@ async def test_find_duplicate_ignores_non_matching_statuses(repo):
         await repo.save(job)
         item = InvoiceItem(
             invoice_symbol="1C26TAA", invoice_number="49",
-            invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+            invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
             seller_tax_code="0901212659", description="Mua vật tư",
             price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
             price_after_tax=Decimal("2903000"),
@@ -139,7 +139,7 @@ async def test_find_duplicate_excludes_job_id(repo):
     await repo.save(job1)
     item1 = InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Mua vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),

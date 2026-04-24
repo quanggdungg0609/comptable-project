@@ -12,7 +12,7 @@ from app.domain.value_objects.invoice_status import InvoiceStatus
 def make_item():
     return InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", description="Mua vật tư",
         price_before_tax=Decimal("8344000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("834400"),
@@ -21,7 +21,7 @@ def make_item():
 def make_line_item():
     return InvoiceLineItem(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659", ten_hang_hoa="Thép tấm",
         don_vi_tinh="Kg", so_luong=Decimal("298"), don_gia=Decimal("28000"),
         thanh_tien=Decimal("8344000"), tax_rate=Decimal("0.10"),

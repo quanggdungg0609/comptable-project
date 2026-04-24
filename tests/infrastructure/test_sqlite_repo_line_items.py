@@ -24,7 +24,7 @@ async def repo():
 def make_line_item(**kwargs):
     defaults = dict(
         invoice_symbol="1C26TAA", invoice_number="49",
-        invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
+        invoice_date=date(2026, 3, 12), seller_address="123 ABC", seller_name="Cty XYZ",
         seller_tax_code="0901212659", ten_hang_hoa="Thép tấm 10mm",
         don_vi_tinh="Kg", so_luong=Decimal("298"), don_gia=Decimal("28000"),
         thanh_tien=Decimal("8344000"), tax_rate=Decimal("0.10"),

@@ -7,7 +7,7 @@ def test_invoice_line_item_defaults():
         invoice_symbol="1C26TAA",
         invoice_number="49",
         invoice_date=date(2026, 3, 12),
-        seller_name="Cty XYZ",
+        seller_address="123 Missing St", seller_name="Cty XYZ",
         seller_tax_code="0901212659",
         ten_hang_hoa="Thép tấm 10mm",
         don_vi_tinh="Kg",
