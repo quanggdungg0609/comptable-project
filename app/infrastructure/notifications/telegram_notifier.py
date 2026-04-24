@@ -58,4 +58,4 @@ class TelegramNotifier(INotificationPort):
                 })
                 resp.raise_for_status()
         except Exception as exc:
-            logger.warning("[TelegramNotifier] Gửi thông báo thất bại: %s", exc)
+            logger.warning("[TelegramNotifier] Gửi thông báo thất bại: %s", type(exc).__name__)

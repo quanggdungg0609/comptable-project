@@ -40,6 +40,7 @@ def get_llm(settings: Settings = Depends(get_settings)):
     return ollama  # default
 
 _storage_singleton: RustFSStorage | None = None
+_notifier_singleton = None
 _excel_singleton: OpenpyxlWriter | None = None
 _excel_detail_singleton: OpenpyxlDetailWriter | None = None
 
@@ -80,16 +81,20 @@ def get_excel_detail() -> OpenpyxlDetailWriter:
     return get_excel_detail_singleton()
 
 def get_notifier():
-    from app.core.config import get_settings
-    settings = get_settings()
-    if settings.notification_type == "telegram" and settings.telegram_bot_token:
-        from app.infrastructure.notifications.telegram_notifier import TelegramNotifier
-        return TelegramNotifier(settings.telegram_bot_token, settings.telegram_chat_id, settings.app_base_url)
-    if settings.notification_type == "slack" and settings.slack_webhook_url:
-        from app.infrastructure.notifications.slack_notifier import SlackNotifier
-        return SlackNotifier(settings.slack_webhook_url, settings.app_base_url)
-    from app.infrastructure.notifications.console_notifier import ConsoleNotifier
-    return ConsoleNotifier()
+    global _notifier_singleton
+    if _notifier_singleton is None:
+        from app.core.config import get_settings
+        settings = get_settings()
+        if settings.notification_type == "telegram" and settings.telegram_bot_token:
+            from app.infrastructure.notifications.telegram_notifier import TelegramNotifier
+            _notifier_singleton = TelegramNotifier(settings.telegram_bot_token, settings.telegram_chat_id, settings.app_base_url)
+        elif settings.notification_type == "slack" and settings.slack_webhook_url:
+            from app.infrastructure.notifications.slack_notifier import SlackNotifier
+            _notifier_singleton = SlackNotifier(settings.slack_webhook_url, settings.app_base_url)
+        else:
+            from app.infrastructure.notifications.console_notifier import ConsoleNotifier
+            _notifier_singleton = ConsoleNotifier()
+    return _notifier_singleton
 
 def get_process_invoice_uc(
     repo=Depends(get_job_repo), llm=Depends(get_llm)
