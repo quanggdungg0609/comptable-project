@@ -117,7 +117,10 @@ class ProcessInvoiceUseCase:
             if self._notification:
                 try:
                     logger.debug(f"[ProcessInvoice] Sending notification for job {job.id}")
-                    await self._notification.notify_new_invoice(job.id, filename)
+                    first = items[0] if items else None
+                    seller_name = first.seller_name if first else ""
+                    invoice_number = first.invoice_number if first else ""
+                    await self._notification.notify_new_invoice(job.id, filename, seller_name, invoice_number)
                     logger.info(f"[ProcessInvoice] Notification sent for job {job.id}")
                 except Exception as notify_exc:
                     logger.warning(f"[ProcessInvoice] Notification failed for job {job.id}: {notify_exc}")

@@ -12,7 +12,8 @@ def make_item():
     return InvoiceItem(
         invoice_symbol="1C26TAA", invoice_number="49",
         invoice_date=date(2026, 3, 12), seller_name="Cty XYZ",
-        seller_tax_code="0901212659", description="Mua vật tư",
+        seller_address="123 Nguyen Hue St", seller_tax_code="0901212659",
+        description="Mua vật tư",
         price_before_tax=Decimal("29030000"), tax_rate=Decimal("0.10"),
         price_after_tax=Decimal("2903000"),
     )
@@ -37,7 +38,9 @@ async def test_xml_file_creates_job_awaiting_review(use_case):
     assert len(job.extracted_items) == 1
     repo.save.assert_called_once()
     repo.save_items.assert_called_once()
-    notification.notify_new_invoice.assert_called_once_with(job.id, "hd049.xml")
+    notification.notify_new_invoice.assert_called_once_with(
+        job.id, "hd049.xml", "Cty XYZ", "49"
+    )
 
 async def test_pdf_only_file_creates_job_awaiting_review(use_case):
     uc, repo, llm, notification = use_case
