@@ -1,4 +1,5 @@
 import logging
+from typing import Optional
 from app.domain.entities.invoice_item import InvoiceItem
 from app.domain.entities.invoice_line_item import InvoiceLineItem
 from app.domain.entities.processing_job import ProcessingJob
@@ -6,6 +7,7 @@ from app.domain.ports.job_repository import IJobRepository
 from app.domain.ports.storage_port import IStoragePort
 from app.domain.ports.excel_port import IExcelPort
 from app.domain.ports.excel_detail_port import IExcelDetailPort
+from app.domain.ports.notification_port import INotificationPort
 from app.domain.value_objects.invoice_status import InvoiceStatus
 
 logger = logging.getLogger(__name__)
@@ -19,6 +21,7 @@ class ReviewAndConfirmUseCase:
         excel_detail: IExcelDetailPort,
         bucket_invoices: str,
         bucket_exports: str,
+        notification: Optional[INotificationPort] = None,
     ):
         self._repo = repo
         self._storage = storage
@@ -26,6 +29,7 @@ class ReviewAndConfirmUseCase:
         self._excel_detail = excel_detail
         self._bucket_invoices = bucket_invoices
         self._bucket_exports = bucket_exports
+        self._notification = notification
 
     async def prepare_confirm(
         self,
@@ -139,6 +143,14 @@ class ReviewAndConfirmUseCase:
 
             await self._repo.update_status(job_id, InvoiceStatus.CONFIRMED)
             logger.info(f"[ReviewAndConfirm] Job {job_id} successfully confirmed and finalized")
+            if self._notification:
+                try:
+                    first = updated_items[0] if updated_items else None
+                    seller_name = first.seller_name if first else ""
+                    invoice_number = first.invoice_number if first else ""
+                    await self._notification.notify_confirmed(job_id, job.filename, seller_name, invoice_number)
+                except Exception as notify_exc:
+                    logger.warning(f"[ReviewAndConfirm] Notification failed for job {job_id}: {notify_exc}")
 
         except Exception as e:
             error_msg = f"Background confirmation failed: {str(e)}"
@@ -199,4 +211,12 @@ class ReviewAndConfirmUseCase:
         await self._repo.update_status(job_id, InvoiceStatus.REJECTED)
         job.status = InvoiceStatus.REJECTED
         logger.info(f"[ReviewAndConfirm] Job {job_id} marked as REJECTED")
+        if self._notification:
+            try:
+                first = job.extracted_items[0] if job.extracted_items else None
+                seller_name = first.seller_name if first else ""
+                invoice_number = first.invoice_number if first else ""
+                await self._notification.notify_rejected(job_id, job.filename, seller_name, invoice_number)
+            except Exception as notify_exc:
+                logger.warning(f"[ReviewAndConfirm] Notification failed for job {job_id}: {notify_exc}")
         return job
