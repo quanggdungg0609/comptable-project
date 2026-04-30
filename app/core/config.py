@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     rustfs_secret_key: str = "rustfsadmin"
     rustfs_bucket_invoices: str = "invoices"
     rustfs_bucket_exports: str = "exports"
+    rustfs_public_endpoint: str | None = None
 
     # IMAP email listener
     imap_host: str = ""
