@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 import uuid
 
@@ -11,5 +11,5 @@ class ExcelCrSession:
     template_key: str | None = None
     aggregated_data: list[dict[str, Any]] | None = None
     match_results: list[dict[str, Any]] | None = None
-    created_at: datetime = field(default_factory=datetime.utcnow)
-    updated_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
