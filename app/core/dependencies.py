@@ -139,3 +139,65 @@ _task_queue = AsyncTaskQueue()
 
 def get_task_queue() -> ITaskQueue:
     return _task_queue
+
+# ── Excel-CR ──────────────────────────────────────────────────────────────────
+from app.infrastructure.rules.rustfs_rules_manager import RustfsRulesManager
+from app.infrastructure.repositories.sqlite_excel_cr_repo import SQLiteExcelCrRepository
+from app.infrastructure.llm.excel_cr_classifier import ExcelCrClassifier
+from app.application.use_cases.excel_cr.upload_source import UploadSourceUseCase
+from app.application.use_cases.excel_cr.aggregate_and_match_uc import AggregateAndMatchUseCase
+from app.application.use_cases.excel_cr.llm_classify import LlmClassifyUseCase
+from app.application.use_cases.excel_cr.confirm_mappings import ConfirmMappingsUseCase
+from app.application.use_cases.excel_cr.download_result import DownloadResultUseCase
+
+_rules_manager_singleton: RustfsRulesManager | None = None
+_excel_cr_classifier_singleton: ExcelCrClassifier | None = None
+
+def get_excel_cr_rules_manager() -> RustfsRulesManager:
+    global _rules_manager_singleton
+    if _rules_manager_singleton is None:
+        s = get_settings()
+        _rules_manager_singleton = RustfsRulesManager(get_storage_singleton(), s.excel_cr_bucket)
+    return _rules_manager_singleton
+
+def get_excel_cr_classifier() -> ExcelCrClassifier:
+    global _excel_cr_classifier_singleton
+    if _excel_cr_classifier_singleton is None:
+        s = get_settings()
+        _excel_cr_classifier_singleton = ExcelCrClassifier(
+            api_key=s.gemini_api_key, model=s.gemini_model
+        )
+    return _excel_cr_classifier_singleton
+
+def get_excel_cr_repo(db: aiosqlite.Connection = Depends(get_db_conn)) -> SQLiteExcelCrRepository:
+    return SQLiteExcelCrRepository(db)
+
+def get_excel_cr_upload_uc(
+    repo=Depends(get_excel_cr_repo),
+    storage=Depends(get_storage),
+) -> UploadSourceUseCase:
+    return UploadSourceUseCase(repo=repo, storage=storage)
+
+def get_excel_cr_aggregate_uc(
+    repo=Depends(get_excel_cr_repo),
+    storage=Depends(get_storage),
+) -> AggregateAndMatchUseCase:
+    return AggregateAndMatchUseCase(
+        repo=repo, storage=storage, rules_manager=get_excel_cr_rules_manager()
+    )
+
+def get_excel_cr_llm_classify_uc(
+    repo=Depends(get_excel_cr_repo),
+) -> LlmClassifyUseCase:
+    return LlmClassifyUseCase(repo=repo, classifier=get_excel_cr_classifier())
+
+def get_excel_cr_confirm_uc(
+    repo=Depends(get_excel_cr_repo),
+) -> ConfirmMappingsUseCase:
+    return ConfirmMappingsUseCase(repo=repo, rules_manager=get_excel_cr_rules_manager())
+
+def get_excel_cr_download_uc(
+    repo=Depends(get_excel_cr_repo),
+    storage=Depends(get_storage),
+) -> DownloadResultUseCase:
+    return DownloadResultUseCase(repo=repo, storage=storage)
