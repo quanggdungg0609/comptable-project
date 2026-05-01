@@ -45,7 +45,13 @@
                     <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-outline-warning">Chi tiết</a>
                     {% endif %}
                     {% if job.status.value == "FAILED" %}
-                    <span class="text-danger small">{{ job.error }}</span>
+                    <span class="text-danger small me-2" title="{{ job.error }}" style="max-width:260px;display:inline-block;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;white-space:nowrap;">{{ job.error }}</span>
+                    <a href="/jobs/{{ job.id }}/review" class="btn btn-sm btn-outline-secondary me-1">Xem</a>
+                    {% if job.pending_file_path %}
+                    <form method="post" action="/jobs/{{ job.id }}/retry" style="display:inline">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Thử lại</button>
+                    </form>
+                    {% endif %}
                     {% endif %}
                 </td>
             </tr>
