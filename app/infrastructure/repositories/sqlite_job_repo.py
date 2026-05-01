@@ -16,9 +16,9 @@ class SQLiteJobRepository(IJobRepository):
 
     async def save(self, job: ProcessingJob) -> None:
         await self._db.execute(
-            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths, pending_pdf_path, duplicate_of) VALUES (?,?,?,?,?,?,?,?)",
+            "INSERT INTO jobs (id, filename, file_type, status, created_at, source_paths, pending_pdf_path, duplicate_of, retry_count) VALUES (?,?,?,?,?,?,?,?,?)",
             (job.id, job.filename, job.file_type.value, job.status.value,
-             job.created_at.isoformat(), json.dumps(job.source_paths), job.pending_pdf_path, job.duplicate_of),
+             job.created_at.isoformat(), json.dumps(job.source_paths), job.pending_pdf_path, job.duplicate_of, 0),
         )
         await self._db.commit()
 
@@ -37,6 +37,7 @@ class SQLiteJobRepository(IJobRepository):
             pending_file_path=row["pending_file_path"],
             pending_pdf_path=row["pending_pdf_path"],
             duplicate_of=row["duplicate_of"],
+            retry_count=row["retry_count"] if "retry_count" in row.keys() else 0,
         )
         async with self._db.execute(
             "SELECT * FROM invoice_items WHERE job_id = ?", (job_id,)
@@ -91,6 +92,7 @@ class SQLiteJobRepository(IJobRepository):
                 pending_file_path=row["pending_file_path"],
                 pending_pdf_path=row["pending_pdf_path"],
                 duplicate_of=row["duplicate_of"],
+                retry_count=row["retry_count"] if "retry_count" in row.keys() else 0,
             )
             job.extracted_items = items_by_job.get(row["id"], [])
             job.extracted_line_items = lines_by_job.get(row["id"], [])
@@ -197,6 +199,35 @@ class SQLiteJobRepository(IJobRepository):
         if row is None:
             return None
         return await self.get(row["id"])
+
+    async def list_retryable(self, max_retry_count: int = 3) -> list[ProcessingJob]:
+        async with self._db.execute(
+            "SELECT * FROM jobs WHERE status = 'FAILED' AND retry_count < ? AND pending_file_path IS NOT NULL ORDER BY created_at ASC",
+            (max_retry_count,),
+        ) as cur:
+            rows = await cur.fetchall()
+        return [
+            ProcessingJob(
+                id=r["id"], filename=r["filename"],
+                file_type=FileType(r["file_type"]),
+                status=InvoiceStatus(r["status"]),
+                created_at=datetime.fromisoformat(r["created_at"]),
+                source_paths=json.loads(r["source_paths"] or "[]"),
+                error=r["error"],
+                pending_file_path=r["pending_file_path"],
+                pending_pdf_path=r["pending_pdf_path"],
+                duplicate_of=r["duplicate_of"],
+                retry_count=r["retry_count"] if "retry_count" in r.keys() else 0,
+            )
+            for r in rows
+        ]
+
+    async def increment_retry_count(self, job_id: str) -> None:
+        await self._db.execute(
+            "UPDATE jobs SET retry_count = retry_count + 1 WHERE id = ?",
+            (job_id,),
+        )
+        await self._db.commit()
 
     async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None:
         await self._db.execute(

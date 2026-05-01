@@ -54,6 +54,7 @@ async def lifespan(app: FastAPI):
 
     listener_task: Optional[asyncio.Task] = None
     listener_obj = None
+    retry_scheduler = None
 
     # Common setup for Background Queue and Email Listener
     from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
@@ -85,6 +86,12 @@ async def lifespan(app: FastAPI):
     task_queue = get_task_queue()
     await task_queue.start_workers(process_use_case=process_uc, num_workers=2)
     logger.info("[App Startup] Task queue workers started (concurrency: 2)")
+
+    # Start retry scheduler — auto-retries FAILED jobs every 5 minutes
+    from app.infrastructure.queue.retry_scheduler import RetryScheduler
+    retry_scheduler = RetryScheduler(repo=repo, process_use_case=process_uc)
+    await retry_scheduler.start()
+    logger.info("[App Startup] Retry scheduler started")
 
     # Pre-warm background finalize singletons (XLSX templates, boto3 client,
     # bg DB connection) off the event loop so the first invoice confirm is
@@ -134,6 +141,10 @@ async def lifespan(app: FastAPI):
         except asyncio.TimeoutError:
             logger.warning("[App Shutdown] Email listener did not stop within timeout")
         logger.info("[App Shutdown] Email listener stopped")
+
+    if retry_scheduler:
+        await retry_scheduler.stop()
+        logger.info("[App Shutdown] Retry scheduler stopped")
 
     logger.debug("[App Shutdown] Stopping task queue workers")
     await task_queue.stop_workers()
