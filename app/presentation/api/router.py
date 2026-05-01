@@ -78,6 +78,32 @@ async def confirm_job(
 
     return _job_to_response(result)
 
+@router.post("/jobs/{job_id}/retry", response_model=JobResponse)
+async def retry_job(
+    job_id: str,
+    repo=Depends(get_job_repo),
+    process_uc=Depends(get_process_invoice_uc),
+):
+    import os
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    job = await repo.get(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job.status != InvoiceStatus.FAILED:
+        raise HTTPException(status_code=400, detail=f"Job is not in FAILED status (current: {job.status.value})")
+    if not job.pending_file_path or not os.path.exists(job.pending_file_path):
+        raise HTTPException(status_code=422, detail="Pending file not found on disk — cannot retry")
+
+    file_data = open(job.pending_file_path, "rb").read()
+    paired_bytes: bytes | None = None
+    if job.pending_pdf_path and os.path.exists(job.pending_pdf_path):
+        paired_bytes = open(job.pending_pdf_path, "rb").read()
+
+    await repo.increment_retry_count(job_id)
+    new_job = await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes)
+    return _job_to_response(new_job)
+
+
 @router.post("/jobs/{job_id}/reject", response_model=JobResponse)
 async def reject_job(job_id: str, confirm_uc=Depends(get_review_confirm_uc)):
     result = await confirm_uc.reject(job_id=job_id)

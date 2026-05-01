@@ -101,6 +101,13 @@ class IMAPClient:
                 lambda: self.imap.fetch(ids_to_fetch, ["RFC822"]),
             )
 
+            # Mark fetched emails as \Seen immediately so the next IDLE cycle
+            # does not re-fetch and re-process the same messages.
+            await loop.run_in_executor(
+                None,
+                lambda: self.imap.add_flags(ids_to_fetch, [b"\\Seen"]),
+            )
+
             emails = []
             for email_id, data in messages.items():
                 try:

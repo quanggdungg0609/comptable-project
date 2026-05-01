@@ -56,3 +56,9 @@ class IJobRepository(ABC):
 
     @abstractmethod
     async def update_duplicate_of(self, job_id: str, duplicate_of_id: str) -> None: ...
+
+    @abstractmethod
+    async def list_retryable(self, max_retry_count: int = 3) -> list[ProcessingJob]: ...
+
+    @abstractmethod
+    async def increment_retry_count(self, job_id: str) -> None: ...

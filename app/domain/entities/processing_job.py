@@ -22,6 +22,7 @@ class ProcessingJob:
     pending_file_path: Optional[str] = None  # local temp path until confirmed
     pending_pdf_path: Optional[str] = None
     duplicate_of: Optional[str] = None
+    retry_count: int = 0
 
     @classmethod
     def create(cls, filename: str, file_type: FileType) -> "ProcessingJob":

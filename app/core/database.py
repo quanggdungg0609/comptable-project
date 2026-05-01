@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     source_paths TEXT DEFAULT '[]',
     pending_file_path TEXT,
     pending_pdf_path TEXT,
-    duplicate_of TEXT
+    duplicate_of TEXT,
+    retry_count INTEGER NOT NULL DEFAULT 0
 )
 """
 
@@ -107,6 +108,10 @@ async def init_db() -> None:
     await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
     try:
         await db.execute("ALTER TABLE jobs ADD COLUMN pending_pdf_path TEXT")
+    except Exception:
+        pass
+    try:
+        await db.execute("ALTER TABLE jobs ADD COLUMN retry_count INTEGER NOT NULL DEFAULT 0")
     except Exception:
         pass
     try:
