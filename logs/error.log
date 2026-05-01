@@ -90,3 +90,222 @@ Traceback (most recent call last):
     raise effect
 Exception: LLM timeout
 
+[2026-05-01 13:55:17,524] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-01 13:55:17,886] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 816f96a5-0498-4dfa-8485-37aa5399795a failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-01 13:55:42,734] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-01 13:55:43,101] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job f5a25994-db80-4dca-ad1a-de5128202f28 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-01 13:55:49,194] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-01 13:56:24,069] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 8e54e4ef-eb84-40dd-ae4f-560bfd08e6b5 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/quangdung/Documents/collect_invoice/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/Users/quangdung/Documents/collect_invoice/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 13:56:27,472] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job ccccb51d-6987-49d2-bfb2-7ac0f4f571f3 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/quangdung/Documents/collect_invoice/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/Users/quangdung/Documents/collect_invoice/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 13:57:33,342] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 1a9aa811-1ab6-491a-8dba-2542d5236de4 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/quangdung/Documents/collect_invoice/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/Users/quangdung/Documents/collect_invoice/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 15:54:28,882] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-01 15:54:29,278] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 08e015f5-4d34-4e98-8f64-7e4bc80e681d failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-01 15:54:31,998] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-01 15:54:35,707] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-01 15:54:47,465] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-01 15:54:47,829] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 99c6c706-49f7-41ca-a47c-69c8197bf395 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-01 15:54:50,494] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-01 15:54:53,961] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-01 14:31:03,696] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 89c8481d-0849-4e1a-981b-f1bfea3eb040 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:07,636] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job f8c8b30b-4455-4bf2-b73e-682732192d01 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:11,493] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 5a741b40-2c60-4e5b-9155-34d379df31d0 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:15,269] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 33b6e81a-c41c-418f-94cf-59155714ac18 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:18,822] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 148c66b1-3500-4344-930c-53e9f04c8544 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:22,728] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 7371b366-0e0a-4a62-95bc-0c3477fe8f77 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:26,567] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 9f0d7b8f-44fc-4a08-bd32-abc8c5e0caf0 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:26,934] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job feca6b27-5fa0-41ce-b210-732dc247689b failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 14:31:32,687] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 1449ad46-67c1-4690-94dc-e3473dacd537 failed: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '403 Forbidden' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+
+[2026-05-01 15:40:11,626] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 79312bbc-1b1e-4d1d-a50d-b7894dc8b2eb failed: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+
+[2026-05-01 15:48:11,674] ERROR    [app.infrastructure.email.email_listener:_process_emails:176] [EmailListener] Failed to process =?UTF-8?B?MUMyNlRETl8wMDAwMTAyMCAtIENow7lhIHbhur0ucGRm?=: ValueError: Unsupported file type: .=?UTF-8?B?MUMYNLRETL8WMDAWMTAYMCATIENOW7LHIHBHUR0UCGRM?=
+[2026-05-01 15:48:11,675] ERROR    [app.infrastructure.email.email_listener:_process_emails:176] [EmailListener] Failed to process =?UTF-8?B?SMSQMTYxLUzhu41jIEhEQ1YgVDQuMjAyNl8=?=
+	=?UTF-8?B?MS5wZGY=?=: ValueError: Unsupported file type: .=?UTF-8?B?SMSQMTYXLUZHU41JIEHEQ1YGVDQUMJAYNL8=?=
+	=?UTF-8?B?MS5WZGY=?=
+[2026-05-01 15:48:11,688] ERROR    [app.infrastructure.email.email_listener:_process_emails:176] [EmailListener] Failed to process =?UTF-8?B?Q2h1zIBhIFZlzIMgNC4yLnBkZg==?=: ValueError: Unsupported file type: .=?UTF-8?B?Q2H1ZIBHIFZLZIMGNC4YLNBKZG==?=

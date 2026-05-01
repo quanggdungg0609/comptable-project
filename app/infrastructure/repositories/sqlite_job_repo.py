@@ -188,7 +188,7 @@ class SQLiteJobRepository(IJobRepository):
                WHERE ii.invoice_symbol = ?
                  AND ii.invoice_number = ?
                  AND ii.seller_tax_code = ?
-                 AND j.status IN ('CONFIRMED', 'AWAITING_REVIEW')"""
+                 AND j.status IN ('CONFIRMED', 'AWAITING_REVIEW', 'PROCESSING')"""
         params: list = [invoice_symbol, invoice_number, seller_tax_code]
         if exclude_job_id is not None:
             query += " AND j.id != ?"

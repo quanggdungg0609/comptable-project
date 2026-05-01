@@ -3,6 +3,9 @@ import logging
 from typing import Optional
 from email import message_from_bytes
 from app.infrastructure.email.imap_client import IMAPClient
+from app.infrastructure.parsers.zip_extractor import extract_zip_contents
+from app.infrastructure.parsers.link_extractor import extract_scored_links
+from app.infrastructure.email.invoice_link_downloader import download_invoices_from_links
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +39,19 @@ class EmailListener:
             logger.error(f"[EmailListener] Error extracting attachments: {e}")
         return attachments
 
+    def _extract_body_from_raw(self, raw_bytes: bytes) -> str:
+        """Extract HTML body from raw email bytes"""
+        try:
+            msg = message_from_bytes(raw_bytes)
+            for part in msg.walk():
+                if part.get_content_type() == "text/html":
+                    payload = part.get_payload(decode=True)
+                    charset = part.get_content_charset() or "utf-8"
+                    return payload.decode(charset, errors="ignore")
+        except Exception as e:
+            logger.error(f"[EmailListener] Error extracting body: {e}")
+        return ""
+
     async def _process_emails(self):
         """Process new emails - called when IDLE detects new emails"""
         try:
@@ -62,7 +78,36 @@ class EmailListener:
                 attachments = self._extract_attachments_from_raw(raw)
 
                 if not attachments:
-                    logger.warning(f"[EmailListener] No attachments found in email {email['id']}")
+                    logger.info(f"[EmailListener] No attachments found in email {email['id']}, checking for download links...")
+                    body = self._extract_body_from_raw(raw)
+                    links = extract_scored_links(body)
+                    if links:
+                        logger.info(f"[EmailListener] Found {len(links)} potential invoice links in email {email['id']}")
+                        downloaded = await download_invoices_from_links(links)
+                        if downloaded:
+                            attachments = [
+                                {"filename": fname, "data": fdata}
+                                for fname, fdata in downloaded
+                            ]
+                            logger.info(f"[EmailListener] Successfully downloaded {len(attachments)} files from links")
+
+                if not attachments:
+                    logger.warning(f"[EmailListener] No attachments or valid download links found in email {email['id']}")
+                    continue
+
+                # Expand ZIP attachments before XML/PDF split
+                expanded = []
+                for a in attachments:
+                    if a['filename'].lower().endswith('.zip'):
+                        extracted = extract_zip_contents(a['filename'], a['data'])
+                        logger.info(f"[EmailListener] ZIP {a['filename']} → {len(extracted)} files extracted")
+                        expanded.extend(extracted)
+                    else:
+                        expanded.append(a)
+                attachments = expanded
+
+                if not attachments:
+                    logger.warning(f"[EmailListener] No processable files in email {email['id']} after ZIP expansion")
                     continue
 
                 # Split attachments by type. If the email has XML, only XML gets a job —
