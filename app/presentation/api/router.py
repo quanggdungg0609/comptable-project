@@ -111,8 +111,8 @@ async def retry_job(
         paired_bytes = open(job.pending_pdf_path, "rb").read()
 
     await repo.increment_retry_count(job_id)
-    new_job = await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes)
-    return _job_to_response(new_job)
+    result = await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes, existing_job_id=job_id)
+    return _job_to_response(result)
 
 
 @router.post("/jobs/{job_id}/reject", response_model=JobResponse)

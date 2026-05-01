@@ -87,6 +87,14 @@ async def lifespan(app: FastAPI):
     await task_queue.start_workers(process_use_case=process_uc, num_workers=1)
     logger.info("[App Startup] Task queue workers started (concurrency: 1)")
 
+    # Recover jobs stuck in PROCESSING from a previous crash
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    stuck = await repo.list_all(status=InvoiceStatus.PROCESSING)
+    for job in stuck:
+        await repo.update_status(job.id, InvoiceStatus.FAILED, error="App restarted while processing")
+    if stuck:
+        logger.warning("[App Startup] Reset %d stuck PROCESSING job(s) to FAILED for retry", len(stuck))
+
     # Start retry scheduler — auto-retries FAILED jobs every 5 minutes
     from app.infrastructure.queue.retry_scheduler import RetryScheduler
     retry_scheduler = RetryScheduler(repo=repo, process_use_case=process_uc)

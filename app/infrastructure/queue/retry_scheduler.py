@@ -49,6 +49,12 @@ class RetryScheduler:
             await self._retry_job(job)
 
     async def _retry_job(self, job) -> None:
+        # Re-check status to guard against race with manual retry
+        current = await self._repo.get(job.id)
+        if not current or current.status.value != "FAILED":
+            logger.info("[RetryScheduler] Skipping job %s — status is now %s", job.id, current.status if current else "gone")
+            return
+
         path = job.pending_file_path
         if not path or not os.path.exists(path):
             logger.warning("[RetryScheduler] Skipping job %s — pending file missing: %s", job.id, path)
@@ -73,11 +79,12 @@ class RetryScheduler:
         logger.info("[RetryScheduler] Retrying job %s (attempt %d/%d): %s", job.id, job.retry_count + 1, _MAX_AUTO_RETRIES, job.filename)
 
         try:
-            new_job = await self._process_use_case.execute(
+            result = await self._process_use_case.execute(
                 filename=job.filename,
                 file_data=file_data,
                 paired_pdf=paired_bytes,
+                existing_job_id=job.id,
             )
-            logger.info("[RetryScheduler] Retry for job %s → new job %s (status: %s)", job.id, new_job.id, new_job.status)
+            logger.info("[RetryScheduler] Retry for job %s completed (status: %s)", job.id, result.status)
         except Exception as exc:
             logger.error("[RetryScheduler] Retry for job %s failed: %s", job.id, exc, exc_info=True)

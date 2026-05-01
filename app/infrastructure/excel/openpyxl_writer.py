@@ -8,10 +8,12 @@ from app.domain.ports.excel_port import IExcelPort
 
 _process_pool = concurrent.futures.ProcessPoolExecutor()
 
-def _append_rows_process(template_bytes: bytes, items: list[InvoiceItem], existing_data: bytes) -> bytes:
+def _append_rows_process(template_bytes: bytes, items: list[InvoiceItem], existing_data: bytes, month: int, year: int) -> bytes:
     src = existing_data if existing_data else template_bytes
     wb = openpyxl.load_workbook(BytesIO(src))
     ws = wb[SHEET_NAME]
+
+    ws["A3"] = f"Kỳ tính thuế : Tháng {month:02d} năm {year}"
 
     # Nếu là tháng mới (file chưa có), xóa trắng dữ liệu mẫu trong template
     if not existing_data and ws.max_row >= DATA_START_ROW:
@@ -81,6 +83,6 @@ class OpenpyxlWriter(IExcelPort):
         filename = generate_monthly_filename(month, year)
         loop = asyncio.get_running_loop()
         file_bytes = await loop.run_in_executor(
-            _process_pool, _append_rows_process, self._clean_template_bytes, items, existing_data
+            _process_pool, _append_rows_process, self._clean_template_bytes, items, existing_data, month, year
         )
         return filename, file_bytes

@@ -309,3 +309,64 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 	=?UTF-8?B?MS5wZGY=?=: ValueError: Unsupported file type: .=?UTF-8?B?SMSQMTYXLUZHU41JIEHEQ1YGVDQUMJAYNL8=?=
 	=?UTF-8?B?MS5WZGY=?=
 [2026-05-01 15:48:11,688] ERROR    [app.infrastructure.email.email_listener:_process_emails:176] [EmailListener] Failed to process =?UTF-8?B?Q2h1zIBhIFZlzIMgNC4yLnBkZg==?=: ValueError: Unsupported file type: .=?UTF-8?B?Q2H1ZIBHIFZLZIMGNC4YLNBKZG==?=
+[2026-05-01 16:13:56,823] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 023eb66e-f43f-4c94-a6da-0b1e673ab677 failed: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+
+[2026-05-01 16:24:47,765] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job ccb7b119-e70a-4956-aded-49074f159415 failed: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+
+[2026-05-01 16:50:27,085] ERROR    [app.application.use_cases.process_invoice:execute:133] [ProcessInvoice] Job 1e59d845-124d-47f6-b618-d054851ef878 failed: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/process_invoice.py", line 76, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/infrastructure/llm/gemini_client.py", line 60, in extract_invoice
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+
+[2026-05-01 18:36:38,565] ERROR    [app.application.use_cases.review_and_confirm:finalize_confirm:157] [ReviewAndConfirm] Job a63a9343-eff9-4424-9d57-a76c6e097c8f finalization failed: Background confirmation failed: An error occurred (InvalidArgument) when calling the PutObject operation: Invalid argument
+Traceback (most recent call last):
+  File "/app/app/application/use_cases/review_and_confirm.py", line 132, in finalize_confirm
+    await asyncio.gather(*tasks)
+  File "/app/app/infrastructure/storage/rustfs_storage.py", line 27, in upload_file
+    await asyncio.to_thread(
+  File "/usr/local/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidArgument) when calling the PutObject operation: Invalid argument
+

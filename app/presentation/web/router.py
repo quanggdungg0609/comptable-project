@@ -214,5 +214,5 @@ async def web_retry(
         paired_bytes = open(job.pending_pdf_path, "rb").read()
 
     await repo.increment_retry_count(job_id)
-    await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes)
+    await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes, existing_job_id=job_id)
     return RedirectResponse("/jobs", status_code=303)
