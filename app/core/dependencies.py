@@ -53,6 +53,7 @@ def get_storage_singleton() -> RustFSStorage:
             endpoint=s.rustfs_endpoint,
             access_key=s.rustfs_access_key,
             secret_key=s.rustfs_secret_key,
+            public_endpoint=s.rustfs_public_endpoint,
         )
     return _storage_singleton
 

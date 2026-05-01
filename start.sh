@@ -22,10 +22,12 @@ if [ -f .env ]; then
     # MacOS sed needs an empty string for the -i extension
     if [[ "$OSTYPE" == "darwin"* ]]; then
         sed -i '' "s|APP_BASE_URL=.*|APP_BASE_URL=http://$HOST_IP:8000|" .env
+        sed -i '' "s|RUSTFS_PUBLIC_ENDPOINT=.*|RUSTFS_PUBLIC_ENDPOINT=http://$HOST_IP:9000|" .env
     else
         sed -i "s|APP_BASE_URL=.*|APP_BASE_URL=http://$HOST_IP:8000|" .env
+        sed -i "s|RUSTFS_PUBLIC_ENDPOINT=.*|RUSTFS_PUBLIC_ENDPOINT=http://$HOST_IP:9000|" .env
     fi
-    echo "📝 Đã cập nhật APP_BASE_URL trong .env"
+    echo "📝 Đã cập nhật APP_BASE_URL và RUSTFS_PUBLIC_ENDPOINT trong .env"
 else
     echo "⚠️ Không tìm thấy file .env"
 fi
