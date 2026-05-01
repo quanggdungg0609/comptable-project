@@ -84,8 +84,8 @@ async def lifespan(app: FastAPI):
     # Start Task Queue Workers
     logger.debug("[App Startup] Starting task queue workers")
     task_queue = get_task_queue()
-    await task_queue.start_workers(process_use_case=process_uc, num_workers=2)
-    logger.info("[App Startup] Task queue workers started (concurrency: 2)")
+    await task_queue.start_workers(process_use_case=process_uc, num_workers=1)
+    logger.info("[App Startup] Task queue workers started (concurrency: 1)")
 
     # Start retry scheduler — auto-retries FAILED jobs every 5 minutes
     from app.infrastructure.queue.retry_scheduler import RetryScheduler

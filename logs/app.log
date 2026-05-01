@@ -6273,3 +6273,19 @@ Exception: LLM timeout
 [2026-05-01 10:59:14,220] INFO     [app.infrastructure.email.imap_client:idle_listen:145] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
 [2026-05-01 10:59:14,439] INFO     [app.infrastructure.email.imap_client:idle_listen:149] [IMAPClient] INBOX selected, entering IDLE mode
 [2026-05-01 10:59:15,068] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-01 11:04:15,853] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-01 11:09:16,508] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-01 11:10:29,410] INFO     [app.main:lifespan:131] [App Shutdown] Shutting down application
+[2026-05-01 11:10:29,411] INFO     [app.infrastructure.email.email_listener:stop:178] [EmailListener] Stopping email listener...
+[2026-05-01 11:10:29,412] INFO     [app.infrastructure.email.imap_client:idle_listen:201] [IMAPClient] IDLE cancelled
+[2026-05-01 11:10:29,414] INFO     [app.infrastructure.email.email_listener:start:161] [EmailListener] Listener cancelled
+[2026-05-01 11:10:29,415] INFO     [app.infrastructure.email.imap_client:close:231] [IMAPClient] IMAP connection closed
+[2026-05-01 11:10:29,415] INFO     [app.infrastructure.email.email_listener:start:169] [EmailListener] IMAP connection closed
+[2026-05-01 11:10:29,415] INFO     [app.infrastructure.email.email_listener:start:173] [EmailListener] Email listener stopped
+[2026-05-01 11:10:29,415] INFO     [app.main:lifespan:143] [App Shutdown] Email listener stopped
+[2026-05-01 11:10:29,415] INFO     [app.infrastructure.queue.retry_scheduler:stop:30] [RetryScheduler] Stopped
+[2026-05-01 11:10:29,415] INFO     [app.main:lifespan:147] [App Shutdown] Retry scheduler stopped
+[2026-05-01 11:10:29,416] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:43] Stopped background workers.
+[2026-05-01 11:10:29,416] INFO     [app.main:lifespan:151] [App Shutdown] Task queue workers stopped
+[2026-05-01 11:10:29,422] INFO     [app.main:lifespan:155] [App Shutdown] Database closed
+[2026-05-01 11:10:29,422] INFO     [app.main:lifespan:156] [App Shutdown] Application shutdown complete
