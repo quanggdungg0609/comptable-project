@@ -9,6 +9,8 @@ from app.core.logging_config import setup_logging
 from app.infrastructure.storage.rustfs_storage import RustFSStorage
 from app.presentation.api.router import router as api_router
 from app.presentation.web.router import router as web_router
+from app.presentation.api.excel_cr_router import router as excel_cr_api_router
+from app.presentation.web.excel_cr_web import router as excel_cr_web_router
 
 # Setup logging configuration
 setup_logging(logging.INFO)
@@ -47,6 +49,7 @@ async def lifespan(app: FastAPI):
         await storage.ensure_buckets(
             settings.rustfs_bucket_invoices,
             settings.rustfs_bucket_exports,
+            settings.excel_cr_bucket,
         )
         logger.info("[App Startup] RustFS storage initialized")
     except Exception as e:
@@ -167,3 +170,5 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Thu Hóa Đơn", lifespan=lifespan)
 app.include_router(api_router)
 app.include_router(web_router)
+app.include_router(excel_cr_api_router)
+app.include_router(excel_cr_web_router)
