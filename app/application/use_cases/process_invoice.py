@@ -28,14 +28,24 @@ class ProcessInvoiceUseCase:
         filename: str,
         file_data: bytes,
         paired_pdf: bytes | None = None,
+        existing_job_id: str | None = None,
     ) -> ProcessingJob:
         file_type = FileType.from_filename(filename)
-        job = ProcessingJob.create(filename=filename, file_type=file_type)
+
+        if existing_job_id:
+            job = await self._repo.get(existing_job_id)
+            await self._repo.update_items(job.id, [])
+            await self._repo.update_line_items(job.id, [])
+            job.extracted_items = []
+            job.extracted_line_items = []
+            job.error = None
+        else:
+            job = ProcessingJob.create(filename=filename, file_type=file_type)
+            await self._repo.save(job)
 
         logger.info(f"[ProcessInvoice] Starting processing for job {job.id}: {filename} ({file_type.value})")
         logger.debug(f"[ProcessInvoice] File size: {len(file_data)} bytes, Paired PDF: {paired_pdf is not None}")
 
-        await self._repo.save(job)
         await self._repo.update_status(job.id, InvoiceStatus.PROCESSING)
         logger.info(f"[ProcessInvoice] Job {job.id} status set to PROCESSING")
 

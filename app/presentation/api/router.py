@@ -3,6 +3,7 @@ from app.presentation.api.schemas import JobResponse, ReviewRequest, InvoiceItem
 from app.core.dependencies import (
     get_process_invoice_uc, get_review_confirm_uc, get_export_excel_uc, get_job_repo,
 )
+from app.infrastructure.parsers.zip_extractor import extract_zip_contents
 
 router = APIRouter(prefix="/api/v1")
 
@@ -12,14 +13,24 @@ async def upload_invoices(
     process_uc=Depends(get_process_invoice_uc),
     repo=Depends(get_job_repo),
 ):
+    # Read all files, expanding ZIPs inline
+    expanded: list[tuple[str, bytes]] = []
+    for f in files:
+        raw = await f.read()
+        if f.filename.lower().endswith('.zip'):
+            for item in extract_zip_contents(f.filename, raw):
+                expanded.append((item['filename'], item['data']))
+        else:
+            expanded.append((f.filename, raw))
+
     # Pair XML + PDF by base filename
     file_map: dict[str, dict] = {}
-    for f in files:
-        base = f.filename.rsplit(".", 1)[0].lower()
-        ext = f.filename.rsplit(".", 1)[-1].lower()
+    for filename, data in expanded:
+        base = filename.rsplit(".", 1)[0].lower()
+        ext = filename.rsplit(".", 1)[-1].lower()
         if base not in file_map:
             file_map[base] = {}
-        file_map[base][ext] = (f.filename, await f.read())
+        file_map[base][ext] = (filename, data)
 
     jobs = []
     for base, exts in file_map.items():
@@ -78,6 +89,32 @@ async def confirm_job(
 
     return _job_to_response(result)
 
+@router.post("/jobs/{job_id}/retry", response_model=JobResponse)
+async def retry_job(
+    job_id: str,
+    repo=Depends(get_job_repo),
+    process_uc=Depends(get_process_invoice_uc),
+):
+    import os
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    job = await repo.get(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job.status != InvoiceStatus.FAILED:
+        raise HTTPException(status_code=400, detail=f"Job is not in FAILED status (current: {job.status.value})")
+    if not job.pending_file_path or not os.path.exists(job.pending_file_path):
+        raise HTTPException(status_code=422, detail="Pending file not found on disk — cannot retry")
+
+    file_data = open(job.pending_file_path, "rb").read()
+    paired_bytes: bytes | None = None
+    if job.pending_pdf_path and os.path.exists(job.pending_pdf_path):
+        paired_bytes = open(job.pending_pdf_path, "rb").read()
+
+    await repo.increment_retry_count(job_id)
+    result = await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes, existing_job_id=job_id)
+    return _job_to_response(result)
+
+
 @router.post("/jobs/{job_id}/reject", response_model=JobResponse)
 async def reject_job(job_id: str, confirm_uc=Depends(get_review_confirm_uc)):
     result = await confirm_uc.reject(job_id=job_id)
@@ -96,7 +133,7 @@ async def download_export(year: int, month: int, export_uc=Depends(get_export_ex
     )
 
 def _job_to_response(job) -> JobResponse:
-    from app.presentation.api.schemas import InvoiceItemSchema
+    from app.presentation.api.schemas import InvoiceItemSchema, InvoiceLineItemSchema
     return JobResponse(
         id=job.id, filename=job.filename, file_type=job.file_type.value,
         status=job.status.value, created_at=job.created_at,
@@ -105,5 +142,11 @@ def _job_to_response(job) -> JobResponse:
             "invoice_date": i.invoice_date, "seller_name": i.seller_name, "seller_address": i.seller_address, "seller_tax_code": i.seller_tax_code,
             "description": i.description, "price_before_tax": i.price_before_tax, "tax_rate": i.tax_rate, "price_after_tax": i.price_after_tax,
         }) for i in job.extracted_items],
+        extracted_line_items=[InvoiceLineItemSchema(**{
+            "id": i.id, "invoice_symbol": i.invoice_symbol, "invoice_number": i.invoice_number,
+            "invoice_date": i.invoice_date, "seller_name": i.seller_name, "seller_address": i.seller_address, "seller_tax_code": i.seller_tax_code,
+            "ten_hang_hoa": i.ten_hang_hoa, "don_vi_tinh": i.don_vi_tinh, "so_luong": i.so_luong,
+            "don_gia": i.don_gia, "thanh_tien": i.thanh_tien, "tax_rate": i.tax_rate, "tax_amount": i.tax_amount,
+        }) for i in job.extracted_line_items],
         source_paths=job.source_paths, error=job.error,
     )

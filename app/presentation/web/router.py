@@ -193,3 +193,26 @@ async def web_reject(job_id: str, repo=Depends(get_job_repo)):
     from app.domain.value_objects.invoice_status import InvoiceStatus
     await repo.update_status(job_id, InvoiceStatus.REJECTED)
     return RedirectResponse("/jobs", status_code=303)
+
+@router.post("/jobs/{job_id}/retry")
+async def web_retry(
+    job_id: str,
+    repo=Depends(get_job_repo),
+    process_uc=Depends(get_process_invoice_uc),
+):
+    import os
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    job = await repo.get(job_id)
+    if not job or job.status != InvoiceStatus.FAILED:
+        return RedirectResponse("/jobs", status_code=303)
+    if not job.pending_file_path or not os.path.exists(job.pending_file_path):
+        return RedirectResponse("/jobs", status_code=303)
+
+    file_data = open(job.pending_file_path, "rb").read()
+    paired_bytes: bytes | None = None
+    if job.pending_pdf_path and os.path.exists(job.pending_pdf_path):
+        paired_bytes = open(job.pending_pdf_path, "rb").read()
+
+    await repo.increment_retry_count(job_id)
+    await process_uc.execute(filename=job.filename, file_data=file_data, paired_pdf=paired_bytes, existing_job_id=job_id)
+    return RedirectResponse("/jobs", status_code=303)

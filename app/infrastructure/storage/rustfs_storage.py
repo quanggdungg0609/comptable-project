@@ -11,7 +11,9 @@ _BOTO_CONFIG = Config(
 )
 
 class RustFSStorage(IStoragePort):
-    def __init__(self, endpoint: str, access_key: str, secret_key: str):
+    def __init__(self, endpoint: str, access_key: str, secret_key: str, public_endpoint: str | None = None):
+        self._endpoint = endpoint
+        self._public_endpoint = public_endpoint or endpoint
         self._client = boto3.client(
             "s3",
             endpoint_url=endpoint,
@@ -36,12 +38,16 @@ class RustFSStorage(IStoragePort):
         return await asyncio.to_thread(_get)
 
     async def get_presigned_url(self, bucket: str, key: str, expires_in: int = 3600) -> str:
-        return await asyncio.to_thread(
+        url = await asyncio.to_thread(
             self._client.generate_presigned_url,
             "get_object",
             Params={"Bucket": bucket, "Key": key},
             ExpiresIn=expires_in,
         )
+        # If public_endpoint is different from internal endpoint, replace it
+        if self._public_endpoint != self._endpoint:
+            url = url.replace(self._endpoint, self._public_endpoint)
+        return url
 
     async def ensure_buckets(self, *bucket_names: str) -> None:
         """Create buckets if they don't exist. Call on app startup."""

@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     source_paths TEXT DEFAULT '[]',
     pending_file_path TEXT,
     pending_pdf_path TEXT,
-    duplicate_of TEXT
+    duplicate_of TEXT,
+    retry_count INTEGER NOT NULL DEFAULT 0
 )
 """
 
@@ -51,6 +52,19 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
     thanh_tien TEXT DEFAULT '0',
     tax_rate TEXT DEFAULT '0',
     tax_amount TEXT DEFAULT '0'
+)
+"""
+
+CREATE_EXCEL_CR_SESSIONS_TABLE = """
+CREATE TABLE IF NOT EXISTS excel_cr_sessions (
+    id TEXT PRIMARY KEY,
+    status TEXT NOT NULL DEFAULT 'pending',
+    source_file_key TEXT,
+    template_key TEXT,
+    aggregated_data TEXT,
+    match_results TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
 )
 """
 
@@ -105,8 +119,13 @@ async def init_db() -> None:
     await db.execute(CREATE_JOBS_TABLE)
     await db.execute(CREATE_INVOICE_ITEMS_TABLE)
     await db.execute(CREATE_INVOICE_LINE_ITEMS_TABLE)
+    await db.execute(CREATE_EXCEL_CR_SESSIONS_TABLE)
     try:
         await db.execute("ALTER TABLE jobs ADD COLUMN pending_pdf_path TEXT")
+    except Exception:
+        pass
+    try:
+        await db.execute("ALTER TABLE jobs ADD COLUMN retry_count INTEGER NOT NULL DEFAULT 0")
     except Exception:
         pass
     try:

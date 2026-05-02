@@ -48,7 +48,7 @@ jobs:
   publish:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' # Only publish on push (branch or tag), not PRs
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Only publish when merging into main
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

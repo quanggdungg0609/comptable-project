@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Excel-CR — Tổng hợp chi phí</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #1a237e; }
+    .state { display: none; }
+    .state.active { display: block; }
+    .drop-zone { border: 2px dashed #ccc; padding: 40px; text-align: center; cursor: pointer; border-radius: 8px; margin: 16px 0; }
+    .drop-zone:hover { border-color: #1a237e; background: #f5f5ff; }
+    button { background: #1a237e; color: white; border: none; padding: 10px 24px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    button:hover { background: #283593; }
+    button.secondary { background: #757575; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th { background: #1a237e; color: white; padding: 8px; text-align: left; }
+    td { border-bottom: 1px solid #eee; padding: 8px; }
+    tr:hover td { background: #f5f5ff; }
+    .confidence-high { color: green; font-weight: bold; }
+    .confidence-low { color: orange; }
+    .stats { background: #e8f5e9; padding: 12px; border-radius: 4px; margin: 16px 0; }
+    select { padding: 6px; border-radius: 4px; border: 1px solid #ccc; }
+    .loading { color: #666; font-style: italic; }
+    .error { color: #c62828; background: #ffebee; padding: 10px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Excel-CR — Tổng hợp chi phí</h1>
+
+  <!-- STATE 1: Upload -->
+  <div id="state-upload" class="state active">
+    <h2>Bước 1: Upload file</h2>
+    <div class="drop-zone" id="drop-source" onclick="document.getElementById('file-source').click()">
+      <p>Kéo thả hoặc click để chọn file chi phí (CSV, XLS, XLSX, PDF)</p>
+      <input type="file" id="file-source" accept=".csv,.xls,.xlsx,.pdf" style="display:none">
+      <p id="source-name" style="color:#1a237e;font-weight:bold"></p>
+    </div>
+    <div class="drop-zone" id="drop-template" onclick="document.getElementById('file-template').click()">
+      <p>Kéo thả hoặc click để chọn file template Excel đích</p>
+      <input type="file" id="file-template" accept=".xlsx" style="display:none">
+      <p id="template-name" style="color:#1a237e;font-weight:bold"></p>
+    </div>
+    <div id="upload-error" class="error" style="display:none"></div>
+    <button onclick="startProcessing()" id="btn-start">Bắt đầu xử lý</button>
+  </div>
+
+  <!-- STATE 2: Review -->
+  <div id="state-review" class="state">
+    <h2>Bước 2: Xem xét kết quả</h2>
+    <div id="review-stats" class="stats"></div>
+    <p>Các dòng cần xác nhận thủ công (LLM không chắc hoặc chưa phân loại):</p>
+    <table id="review-table">
+      <thead>
+        <tr><th>Tháng</th><th>Khoản mục</th><th>Diễn giải</th><th>Số tiền</th><th>Gợi ý LLM</th><th>Confidence</th><th>Chỉ tiêu</th></tr>
+      </thead>
+      <tbody id="review-body"></tbody>
+    </table>
+    <button onclick="confirmAndDownload()">Xác nhận & Tải về</button>
+    <button class="secondary" onclick="location.reload()">Bắt đầu lại</button>
+  </div>
+
+  <!-- STATE 3: Done -->
+  <div id="state-done" class="state">
+    <h2>Hoàn thành!</h2>
+    <div id="done-stats" class="stats"></div>
+    <button onclick="downloadFile()">Tải file Excel</button>
+    <button class="secondary" onclick="location.reload()">Xử lý file mới</button>
+  </div>
+
+  <script>
+    let sessionId = null;
+    let allChiTieu = [];
+
+    function showState(name) {
+      document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
+      document.getElementById('state-' + name).classList.add('active');
+    }
+
+    document.getElementById('file-source').onchange = e => {
+      document.getElementById('source-name').textContent = e.target.files[0]?.name || '';
+    };
+    document.getElementById('file-template').onchange = e => {
+      document.getElementById('template-name').textContent = e.target.files[0]?.name || '';
+    };
+
+    async function startProcessing() {
+      const src = document.getElementById('file-source').files[0];
+      const tmpl = document.getElementById('file-template').files[0];
+      const errEl = document.getElementById('upload-error');
+      errEl.style.display = 'none';
+
+      if (!src || !tmpl) { errEl.textContent = 'Vui lòng chọn cả 2 file.'; errEl.style.display = 'block'; return; }
+
+      document.getElementById('btn-start').textContent = 'Đang xử lý...';
+      document.getElementById('btn-start').disabled = true;
+
+      try {
+        // Upload source
+        let fd = new FormData(); fd.append('file', src);
+        let r = await fetch('/excel-cr/upload-source', { method: 'POST', body: fd });
+        if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+        const { session_id } = await r.json();
+        sessionId = session_id;
+
+        // Upload template
+        fd = new FormData(); fd.append('file', tmpl);
+        r = await fetch(`/excel-cr/upload-template/${sessionId}`, { method: 'POST', body: fd });
+        if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+
+        // Aggregate
+        r = await fetch(`/excel-cr/aggregate/${sessionId}`);
+        if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+        const aggData = await r.json();
+
+        // Extract all chi_tieu from matched rows for dropdown
+        allChiTieu = [...new Set(aggData.rows.filter(row => row.chi_tieu).map(row => row.chi_tieu))];
+
+        // LLM review
+        r = await fetch(`/excel-cr/llm-review/${sessionId}`, { method: 'POST' });
+        // ignore LLM errors — show review UI anyway
+
+        // Re-fetch updated aggregate data
+        r = await fetch(`/excel-cr/aggregate/${sessionId}`);
+        const updatedData = await r.json();
+
+        showReview(updatedData);
+      } catch (e) {
+        errEl.textContent = 'Lỗi: ' + e.message;
+        errEl.style.display = 'block';
+        document.getElementById('btn-start').textContent = 'Bắt đầu xử lý';
+        document.getElementById('btn-start').disabled = false;
+      }
+    }
+
+    function showReview(data) {
+      showState('review');
+      document.getElementById('review-stats').innerHTML =
+        `Tổng: <b>${data.total}</b> dòng &nbsp;|&nbsp; Đã khớp: <b>${data.matched}</b> &nbsp;|&nbsp; Cần xem xét: <b>${data.unmatched}</b>`;
+
+      const tbody = document.getElementById('review-body');
+      tbody.innerHTML = '';
+      const needReview = data.rows.filter(r => !r.chi_tieu || r.llm_confidence < 0.85);
+
+      if (needReview.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:green">Tất cả đã được phân loại tự động!</td></tr>';
+        return;
+      }
+
+      needReview.forEach((row, i) => {
+        const confidenceClass = (row.llm_confidence || 0) >= 0.85 ? 'confidence-high' : 'confidence-low';
+        const options = allChiTieu.map(ct =>
+          `<option value="${ct}" ${ct === (row.llm_suggested || row.chi_tieu) ? 'selected' : ''}>${ct}</option>`
+        ).join('');
+
+        tbody.innerHTML += `<tr data-dien-giai="${row.dien_giai}" data-khoan-muc="${row.khoan_muc}">
+          <td>${row.thang}</td>
+          <td>${row.khoan_muc}</td>
+          <td title="${row.llm_reason || ''}">${row.dien_giai}</td>
+          <td>${row.so_tien?.toLocaleString('vi-VN')}</td>
+          <td>${row.llm_suggested || '—'}</td>
+          <td class="${confidenceClass}">${row.llm_confidence ? (row.llm_confidence * 100).toFixed(0) + '%' : '—'}</td>
+          <td><select class="chi-tieu-select" data-idx="${i}"><option value="">-- Bỏ qua --</option>${options}</select></td>
+        </tr>`;
+      });
+    }
+
+    async function confirmAndDownload() {
+      const rows = document.querySelectorAll('#review-body tr[data-dien-giai]');
+      const confirmations = [];
+      rows.forEach(row => {
+        const sel = row.querySelector('.chi-tieu-select');
+        if (sel && sel.value) {
+          confirmations.push({
+            dien_giai: row.dataset.dienGiai,
+            khoan_muc: row.dataset.khoanMuc,
+            chi_tieu: sel.value,
+          });
+        }
+      });
+
+      if (confirmations.length > 0) {
+        await fetch(`/excel-cr/confirm/${sessionId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(confirmations),
+        });
+      } else {
+        // Nothing to confirm — just mark done
+        await fetch(`/excel-cr/confirm/${sessionId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify([]),
+        });
+      }
+
+      showState('done');
+      document.getElementById('done-stats').textContent = `Session: ${sessionId} — Sẵn sàng tải xuống.`;
+    }
+
+    async function downloadFile() {
+      const r = await fetch(`/excel-cr/download/${sessionId}`);
+      if (!r.ok) { alert('Lỗi tải file: ' + r.statusText); return; }
+      const blob = await r.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'excel_cr_output.xlsx';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

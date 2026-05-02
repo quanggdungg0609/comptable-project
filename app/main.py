@@ -9,6 +9,8 @@ from app.core.logging_config import setup_logging
 from app.infrastructure.storage.rustfs_storage import RustFSStorage
 from app.presentation.api.router import router as api_router
 from app.presentation.web.router import router as web_router
+from app.presentation.api.excel_cr_router import router as excel_cr_api_router
+from app.presentation.web.excel_cr_web import router as excel_cr_web_router
 
 # Setup logging configuration
 setup_logging(logging.INFO)
@@ -47,6 +49,7 @@ async def lifespan(app: FastAPI):
         await storage.ensure_buckets(
             settings.rustfs_bucket_invoices,
             settings.rustfs_bucket_exports,
+            settings.excel_cr_bucket,
         )
         logger.info("[App Startup] RustFS storage initialized")
     except Exception as e:
@@ -54,6 +57,7 @@ async def lifespan(app: FastAPI):
 
     listener_task: Optional[asyncio.Task] = None
     listener_obj = None
+    retry_scheduler = None
 
     # Common setup for Background Queue and Email Listener
     from app.infrastructure.repositories.sqlite_job_repo import SQLiteJobRepository
@@ -83,8 +87,22 @@ async def lifespan(app: FastAPI):
     # Start Task Queue Workers
     logger.debug("[App Startup] Starting task queue workers")
     task_queue = get_task_queue()
-    await task_queue.start_workers(process_use_case=process_uc, num_workers=2)
-    logger.info("[App Startup] Task queue workers started (concurrency: 2)")
+    await task_queue.start_workers(process_use_case=process_uc, num_workers=1)
+    logger.info("[App Startup] Task queue workers started (concurrency: 1)")
+
+    # Recover jobs stuck in PROCESSING from a previous crash
+    from app.domain.value_objects.invoice_status import InvoiceStatus
+    stuck = await repo.list_all(status=InvoiceStatus.PROCESSING)
+    for job in stuck:
+        await repo.update_status(job.id, InvoiceStatus.FAILED, error="App restarted while processing")
+    if stuck:
+        logger.warning("[App Startup] Reset %d stuck PROCESSING job(s) to FAILED for retry", len(stuck))
+
+    # Start retry scheduler — auto-retries FAILED jobs every 5 minutes
+    from app.infrastructure.queue.retry_scheduler import RetryScheduler
+    retry_scheduler = RetryScheduler(repo=repo, process_use_case=process_uc)
+    await retry_scheduler.start()
+    logger.info("[App Startup] Retry scheduler started")
 
     # Pre-warm background finalize singletons (XLSX templates, boto3 client,
     # bg DB connection) off the event loop so the first invoice confirm is
@@ -135,6 +153,10 @@ async def lifespan(app: FastAPI):
             logger.warning("[App Shutdown] Email listener did not stop within timeout")
         logger.info("[App Shutdown] Email listener stopped")
 
+    if retry_scheduler:
+        await retry_scheduler.stop()
+        logger.info("[App Shutdown] Retry scheduler stopped")
+
     logger.debug("[App Shutdown] Stopping task queue workers")
     await task_queue.stop_workers()
     logger.info("[App Shutdown] Task queue workers stopped")
@@ -148,3 +170,5 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Thu Hóa Đơn", lifespan=lifespan)
 app.include_router(api_router)
 app.include_router(web_router)
+app.include_router(excel_cr_api_router)
+app.include_router(excel_cr_web_router)
