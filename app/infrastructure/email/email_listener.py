@@ -2,6 +2,7 @@ import asyncio
 import logging
 from typing import Optional
 from email import message_from_bytes
+from email.header import decode_header, make_header
 from app.infrastructure.email.imap_client import IMAPClient
 from app.infrastructure.parsers.zip_extractor import extract_zip_contents
 from app.infrastructure.parsers.link_extractor import extract_scored_links
@@ -20,6 +21,13 @@ class EmailListener:
         self._running = False
         self._task: Optional[asyncio.Task] = None
 
+    @staticmethod
+    def _decode_filename(filename: str) -> str:
+        try:
+            return str(make_header(decode_header(filename)))
+        except Exception:
+            return filename
+
     def _extract_attachments_from_raw(self, raw_bytes: bytes):
         """Extract attachments from raw email bytes"""
         attachments = []
@@ -29,6 +37,7 @@ class EmailListener:
                 if part.get_content_disposition() == "attachment":
                     filename = part.get_filename()
                     if filename:
+                        filename = self._decode_filename(filename)
                         file_data = part.get_payload(decode=True)
                         attachments.append({
                             "filename": filename,
