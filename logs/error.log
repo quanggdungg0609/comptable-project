@@ -382,3 +382,39 @@ Exception: LLM timeout
 
 [2026-05-01 22:33:10,529] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
 [2026-05-01 22:33:15,019] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:00:55,194] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:00:55,558] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job befd4536-7cd9-4e16-bfb4-532e4ad54550 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:00:58,651] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:01:01,960] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:01:22,777] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:01:23,139] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job 0de86514-31ff-4c29-884f-b6bc092ea64f failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:01:25,754] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:01:29,223] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:01:38,071] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:01:38,291] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job df226227-c54a-4f39-9558-1a6f57b91a73 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:01:40,779] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:01:44,083] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip

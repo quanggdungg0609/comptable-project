@@ -10710,3 +10710,480 @@ Exception: LLM timeout
 [2026-05-02 08:54:04,842] INFO     [app.infrastructure.email.imap_client:idle_listen:145] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
 [2026-05-02 08:54:05,043] INFO     [app.infrastructure.email.imap_client:idle_listen:149] [IMAPClient] INBOX selected, entering IDLE mode
 [2026-05-02 08:54:05,596] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-02 08:59:06,472] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-02 11:00:55,174] INFO     [root:setup_logging:84] ================================================================================
+[2026-05-02 11:00:55,174] INFO     [root:setup_logging:85] Application started at 2026-05-02T11:00:55.174830
+[2026-05-02 11:00:55,174] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-05-02 11:00:55,174] INFO     [root:setup_logging:87] ================================================================================
+[2026-05-02 11:00:55,192] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:00:55,192] INFO     [app.application.use_cases.export_excel:execute:22] [ExportExcel] Successfully downloaded Bang_ke_thue_2026_03.xlsx (10 bytes)
+[2026-05-02 11:00:55,194] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:00:55,194] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:00:55,196] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 1f6d2e4b-ada4-45e9-a1d7-d42148397440: hd049.xml (XML)
+[2026-05-02 11:00:55,196] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 1f6d2e4b-ada4-45e9-a1d7-d42148397440 status set to PROCESSING
+[2026-05-02 11:00:55,196] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/1f6d2e4b-ada4-45e9-a1d7-d42148397440.xml
+[2026-05-02 11:00:55,197] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,197] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,197] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 1f6d2e4b-ada4-45e9-a1d7-d42148397440 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,197] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 1f6d2e4b-ada4-45e9-a1d7-d42148397440
+[2026-05-02 11:00:55,197] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 1f6d2e4b-ada4-45e9-a1d7-d42148397440
+[2026-05-02 11:00:55,199] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 2f7f4799-78a2-4937-bff8-4bc2fde3ded1: hd049.pdf (PDF)
+[2026-05-02 11:00:55,199] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 2f7f4799-78a2-4937-bff8-4bc2fde3ded1 status set to PROCESSING
+[2026-05-02 11:00:55,199] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/2f7f4799-78a2-4937-bff8-4bc2fde3ded1.pdf
+[2026-05-02 11:00:55,549] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:00:55,549] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,549] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (0 items)
+[2026-05-02 11:00:55,550] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 2f7f4799-78a2-4937-bff8-4bc2fde3ded1 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,551] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 2f7f4799-78a2-4937-bff8-4bc2fde3ded1
+[2026-05-02 11:00:55,551] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 2f7f4799-78a2-4937-bff8-4bc2fde3ded1
+[2026-05-02 11:00:55,553] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 22c577c9-5a11-4698-af48-c99dc7c63189: hd049.xml (XML)
+[2026-05-02 11:00:55,553] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 22c577c9-5a11-4698-af48-c99dc7c63189 status set to PROCESSING
+[2026-05-02 11:00:55,554] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/22c577c9-5a11-4698-af48-c99dc7c63189.xml
+[2026-05-02 11:00:55,554] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,554] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,554] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 22c577c9-5a11-4698-af48-c99dc7c63189 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,554] WARNING  [app.application.use_cases.process_invoice:execute:136] [ProcessInvoice] Notification failed for job 22c577c9-5a11-4698-af48-c99dc7c63189: Telegram timeout
+[2026-05-02 11:00:55,554] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 22c577c9-5a11-4698-af48-c99dc7c63189
+[2026-05-02 11:00:55,556] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job befd4536-7cd9-4e16-bfb4-532e4ad54550: hd049.xml (XML)
+[2026-05-02 11:00:55,556] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job befd4536-7cd9-4e16-bfb4-532e4ad54550 status set to PROCESSING
+[2026-05-02 11:00:55,556] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/befd4536-7cd9-4e16-bfb4-532e4ad54550.xml
+[2026-05-02 11:00:55,556] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,558] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job befd4536-7cd9-4e16-bfb4-532e4ad54550 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:00:55,561] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job b932890d-2e74-4e4d-9b91-a548bf5ca602: hd049_copy.xml (XML)
+[2026-05-02 11:00:55,561] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job b932890d-2e74-4e4d-9b91-a548bf5ca602 status set to PROCESSING
+[2026-05-02 11:00:55,561] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/b932890d-2e74-4e4d-9b91-a548bf5ca602.xml
+[2026-05-02 11:00:55,561] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,562] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,562] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job b932890d-2e74-4e4d-9b91-a548bf5ca602 is duplicate of 4ce29bcc-34db-4d9a-95bc-94d1b2670f50
+[2026-05-02 11:00:55,563] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job b932890d-2e74-4e4d-9b91-a548bf5ca602 marked as DUPLICATE
+[2026-05-02 11:00:55,564] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job db35dbcf-0b17-41db-b6eb-bf96b3acb2e4: hd049_copy.xml (XML)
+[2026-05-02 11:00:55,564] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job db35dbcf-0b17-41db-b6eb-bf96b3acb2e4 status set to PROCESSING
+[2026-05-02 11:00:55,565] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/db35dbcf-0b17-41db-b6eb-bf96b3acb2e4.xml
+[2026-05-02 11:00:55,565] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,565] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,565] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job db35dbcf-0b17-41db-b6eb-bf96b3acb2e4 is duplicate of a48bfe31-ce15-47c5-825b-f5d9937ef5b3
+[2026-05-02 11:00:55,565] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job db35dbcf-0b17-41db-b6eb-bf96b3acb2e4 marked as DUPLICATE
+[2026-05-02 11:00:55,567] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 5a3ab82c-1be5-4e4d-9403-78300842159b: hd049.xml (XML)
+[2026-05-02 11:00:55,567] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 5a3ab82c-1be5-4e4d-9403-78300842159b status set to PROCESSING
+[2026-05-02 11:00:55,567] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/5a3ab82c-1be5-4e4d-9403-78300842159b.xml
+[2026-05-02 11:00:55,567] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,568] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,568] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 5a3ab82c-1be5-4e4d-9403-78300842159b status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,568] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 5a3ab82c-1be5-4e4d-9403-78300842159b
+[2026-05-02 11:00:55,568] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 5a3ab82c-1be5-4e4d-9403-78300842159b
+[2026-05-02 11:00:55,570] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9: hd049.xml (XML)
+[2026-05-02 11:00:55,570] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9 status set to PROCESSING
+[2026-05-02 11:00:55,570] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/b651a9bc-c2d3-4713-89c2-bf5fb8c36be9.xml
+[2026-05-02 11:00:55,570] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:00:55,570] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,571] WARNING  [app.application.use_cases.process_invoice:execute:118] [ProcessInvoice] Duplicate check failed for job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9: DB error
+[2026-05-02 11:00:55,571] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,571] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9
+[2026-05-02 11:00:55,571] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job b651a9bc-c2d3-4713-89c2-bf5fb8c36be9
+[2026-05-02 11:00:55,573] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 25b0225a-0122-459c-9a82-74d2550aa556: hd049.xml (XML)
+[2026-05-02 11:00:55,573] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 25b0225a-0122-459c-9a82-74d2550aa556 status set to PROCESSING
+[2026-05-02 11:00:55,574] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/25b0225a-0122-459c-9a82-74d2550aa556.xml
+[2026-05-02 11:00:55,574] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 1 line items from XML
+[2026-05-02 11:00:55,574] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,575] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 25b0225a-0122-459c-9a82-74d2550aa556 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,575] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 25b0225a-0122-459c-9a82-74d2550aa556
+[2026-05-02 11:00:55,576] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 90393312-f4fa-4fe8-ba13-7076f3208f42: hd049.pdf (PDF)
+[2026-05-02 11:00:55,576] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 90393312-f4fa-4fe8-ba13-7076f3208f42 status set to PROCESSING
+[2026-05-02 11:00:55,577] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/90393312-f4fa-4fe8-ba13-7076f3208f42.pdf
+[2026-05-02 11:00:55,586] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:00:55,586] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:00:55,586] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (1 items)
+[2026-05-02 11:00:55,587] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 90393312-f4fa-4fe8-ba13-7076f3208f42 status set to AWAITING_REVIEW
+[2026-05-02 11:00:55,587] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 90393312-f4fa-4fe8-ba13-7076f3208f42
+[2026-05-02 11:00:55,592] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 8e53c054-d581-4b12-ab81-e00412923417
+[2026-05-02 11:00:55,593] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:00:55,593] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:00:55,593] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:00:55,593] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:00:55,594] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 8e53c054-d581-4b12-ab81-e00412923417 successfully confirmed and finalized
+[2026-05-02 11:00:55,595] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job 99d1b577-90e0-4e8c-b864-fd4c9a095c67
+[2026-05-02 11:00:55,596] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job 99d1b577-90e0-4e8c-b864-fd4c9a095c67 marked as REJECTED
+[2026-05-02 11:00:55,598] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 2fbc248a-f521-4a0e-8219-8da2fb648f33
+[2026-05-02 11:00:55,598] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:00:55,599] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:00:55,599] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:00:55,599] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:00:55,599] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 2fbc248a-f521-4a0e-8219-8da2fb648f33 successfully confirmed and finalized
+[2026-05-02 11:00:55,601] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job c6e31142-bcec-45b1-b92c-f95377ffbefc
+[2026-05-02 11:00:55,601] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job c6e31142-bcec-45b1-b92c-f95377ffbefc marked as REJECTED
+[2026-05-02 11:00:55,604] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job e5d6a869-4d63-44b3-a9ee-a6703193d08f
+[2026-05-02 11:00:55,605] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:00:55,605] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:00:55,605] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:00:55,605] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:00:55,605] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job e5d6a869-4d63-44b3-a9ee-a6703193d08f successfully confirmed and finalized
+[2026-05-02 11:00:55,606] WARNING  [app.application.use_cases.review_and_confirm:finalize_confirm:153] [ReviewAndConfirm] Notification failed for job e5d6a869-4d63-44b3-a9ee-a6703193d08f: Telegram down
+[2026-05-02 11:00:55,607] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:00:55,608] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:00:55,608] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:00:55,608] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:00:55,608] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:00:55,609] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:00:55,610] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:00:55,611] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:00:55,611] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:00:55,611] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:00:55,611] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:00:55,612] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:00:55,617] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:9] [Notification] Hóa đơn mới cần xem xét: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:00:55,618] INFO     [app.infrastructure.notifications.console_notifier:notify_confirmed:12] [Notification] Hóa đơn đã xác nhận: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:00:55,619] INFO     [app.infrastructure.notifications.console_notifier:notify_rejected:15] [Notification] Hóa đơn đã từ chối: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:00:58,634] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/invoice.pdf
+[2026-05-02 11:00:58,635] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/data
+[2026-05-02 11:00:58,651] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/fail
+[2026-05-02 11:00:58,651] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:00:58,666] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/404
+[2026-05-02 11:00:58,666] WARNING  [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:26] [LinkDownloader] Failed to download https://example.com/404: 404
+[2026-05-02 11:01:01,944] WARNING  [app.infrastructure.notifications.telegram_notifier:_send:61] [TelegramNotifier] Gửi thông báo thất bại: Exception
+[2026-05-02 11:01:01,957] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:34] [ZipExtractor] Skipping nested ZIP: nested.zip
+[2026-05-02 11:01:01,959] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:45] [ZipExtractor] No valid invoice files found in empty.zip
+[2026-05-02 11:01:01,960] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:01:02,212] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/b28af459-b3da-4fa0-9afb-a7766c94d268/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:02,216] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/176fad1f-0a66-48ad-8291-c5d55aba7bff/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:02,220] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/nonexistent-id/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:02,222] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/f7284617-7840-4f24-8963-7a41c610dac9/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:02,226] INFO     [httpx:_send_single_request:1025] HTTP Request: POST http://testserver/jobs/d4f9c323-ede9-4c46-a0df-4abefdf09829/confirm "HTTP/1.1 400 Bad Request"
+[2026-05-02 11:01:02,346] INFO     [app.infrastructure.rules.rustfs_rules_manager:load:27] rules.json not found in RustFS — returning defaults
+[2026-05-02 11:01:02,368] WARNING  [app.infrastructure.excel.excel_cr_writer:write:28] Chi tieu 'Không tồn tại' not found in template — skipping
+[2026-05-02 09:01:13,834] INFO     [app.main:lifespan:142] [App Shutdown] Shutting down application
+[2026-05-02 09:01:13,836] INFO     [app.infrastructure.email.email_listener:stop:232] [EmailListener] Stopping email listener...
+[2026-05-02 09:01:13,836] INFO     [app.infrastructure.email.imap_client:idle_listen:201] [IMAPClient] IDLE cancelled
+[2026-05-02 09:01:13,840] INFO     [app.infrastructure.email.email_listener:start:215] [EmailListener] Listener cancelled
+[2026-05-02 09:01:13,841] INFO     [app.infrastructure.email.imap_client:close:231] [IMAPClient] IMAP connection closed
+[2026-05-02 09:01:13,842] INFO     [app.infrastructure.email.email_listener:start:223] [EmailListener] IMAP connection closed
+[2026-05-02 09:01:13,842] INFO     [app.infrastructure.email.email_listener:start:227] [EmailListener] Email listener stopped
+[2026-05-02 09:01:13,842] INFO     [app.main:lifespan:154] [App Shutdown] Email listener stopped
+[2026-05-02 09:01:13,843] INFO     [app.infrastructure.queue.retry_scheduler:stop:30] [RetryScheduler] Stopped
+[2026-05-02 09:01:13,843] INFO     [app.main:lifespan:158] [App Shutdown] Retry scheduler stopped
+[2026-05-02 09:01:13,843] INFO     [app.infrastructure.queue.async_task_queue:stop_workers:47] Stopped background workers.
+[2026-05-02 09:01:13,844] INFO     [app.main:lifespan:162] [App Shutdown] Task queue workers stopped
+[2026-05-02 09:01:13,847] INFO     [app.main:lifespan:166] [App Shutdown] Database closed
+[2026-05-02 09:01:13,847] INFO     [app.main:lifespan:167] [App Shutdown] Application shutdown complete
+[2026-05-02 09:01:14,696] INFO     [root:setup_logging:84] ================================================================================
+[2026-05-02 09:01:14,696] INFO     [root:setup_logging:85] Application started at 2026-05-02T09:01:14.696566
+[2026-05-02 09:01:14,696] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-05-02 09:01:14,697] INFO     [root:setup_logging:87] ================================================================================
+[2026-05-02 09:01:14,711] INFO     [app.main:lifespan:34] [App Startup] Initializing application
+[2026-05-02 09:01:14,714] INFO     [app.main:lifespan:36] [App Startup] Configuration: LLM=gemini, Email Listener=Enabled
+[2026-05-02 09:01:14,717] INFO     [app.main:lifespan:40] [App Startup] Database initialized
+[2026-05-02 09:01:14,819] INFO     [app.main:lifespan:54] [App Startup] RustFS storage initialized
+[2026-05-02 09:01:14,821] INFO     [app.infrastructure.queue.async_task_queue:start_workers:39] Started 1 background workers for invoice processing.
+[2026-05-02 09:01:14,821] INFO     [app.main:lifespan:91] [App Startup] Task queue workers started (concurrency: 1)
+[2026-05-02 09:01:14,835] INFO     [app.infrastructure.queue.retry_scheduler:start:21] [RetryScheduler] Started (interval: 300s, max retries: 3)
+[2026-05-02 09:01:14,835] INFO     [app.main:lifespan:105] [App Startup] Retry scheduler started
+[2026-05-02 09:01:15,668] INFO     [app.main:lifespan:121] [App Startup] Background finalize singletons ready
+[2026-05-02 09:01:15,680] INFO     [app.main:lifespan:135] [App Startup] Email listener started (polling every 300s)
+[2026-05-02 09:01:15,681] INFO     [app.main:lifespan:139] [App Startup] Application ready to receive requests
+[2026-05-02 09:01:15,681] INFO     [app.infrastructure.email.email_listener:start:201] [EmailListener] Email listener started (IMAP IDLE with 300s refresh)
+[2026-05-02 09:01:16,377] INFO     [app.infrastructure.email.imap_client:connect:43] [IMAPClient] Successfully connected and authenticated to imap.gmail.com:993 as phongtaichinh.chd@gmail.com
+[2026-05-02 09:01:16,378] INFO     [app.infrastructure.email.email_listener:start:206] [EmailListener] Connected to IMAP server, starting IDLE listener
+[2026-05-02 09:01:16,378] INFO     [app.infrastructure.email.imap_client:idle_listen:145] [IMAPClient] Starting IDLE mode (idle timeout: 300s)
+[2026-05-02 09:01:16,629] INFO     [app.infrastructure.email.imap_client:idle_listen:149] [IMAPClient] INBOX selected, entering IDLE mode
+[2026-05-02 09:01:17,214] INFO     [app.infrastructure.email.imap_client:fetch_new_emails:89] [IMAPClient] Found 0 UNSEEN emails in INBOX
+[2026-05-02 11:01:22,756] INFO     [root:setup_logging:84] ================================================================================
+[2026-05-02 11:01:22,756] INFO     [root:setup_logging:85] Application started at 2026-05-02T11:01:22.756624
+[2026-05-02 11:01:22,756] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-05-02 11:01:22,756] INFO     [root:setup_logging:87] ================================================================================
+[2026-05-02 11:01:22,776] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:01:22,776] INFO     [app.application.use_cases.export_excel:execute:22] [ExportExcel] Successfully downloaded Bang_ke_thue_2026_03.xlsx (10 bytes)
+[2026-05-02 11:01:22,777] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:01:22,777] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:01:22,779] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 01992cf8-2bf2-4d8d-ace4-be1343295d21: hd049.xml (XML)
+[2026-05-02 11:01:22,779] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 01992cf8-2bf2-4d8d-ace4-be1343295d21 status set to PROCESSING
+[2026-05-02 11:01:22,780] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/01992cf8-2bf2-4d8d-ace4-be1343295d21.xml
+[2026-05-02 11:01:22,780] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:22,780] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:22,781] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 01992cf8-2bf2-4d8d-ace4-be1343295d21 status set to AWAITING_REVIEW
+[2026-05-02 11:01:22,781] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 01992cf8-2bf2-4d8d-ace4-be1343295d21
+[2026-05-02 11:01:22,781] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 01992cf8-2bf2-4d8d-ace4-be1343295d21
+[2026-05-02 11:01:22,783] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 8f89c703-0a9a-4d84-9be7-e542584389eb: hd049.pdf (PDF)
+[2026-05-02 11:01:22,783] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 8f89c703-0a9a-4d84-9be7-e542584389eb status set to PROCESSING
+[2026-05-02 11:01:22,783] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/8f89c703-0a9a-4d84-9be7-e542584389eb.pdf
+[2026-05-02 11:01:23,131] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:01:23,131] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,131] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (0 items)
+[2026-05-02 11:01:23,132] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 8f89c703-0a9a-4d84-9be7-e542584389eb status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,132] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 8f89c703-0a9a-4d84-9be7-e542584389eb
+[2026-05-02 11:01:23,132] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 8f89c703-0a9a-4d84-9be7-e542584389eb
+[2026-05-02 11:01:23,135] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 7a2e5ab6-ca81-410b-a017-bfa872960908: hd049.xml (XML)
+[2026-05-02 11:01:23,135] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 7a2e5ab6-ca81-410b-a017-bfa872960908 status set to PROCESSING
+[2026-05-02 11:01:23,135] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/7a2e5ab6-ca81-410b-a017-bfa872960908.xml
+[2026-05-02 11:01:23,135] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,135] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,136] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 7a2e5ab6-ca81-410b-a017-bfa872960908 status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,136] WARNING  [app.application.use_cases.process_invoice:execute:136] [ProcessInvoice] Notification failed for job 7a2e5ab6-ca81-410b-a017-bfa872960908: Telegram timeout
+[2026-05-02 11:01:23,136] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 7a2e5ab6-ca81-410b-a017-bfa872960908
+[2026-05-02 11:01:23,137] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 0de86514-31ff-4c29-884f-b6bc092ea64f: hd049.xml (XML)
+[2026-05-02 11:01:23,137] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 0de86514-31ff-4c29-884f-b6bc092ea64f status set to PROCESSING
+[2026-05-02 11:01:23,138] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/0de86514-31ff-4c29-884f-b6bc092ea64f.xml
+[2026-05-02 11:01:23,138] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,139] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job 0de86514-31ff-4c29-884f-b6bc092ea64f failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:01:23,142] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job b6f15a00-50d7-41d8-8780-1c0239f5f0f5: hd049_copy.xml (XML)
+[2026-05-02 11:01:23,142] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job b6f15a00-50d7-41d8-8780-1c0239f5f0f5 status set to PROCESSING
+[2026-05-02 11:01:23,142] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/b6f15a00-50d7-41d8-8780-1c0239f5f0f5.xml
+[2026-05-02 11:01:23,142] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,142] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,143] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job b6f15a00-50d7-41d8-8780-1c0239f5f0f5 is duplicate of 7c605ba0-8b35-444b-ad32-813906263540
+[2026-05-02 11:01:23,143] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job b6f15a00-50d7-41d8-8780-1c0239f5f0f5 marked as DUPLICATE
+[2026-05-02 11:01:23,145] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 6240ed90-8ff0-4d6f-8f1f-ec988bda929f: hd049_copy.xml (XML)
+[2026-05-02 11:01:23,145] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 6240ed90-8ff0-4d6f-8f1f-ec988bda929f status set to PROCESSING
+[2026-05-02 11:01:23,146] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/6240ed90-8ff0-4d6f-8f1f-ec988bda929f.xml
+[2026-05-02 11:01:23,146] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,146] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,146] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job 6240ed90-8ff0-4d6f-8f1f-ec988bda929f is duplicate of f06d6fd8-de06-4654-9811-10c04269b5fc
+[2026-05-02 11:01:23,146] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job 6240ed90-8ff0-4d6f-8f1f-ec988bda929f marked as DUPLICATE
+[2026-05-02 11:01:23,148] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 7c600ec0-d492-4166-aaa2-313b8d77bd26: hd049.xml (XML)
+[2026-05-02 11:01:23,148] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 7c600ec0-d492-4166-aaa2-313b8d77bd26 status set to PROCESSING
+[2026-05-02 11:01:23,148] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/7c600ec0-d492-4166-aaa2-313b8d77bd26.xml
+[2026-05-02 11:01:23,148] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,148] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,149] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 7c600ec0-d492-4166-aaa2-313b8d77bd26 status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,149] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 7c600ec0-d492-4166-aaa2-313b8d77bd26
+[2026-05-02 11:01:23,149] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 7c600ec0-d492-4166-aaa2-313b8d77bd26
+[2026-05-02 11:01:23,151] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 9005da29-37fc-42ea-b2d3-13245afacc93: hd049.xml (XML)
+[2026-05-02 11:01:23,151] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 9005da29-37fc-42ea-b2d3-13245afacc93 status set to PROCESSING
+[2026-05-02 11:01:23,151] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/9005da29-37fc-42ea-b2d3-13245afacc93.xml
+[2026-05-02 11:01:23,151] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:23,152] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,152] WARNING  [app.application.use_cases.process_invoice:execute:118] [ProcessInvoice] Duplicate check failed for job 9005da29-37fc-42ea-b2d3-13245afacc93: DB error
+[2026-05-02 11:01:23,152] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 9005da29-37fc-42ea-b2d3-13245afacc93 status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,152] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 9005da29-37fc-42ea-b2d3-13245afacc93
+[2026-05-02 11:01:23,152] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 9005da29-37fc-42ea-b2d3-13245afacc93
+[2026-05-02 11:01:23,154] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 1e2932ab-a9b9-4618-b9a3-9c3ac0919334: hd049.xml (XML)
+[2026-05-02 11:01:23,154] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 1e2932ab-a9b9-4618-b9a3-9c3ac0919334 status set to PROCESSING
+[2026-05-02 11:01:23,155] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/1e2932ab-a9b9-4618-b9a3-9c3ac0919334.xml
+[2026-05-02 11:01:23,155] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 1 line items from XML
+[2026-05-02 11:01:23,155] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,156] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 1e2932ab-a9b9-4618-b9a3-9c3ac0919334 status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,156] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 1e2932ab-a9b9-4618-b9a3-9c3ac0919334
+[2026-05-02 11:01:23,157] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 99ce7c44-ad33-4270-b4c7-9b06e637c93d: hd049.pdf (PDF)
+[2026-05-02 11:01:23,157] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 99ce7c44-ad33-4270-b4c7-9b06e637c93d status set to PROCESSING
+[2026-05-02 11:01:23,158] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/99ce7c44-ad33-4270-b4c7-9b06e637c93d.pdf
+[2026-05-02 11:01:23,169] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:01:23,169] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:23,169] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (1 items)
+[2026-05-02 11:01:23,170] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 99ce7c44-ad33-4270-b4c7-9b06e637c93d status set to AWAITING_REVIEW
+[2026-05-02 11:01:23,170] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 99ce7c44-ad33-4270-b4c7-9b06e637c93d
+[2026-05-02 11:01:23,174] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 0e5eb467-9b22-4042-94ab-74792da4d913
+[2026-05-02 11:01:23,174] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:23,174] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:23,175] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:23,175] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:23,175] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 0e5eb467-9b22-4042-94ab-74792da4d913 successfully confirmed and finalized
+[2026-05-02 11:01:23,177] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job be0dab52-46b5-4a90-b257-e42a780a504b
+[2026-05-02 11:01:23,177] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job be0dab52-46b5-4a90-b257-e42a780a504b marked as REJECTED
+[2026-05-02 11:01:23,179] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job dcfacf7d-f0f0-44a4-b3dc-eba084f2ef71
+[2026-05-02 11:01:23,179] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:23,180] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:23,180] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:23,180] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:23,180] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job dcfacf7d-f0f0-44a4-b3dc-eba084f2ef71 successfully confirmed and finalized
+[2026-05-02 11:01:23,182] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job b571f547-5f91-4503-ba51-bcccd51755f1
+[2026-05-02 11:01:23,182] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job b571f547-5f91-4503-ba51-bcccd51755f1 marked as REJECTED
+[2026-05-02 11:01:23,185] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job db03f414-02f1-4d21-9032-f82d519edca4
+[2026-05-02 11:01:23,185] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:23,186] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:23,186] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:23,186] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:23,186] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job db03f414-02f1-4d21-9032-f82d519edca4 successfully confirmed and finalized
+[2026-05-02 11:01:23,186] WARNING  [app.application.use_cases.review_and_confirm:finalize_confirm:153] [ReviewAndConfirm] Notification failed for job db03f414-02f1-4d21-9032-f82d519edca4: Telegram down
+[2026-05-02 11:01:23,188] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:01:23,189] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:01:23,189] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:23,189] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:23,189] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:23,189] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:01:23,191] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:01:23,191] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:01:23,191] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:23,191] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:23,192] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:23,192] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:01:23,197] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:9] [Notification] Hóa đơn mới cần xem xét: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:23,197] INFO     [app.infrastructure.notifications.console_notifier:notify_confirmed:12] [Notification] Hóa đơn đã xác nhận: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:23,198] INFO     [app.infrastructure.notifications.console_notifier:notify_rejected:15] [Notification] Hóa đơn đã từ chối: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:25,736] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/invoice.pdf
+[2026-05-02 11:01:25,736] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/data
+[2026-05-02 11:01:25,753] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/fail
+[2026-05-02 11:01:25,754] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:01:25,776] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/404
+[2026-05-02 11:01:25,777] WARNING  [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:26] [LinkDownloader] Failed to download https://example.com/404: 404
+[2026-05-02 11:01:29,213] WARNING  [app.infrastructure.notifications.telegram_notifier:_send:61] [TelegramNotifier] Gửi thông báo thất bại: Exception
+[2026-05-02 11:01:29,222] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:34] [ZipExtractor] Skipping nested ZIP: nested.zip
+[2026-05-02 11:01:29,222] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:45] [ZipExtractor] No valid invoice files found in empty.zip
+[2026-05-02 11:01:29,223] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:01:29,302] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/6b561360-8fe1-4a84-adc2-689bd245a0dd/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:29,306] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/3b790af0-f61e-4bb9-8a12-2480a56d7502/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:29,308] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/nonexistent-id/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:29,313] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/be3adc7c-ae21-4271-bfb4-30021aef56f9/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:29,316] INFO     [httpx:_send_single_request:1025] HTTP Request: POST http://testserver/jobs/5dfff6f6-d889-40a9-965e-5133fb67534e/confirm "HTTP/1.1 400 Bad Request"
+[2026-05-02 11:01:29,351] INFO     [app.infrastructure.rules.rustfs_rules_manager:load:27] rules.json not found in RustFS — returning defaults
+[2026-05-02 11:01:29,368] WARNING  [app.infrastructure.excel.excel_cr_writer:write:28] Chi tieu 'Không tồn tại' not found in template — skipping
+[2026-05-02 11:01:38,050] INFO     [root:setup_logging:84] ================================================================================
+[2026-05-02 11:01:38,051] INFO     [root:setup_logging:85] Application started at 2026-05-02T11:01:38.051847
+[2026-05-02 11:01:38,051] INFO     [root:setup_logging:86] Logging configuration: Level=INFO, File=logs/app.log
+[2026-05-02 11:01:38,051] INFO     [root:setup_logging:87] ================================================================================
+[2026-05-02 11:01:38,069] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:01:38,070] INFO     [app.application.use_cases.export_excel:execute:22] [ExportExcel] Successfully downloaded Bang_ke_thue_2026_03.xlsx (10 bytes)
+[2026-05-02 11:01:38,071] INFO     [app.application.use_cases.export_excel:execute:16] [ExportExcel] Exporting aggregate Excel for 2026/03
+[2026-05-02 11:01:38,071] ERROR    [app.application.use_cases.export_excel:execute:25] [ExportExcel] Failed to download export file for 2026/03: NoSuchKey
+[2026-05-02 11:01:38,073] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job dbc72378-e223-44a7-b92b-ad5b546fb6b9: hd049.xml (XML)
+[2026-05-02 11:01:38,074] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job dbc72378-e223-44a7-b92b-ad5b546fb6b9 status set to PROCESSING
+[2026-05-02 11:01:38,074] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/dbc72378-e223-44a7-b92b-ad5b546fb6b9.xml
+[2026-05-02 11:01:38,074] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,074] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,075] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job dbc72378-e223-44a7-b92b-ad5b546fb6b9 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,075] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job dbc72378-e223-44a7-b92b-ad5b546fb6b9
+[2026-05-02 11:01:38,075] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job dbc72378-e223-44a7-b92b-ad5b546fb6b9
+[2026-05-02 11:01:38,076] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job c85abc2e-7939-488b-9dea-42ff64fa364d: hd049.pdf (PDF)
+[2026-05-02 11:01:38,077] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job c85abc2e-7939-488b-9dea-42ff64fa364d status set to PROCESSING
+[2026-05-02 11:01:38,077] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/c85abc2e-7939-488b-9dea-42ff64fa364d.pdf
+[2026-05-02 11:01:38,281] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:01:38,281] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,282] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (0 items)
+[2026-05-02 11:01:38,283] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job c85abc2e-7939-488b-9dea-42ff64fa364d status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,283] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job c85abc2e-7939-488b-9dea-42ff64fa364d
+[2026-05-02 11:01:38,284] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job c85abc2e-7939-488b-9dea-42ff64fa364d
+[2026-05-02 11:01:38,286] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job d40217b6-2d1b-49d2-b445-de98f6ea05e6: hd049.xml (XML)
+[2026-05-02 11:01:38,286] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job d40217b6-2d1b-49d2-b445-de98f6ea05e6 status set to PROCESSING
+[2026-05-02 11:01:38,286] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/d40217b6-2d1b-49d2-b445-de98f6ea05e6.xml
+[2026-05-02 11:01:38,286] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,286] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,287] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job d40217b6-2d1b-49d2-b445-de98f6ea05e6 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,287] WARNING  [app.application.use_cases.process_invoice:execute:136] [ProcessInvoice] Notification failed for job d40217b6-2d1b-49d2-b445-de98f6ea05e6: Telegram timeout
+[2026-05-02 11:01:38,287] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job d40217b6-2d1b-49d2-b445-de98f6ea05e6
+[2026-05-02 11:01:38,289] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job df226227-c54a-4f39-9558-1a6f57b91a73: hd049.xml (XML)
+[2026-05-02 11:01:38,289] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job df226227-c54a-4f39-9558-1a6f57b91a73 status set to PROCESSING
+[2026-05-02 11:01:38,289] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/df226227-c54a-4f39-9558-1a6f57b91a73.xml
+[2026-05-02 11:01:38,289] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,291] ERROR    [app.application.use_cases.process_invoice:execute:143] [ProcessInvoice] Job df226227-c54a-4f39-9558-1a6f57b91a73 failed: LLM timeout
+Traceback (most recent call last):
+  File "/Users/quangdung/Documents/collect_invoice/app/application/use_cases/process_invoice.py", line 86, in execute
+    items, llm_line_items = await self._llm.extract_invoice(content)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/mock.py", line 2253, in _execute_mock_call
+    raise effect
+Exception: LLM timeout
+
+[2026-05-02 11:01:38,295] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 4c2df0b5-c78b-4385-9952-251fad1bf2a3: hd049_copy.xml (XML)
+[2026-05-02 11:01:38,296] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 4c2df0b5-c78b-4385-9952-251fad1bf2a3 status set to PROCESSING
+[2026-05-02 11:01:38,296] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/4c2df0b5-c78b-4385-9952-251fad1bf2a3.xml
+[2026-05-02 11:01:38,296] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,296] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,297] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job 4c2df0b5-c78b-4385-9952-251fad1bf2a3 is duplicate of 22872477-61f9-490a-9014-7d6ad31acb66
+[2026-05-02 11:01:38,297] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job 4c2df0b5-c78b-4385-9952-251fad1bf2a3 marked as DUPLICATE
+[2026-05-02 11:01:38,298] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 8d0ed96d-6f9f-45e9-a929-35339ac23482: hd049_copy.xml (XML)
+[2026-05-02 11:01:38,299] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 8d0ed96d-6f9f-45e9-a929-35339ac23482 status set to PROCESSING
+[2026-05-02 11:01:38,299] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/8d0ed96d-6f9f-45e9-a929-35339ac23482.xml
+[2026-05-02 11:01:38,299] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,299] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,299] WARNING  [app.application.use_cases.process_invoice:execute:108] [ProcessInvoice] Found duplicate! Job 8d0ed96d-6f9f-45e9-a929-35339ac23482 is duplicate of 9ac6fe0d-899e-4f09-8d09-77e33ea94125
+[2026-05-02 11:01:38,300] INFO     [app.application.use_cases.process_invoice:execute:113] [ProcessInvoice] Job 8d0ed96d-6f9f-45e9-a929-35339ac23482 marked as DUPLICATE
+[2026-05-02 11:01:38,302] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 06aa1cf6-196b-4343-8957-5f54fa93e951: hd049.xml (XML)
+[2026-05-02 11:01:38,302] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 06aa1cf6-196b-4343-8957-5f54fa93e951 status set to PROCESSING
+[2026-05-02 11:01:38,302] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/06aa1cf6-196b-4343-8957-5f54fa93e951.xml
+[2026-05-02 11:01:38,302] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,302] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,303] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 06aa1cf6-196b-4343-8957-5f54fa93e951 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,303] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 06aa1cf6-196b-4343-8957-5f54fa93e951
+[2026-05-02 11:01:38,303] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 06aa1cf6-196b-4343-8957-5f54fa93e951
+[2026-05-02 11:01:38,305] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 9f31927c-e7d8-443f-8510-2f5029a002a0: hd049.xml (XML)
+[2026-05-02 11:01:38,305] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 9f31927c-e7d8-443f-8510-2f5029a002a0 status set to PROCESSING
+[2026-05-02 11:01:38,305] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/9f31927c-e7d8-443f-8510-2f5029a002a0.xml
+[2026-05-02 11:01:38,306] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 0 line items from XML
+[2026-05-02 11:01:38,306] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,306] WARNING  [app.application.use_cases.process_invoice:execute:118] [ProcessInvoice] Duplicate check failed for job 9f31927c-e7d8-443f-8510-2f5029a002a0: DB error
+[2026-05-02 11:01:38,306] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 9f31927c-e7d8-443f-8510-2f5029a002a0 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,306] INFO     [app.application.use_cases.process_invoice:execute:134] [ProcessInvoice] Notification sent for job 9f31927c-e7d8-443f-8510-2f5029a002a0
+[2026-05-02 11:01:38,306] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 9f31927c-e7d8-443f-8510-2f5029a002a0
+[2026-05-02 11:01:38,308] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job a13b298e-4050-429d-a796-a3dcd0d56d10: hd049.xml (XML)
+[2026-05-02 11:01:38,308] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job a13b298e-4050-429d-a796-a3dcd0d56d10 status set to PROCESSING
+[2026-05-02 11:01:38,310] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/a13b298e-4050-429d-a796-a3dcd0d56d10.xml
+[2026-05-02 11:01:38,310] INFO     [app.application.use_cases.process_invoice:execute:79] [ProcessInvoice] Extracted 1 line items from XML
+[2026-05-02 11:01:38,310] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,310] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job a13b298e-4050-429d-a796-a3dcd0d56d10 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,310] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job a13b298e-4050-429d-a796-a3dcd0d56d10
+[2026-05-02 11:01:38,312] INFO     [app.application.use_cases.process_invoice:execute:46] [ProcessInvoice] Starting processing for job 2bcea919-fe1a-4d85-bf12-67adbd9cd369: hd049.pdf (PDF)
+[2026-05-02 11:01:38,313] INFO     [app.application.use_cases.process_invoice:execute:50] [ProcessInvoice] Job 2bcea919-fe1a-4d85-bf12-67adbd9cd369 status set to PROCESSING
+[2026-05-02 11:01:38,313] INFO     [app.application.use_cases.process_invoice:execute:64] [ProcessInvoice] File saved: data/pending/2bcea919-fe1a-4d85-bf12-67adbd9cd369.pdf
+[2026-05-02 11:01:38,321] INFO     [app.application.use_cases.process_invoice:execute:83] [ProcessInvoice] Extracted text from PDF
+[2026-05-02 11:01:38,321] INFO     [app.application.use_cases.process_invoice:execute:87] [ProcessInvoice] LLM extracted 1 invoice items
+[2026-05-02 11:01:38,321] INFO     [app.application.use_cases.process_invoice:execute:91] [ProcessInvoice] Using LLM-extracted line items (1 items)
+[2026-05-02 11:01:38,322] INFO     [app.application.use_cases.process_invoice:execute:125] [ProcessInvoice] Job 2bcea919-fe1a-4d85-bf12-67adbd9cd369 status set to AWAITING_REVIEW
+[2026-05-02 11:01:38,322] INFO     [app.application.use_cases.process_invoice:execute:138] [ProcessInvoice] Successfully completed job 2bcea919-fe1a-4d85-bf12-67adbd9cd369
+[2026-05-02 11:01:38,326] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 81a3c9d4-3af5-4616-a448-c7e579f91489
+[2026-05-02 11:01:38,326] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:38,327] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:38,327] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:38,327] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:38,328] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 81a3c9d4-3af5-4616-a448-c7e579f91489 successfully confirmed and finalized
+[2026-05-02 11:01:38,330] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job a50556c2-ecea-4165-94a6-e4000d1d1a19
+[2026-05-02 11:01:38,330] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job a50556c2-ecea-4165-94a6-e4000d1d1a19 marked as REJECTED
+[2026-05-02 11:01:38,332] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job 1313e014-87b5-4f4c-a248-a25c61b3cb6a
+[2026-05-02 11:01:38,332] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:38,333] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:38,333] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:38,333] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:38,333] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job 1313e014-87b5-4f4c-a248-a25c61b3cb6a successfully confirmed and finalized
+[2026-05-02 11:01:38,335] INFO     [app.application.use_cases.review_and_confirm:reject:209] [ReviewAndConfirm] Rejecting job a74230f8-77f4-4292-a861-681d539c2d66
+[2026-05-02 11:01:38,335] INFO     [app.application.use_cases.review_and_confirm:reject:213] [ReviewAndConfirm] Job a74230f8-77f4-4292-a861-681d539c2d66 marked as REJECTED
+[2026-05-02 11:01:38,338] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job effb8054-c469-4901-b4da-cc059c2df2f6
+[2026-05-02 11:01:38,339] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 1 files and generating Excel reports
+[2026-05-02 11:01:38,339] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:38,339] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:38,339] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:38,340] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job effb8054-c469-4901-b4da-cc059c2df2f6 successfully confirmed and finalized
+[2026-05-02 11:01:38,340] WARNING  [app.application.use_cases.review_and_confirm:finalize_confirm:153] [ReviewAndConfirm] Notification failed for job effb8054-c469-4901-b4da-cc059c2df2f6: Telegram down
+[2026-05-02 11:01:38,342] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:01:38,343] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:01:38,343] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:38,343] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:38,343] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:38,344] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:01:38,346] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:68] [ReviewAndConfirm] Starting background finalization for job job-1
+[2026-05-02 11:01:38,346] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:117] [ReviewAndConfirm] Uploading 0 files and generating Excel reports
+[2026-05-02 11:01:38,346] INFO     [app.application.use_cases.review_and_confirm:_process_aggregate_excel:181] [ReviewAndConfirm] Aggregate Excel uploaded: 2026/03/Bang_ke_thue_2026_03.xlsx
+[2026-05-02 11:01:38,346] INFO     [app.application.use_cases.review_and_confirm:_process_detailed_excel:206] [ReviewAndConfirm] Detailed Excel uploaded: 2026/03/Chi_tiet_hoa_don_T3_2026.xlsx
+[2026-05-02 11:01:38,346] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:133] [ReviewAndConfirm] All parallel tasks completed
+[2026-05-02 11:01:38,347] INFO     [app.application.use_cases.review_and_confirm:finalize_confirm:145] [ReviewAndConfirm] Job job-1 successfully confirmed and finalized
+[2026-05-02 11:01:38,352] INFO     [app.infrastructure.notifications.console_notifier:notify_new_invoice:9] [Notification] Hóa đơn mới cần xem xét: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:38,353] INFO     [app.infrastructure.notifications.console_notifier:notify_confirmed:12] [Notification] Hóa đơn đã xác nhận: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:38,354] INFO     [app.infrastructure.notifications.console_notifier:notify_rejected:15] [Notification] Hóa đơn đã từ chối: hd001.xml (NCC: Cty ABC, Số: 0001, job: job-1)
+[2026-05-02 11:01:40,762] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/invoice.pdf
+[2026-05-02 11:01:40,762] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/data
+[2026-05-02 11:01:40,779] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/fail
+[2026-05-02 11:01:40,779] ERROR    [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:33] [LinkDownloader] Error downloading https://example.com/fail: Connection error
+[2026-05-02 11:01:40,794] INFO     [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:23] [LinkDownloader] Downloading https://example.com/404
+[2026-05-02 11:01:40,794] WARNING  [app.infrastructure.email.invoice_link_downloader:download_invoices_from_links:26] [LinkDownloader] Failed to download https://example.com/404: 404
+[2026-05-02 11:01:44,072] WARNING  [app.infrastructure.notifications.telegram_notifier:_send:61] [TelegramNotifier] Gửi thông báo thất bại: Exception
+[2026-05-02 11:01:44,082] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:34] [ZipExtractor] Skipping nested ZIP: nested.zip
+[2026-05-02 11:01:44,083] WARNING  [app.infrastructure.parsers.zip_extractor:extract_zip_contents:45] [ZipExtractor] No valid invoice files found in empty.zip
+[2026-05-02 11:01:44,083] ERROR    [app.infrastructure.parsers.zip_extractor:extract_zip_contents:49] [ZipExtractor] Invalid or corrupt ZIP: corrupt.zip
+[2026-05-02 11:01:44,157] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/eaf39f7d-6d3c-44c0-8e51-535b3560cdcf/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:44,161] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/3699c50b-8935-407a-88f1-b9981331c3f4/preview "HTTP/1.1 200 OK"
+[2026-05-02 11:01:44,163] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/nonexistent-id/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:44,166] INFO     [httpx:_send_single_request:1025] HTTP Request: GET http://testserver/jobs/92ea875b-f81c-4906-9eb7-e42078d7be1f/preview "HTTP/1.1 404 Not Found"
+[2026-05-02 11:01:44,169] INFO     [httpx:_send_single_request:1025] HTTP Request: POST http://testserver/jobs/cf04103d-87df-4b40-8905-93c4a53dfb02/confirm "HTTP/1.1 400 Bad Request"
+[2026-05-02 11:01:44,194] INFO     [app.infrastructure.rules.rustfs_rules_manager:load:27] rules.json not found in RustFS — returning defaults
+[2026-05-02 11:01:44,208] WARNING  [app.infrastructure.excel.excel_cr_writer:write:28] Chi tieu 'Không tồn tại' not found in template — skipping

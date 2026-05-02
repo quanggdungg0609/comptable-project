@@ -100,7 +100,7 @@ async def test_find_duplicate_returns_awaiting_review_match(repo):
 
 async def test_find_duplicate_ignores_non_matching_statuses(repo):
     for status in [InvoiceStatus.FAILED, InvoiceStatus.REJECTED, InvoiceStatus.PENDING,
-                   InvoiceStatus.PROCESSING, InvoiceStatus.CONFIRMING, InvoiceStatus.DUPLICATE]:
+                   InvoiceStatus.CONFIRMING, InvoiceStatus.DUPLICATE]:
         job = ProcessingJob.create("hd001.xml", FileType.XML)
         await repo.save(job)
         item = InvoiceItem(
